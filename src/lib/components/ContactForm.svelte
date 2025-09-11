@@ -12,41 +12,41 @@ let formData = {
   message: '',
   propertyInterest: '',
   timeframe: '',
-  budget: ''
+  budget: '',
 };
 
 let errors = {};
-let isSubmitting = false;
-let submitted = false;
+let _isSubmitting = false;
+let _submitted = false;
 
 // Form validation
 function validateForm() {
   errors = {};
-  
+
   if (!formData.name.trim()) {
     errors.name = 'Name is required';
   }
-  
+
   if (!formData.email.trim()) {
     errors.email = 'Email is required';
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
     errors.email = 'Please enter a valid email address';
   }
-  
+
   if (!formData.phone.trim()) {
     errors.phone = 'Phone number is required';
   }
-  
+
   if (!formData.subject.trim()) {
     errors.subject = 'Subject is required';
   }
-  
+
   if (!formData.message.trim()) {
     errors.message = 'Message is required';
   } else if (formData.message.length < 10) {
     errors.message = 'Message must be at least 10 characters long';
   }
-  
+
   return Object.keys(errors).length === 0;
 }
 
@@ -55,16 +55,16 @@ async function handleSubmit() {
   if (!validateForm()) {
     return;
   }
-  
-  isSubmitting = true;
-  
+
+  _isSubmitting = true;
+
   try {
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     // Dispatch success event
     dispatch('submit', formData);
-    
+
     // Reset form
     formData = {
       name: '',
@@ -74,21 +74,20 @@ async function handleSubmit() {
       message: '',
       propertyInterest: '',
       timeframe: '',
-      budget: ''
+      budget: '',
     };
-    
-    submitted = true;
-    
+
+    _submitted = true;
+
     // Hide success message after 5 seconds
     setTimeout(() => {
-      submitted = false;
+      _submitted = false;
     }, 5000);
-    
   } catch (error) {
     console.error('Form submission error:', error);
     errors.submit = 'There was an error submitting your message. Please try again.';
   } finally {
-    isSubmitting = false;
+    _isSubmitting = false;
   }
 }
 

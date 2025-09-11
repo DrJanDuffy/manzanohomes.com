@@ -3,8 +3,8 @@ import { createEventDispatcher } from 'svelte';
 
 const dispatch = createEventDispatcher();
 
-// Props
-let {
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+const {
   property = {
     id: '',
     address: '',
@@ -23,14 +23,14 @@ let {
     agent: {
       name: '',
       phone: '',
-      email: ''
-    }
+      email: '',
+    },
   },
   showActions = true,
-  size = 'default' // 'default', 'large', 'compact'
+  size = 'default',
 } = $props();
 
-// Format currency
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function formatCurrency(amount) {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -40,12 +40,12 @@ function formatCurrency(amount) {
   }).format(amount);
 }
 
-// Format square footage
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function formatSqft(sqft) {
   return sqft.toLocaleString();
 }
 
-// Handle card click
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function handleCardClick() {
   dispatch('click', { property });
 }

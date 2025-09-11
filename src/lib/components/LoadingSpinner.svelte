@@ -1,47 +1,44 @@
 <script>
-// Props
-let {
-  size = 'medium', // 'small', 'medium', 'large'
-  color = 'primary', // 'primary', 'white', 'gray'
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+const {
+  size = 'medium',
+  color = 'primary',
   text = '',
   overlay = false,
-  fullScreen = false
+  fullScreen = false,
 } = $props();
 
-// Get size classes
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function getSizeClasses(size) {
   switch (size) {
     case 'small':
       return 'w-4 h-4';
     case 'large':
       return 'w-12 h-12';
-    case 'medium':
     default:
       return 'w-8 h-8';
   }
 }
 
-// Get color classes
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function getColorClasses(color) {
   switch (color) {
     case 'white':
       return 'text-white';
     case 'gray':
       return 'text-gray-600';
-    case 'primary':
     default:
       return 'text-primary-600';
   }
 }
 
-// Get spinner size for border width
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function getBorderWidth(size) {
   switch (size) {
     case 'small':
       return 'border-2';
     case 'large':
       return 'border-4';
-    case 'medium':
     default:
       return 'border-2';
   }

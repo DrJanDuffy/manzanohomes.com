@@ -14,26 +14,26 @@ const config = {
       // Configure build output
       build: {
         minify: true,
-        sourcemap: false
+        sourcemap: false,
       },
       // Environment variables
       env: {
-        dir: './'
-      }
+        dir: './',
+      },
     }),
     // Enable service worker for PWA features
     serviceWorker: {
-      register: false
+      register: false,
     },
     // Configure paths
     paths: {
       base: '',
-      assets: ''
+      assets: '',
     },
     // Enable prerendering for better SEO
     prerender: {
-      handleHttpError: 'warn'
-    }
+      handleHttpError: 'warn',
+    },
   },
 };
 

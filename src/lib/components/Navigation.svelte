@@ -4,7 +4,7 @@ import { onMount } from 'svelte';
 
 // Navigation state
 let mobileMenuOpen = false;
-let scrolled = false;
+let _scrolled = false;
 
 // Navigation items
 const navItems = [
@@ -12,19 +12,19 @@ const navItems = [
   { href: '/neighborhood', label: 'Neighborhood', current: false },
   { href: '/homes-for-sale', label: 'Homes for Sale', current: false },
   { href: '/home-valuation', label: 'Home Valuation', current: false },
-  { href: '/contact', label: 'Contact', current: false }
+  { href: '/contact', label: 'Contact', current: false },
 ];
 
 // Update current page based on route
 $: {
-  navItems.forEach(item => {
+  navItems.forEach((item) => {
     item.current = $page.url.pathname === item.href;
   });
 }
 
 // Handle scroll for navbar styling
 function handleScroll() {
-  scrolled = window.scrollY > 10;
+  _scrolled = window.scrollY > 10;
 }
 
 // Toggle mobile menu

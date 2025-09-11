@@ -1,11 +1,11 @@
 <script>
 import { browser } from '$app/environment';
 import { page } from '$app/stores';
+import Footer from '$lib/components/Footer.svelte';
+import Navigation from '$lib/components/Navigation.svelte';
 import { preloadCriticalComponents } from '$lib/utils/lazyLoading.js';
 import { initPerformanceMonitoring } from '$lib/utils/performance.js';
 import { webVitals } from '$lib/vitals';
-import Navigation from '$lib/components/Navigation.svelte';
-import Footer from '$lib/components/Footer.svelte';
 import '../app.css';
 
 const analyticsId = import.meta.env.VERCEL_ANALYTICS_ID;
@@ -25,13 +25,13 @@ if (browser) {
   preloadCriticalComponents();
 }
 
-// Page transition settings
-let pageTransition = {
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+const pageTransition = {
   duration: 300,
   css: (t) => `
     opacity: ${t};
     transform: translateY(${20 * (1 - t)}px);
-  `
+  `,
 };
 </script>
 

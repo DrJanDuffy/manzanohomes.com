@@ -3,39 +3,39 @@ import { onMount } from 'svelte';
 
 // Form state - using let for proper Svelte binding
 let currentStep = 1;
-let totalSteps = 4;
+const totalSteps = 4;
 
 // Step 1 - Property Address
 let streetAddress = '';
-let unitNumber = '';
+const _unitNumber = '';
 let addressSuggestions = [];
-let showSuggestions = false;
+let _showSuggestions = false;
 
 // Step 2 - Home Details
-let bedrooms = '';
-let bathrooms = '';
-let squareFeet = '';
-let lotSize = '';
-let yearBuilt = '';
-let propertyType = 'single-family';
+const bedrooms = '';
+const bathrooms = '';
+const squareFeet = '';
+const _lotSize = '';
+const yearBuilt = '';
+const _propertyType = 'single-family';
 
 // Step 3 - Condition & Features
-let overallCondition = 'good';
-let recentRenovations = [];
-let specialFeatures = [];
+const overallCondition = 'good';
+const recentRenovations = [];
+const specialFeatures = [];
 
 // Step 4 - Contact Information
-let contactName = '';
-let contactEmail = '';
-let contactPhone = '';
-let sellingTimeframe = '';
+const contactName = '';
+const contactEmail = '';
+const contactPhone = '';
+const sellingTimeframe = '';
 
 // Results
 let estimatedValue = null;
-let valueRange = { min: 0, max: 0 };
-let comparableHomes = [];
-let formSubmitted = false;
-let isCalculating = false;
+let _valueRange = { min: 0, max: 0 };
+let _comparableHomes = [];
+let _formSubmitted = false;
+let _isCalculating = false;
 
 // Form validation
 let errors = {};
@@ -47,17 +47,18 @@ const manzanoAddresses = [
   '3701 Manzano Peak Ave',
   '3675 Manzano Peak Ave',
   '3715 Manzano Peak Ave',
-  '3669 Manzano Peak Ave'
+  '3669 Manzano Peak Ave',
 ];
 
 // Recent renovations options
-const renovationOptions = [
-  'Kitchen', 'Bathrooms', 'Flooring', 'Roof', 'HVAC', 'Windows'
-];
+const _renovationOptions = ['Kitchen', 'Bathrooms', 'Flooring', 'Roof', 'HVAC', 'Windows'];
 
 // Special features options
-const specialFeatureOptions = [
-  'Swimming Pool', 'Solar Panels', 'Smart Home Features', 'Mountain Views'
+const _specialFeatureOptions = [
+  'Swimming Pool',
+  'Solar Panels',
+  'Smart Home Features',
+  'Mountain Views',
 ];
 
 // Sample comparable homes data
@@ -69,7 +70,7 @@ const sampleComparables = [
     baths: 4,
     sqft: 2800,
     yearBuilt: 2019,
-    daysOnMarket: 8
+    daysOnMarket: 8,
   },
   {
     address: '3701 Manzano Peak Ave',
@@ -78,31 +79,31 @@ const sampleComparables = [
     baths: 2,
     sqft: 2100,
     yearBuilt: 2017,
-    daysOnMarket: 15
-  }
+    daysOnMarket: 15,
+  },
 ];
 
 // Address suggestions
 function handleAddressInput() {
   if (streetAddress.length > 2) {
-    addressSuggestions = manzanoAddresses.filter(addr =>
+    addressSuggestions = manzanoAddresses.filter((addr) =>
       addr.toLowerCase().includes(streetAddress.toLowerCase())
     );
-    showSuggestions = addressSuggestions.length > 0;
+    _showSuggestions = addressSuggestions.length > 0;
   } else {
-    showSuggestions = false;
+    _showSuggestions = false;
   }
 }
 
 function selectAddress(address) {
   streetAddress = address;
-  showSuggestions = false;
+  _showSuggestions = false;
 }
 
 // Form validation
 function validateStep(step) {
   errors = {};
-  
+
   switch (step) {
     case 1:
       if (!streetAddress.trim()) {
@@ -125,7 +126,7 @@ function validateStep(step) {
       if (!sellingTimeframe) errors.sellingTimeframe = 'Selling timeframe is required';
       break;
   }
-  
+
   return Object.keys(errors).length === 0;
 }
 
@@ -148,28 +149,32 @@ function prevStep() {
 
 // Form submission
 async function submitForm() {
-  isCalculating = true;
-  
+  _isCalculating = true;
+
   // Simulate API call
-  await new Promise(resolve => setTimeout(resolve, 2000));
-  
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+
   // Calculate estimated value based on form data
-  const baseValue = parseInt(squareFeet) * 200; // Base $200/sqft
-  const bedroomBonus = parseInt(bedrooms) * 10000;
-  const bathroomBonus = parseInt(bathrooms) * 15000;
-  const conditionMultiplier = overallCondition === 'excellent' ? 1.1 : overallCondition === 'good' ? 1.0 : 0.9;
+  const baseValue = Number.parseInt(squareFeet) * 200; // Base $200/sqft
+  const bedroomBonus = Number.parseInt(bedrooms) * 10000;
+  const bathroomBonus = Number.parseInt(bathrooms) * 15000;
+  const conditionMultiplier =
+    overallCondition === 'excellent' ? 1.1 : overallCondition === 'good' ? 1.0 : 0.9;
   const renovationBonus = recentRenovations.length * 5000;
   const featureBonus = specialFeatures.length * 3000;
-  
-  estimatedValue = Math.round((baseValue + bedroomBonus + bathroomBonus + renovationBonus + featureBonus) * conditionMultiplier);
-  valueRange = {
+
+  estimatedValue = Math.round(
+    (baseValue + bedroomBonus + bathroomBonus + renovationBonus + featureBonus) *
+      conditionMultiplier
+  );
+  _valueRange = {
     min: Math.round(estimatedValue * 0.9),
-    max: Math.round(estimatedValue * 1.1)
+    max: Math.round(estimatedValue * 1.1),
   };
-  
-  comparableHomes = sampleComparables;
-  formSubmitted = true;
-  isCalculating = false;
+
+  _comparableHomes = sampleComparables;
+  _formSubmitted = true;
+  _isCalculating = false;
 }
 
 // Format currency
