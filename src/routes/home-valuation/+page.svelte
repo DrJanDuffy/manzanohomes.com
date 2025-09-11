@@ -7,34 +7,35 @@ const totalSteps = 4;
 
 // Step 1 - Property Address
 let streetAddress = '';
-const _unitNumber = '';
+let unitNumber = '';
 let addressSuggestions = [];
 let _showSuggestions = false;
 
 // Step 2 - Home Details
-const bedrooms = '';
-const bathrooms = '';
-const squareFeet = '';
+let bedrooms = '';
+let bathrooms = '';
+let squareFeet = '';
 const _lotSize = '';
-const yearBuilt = '';
+let yearBuilt = '';
 const _propertyType = 'single-family';
 
 // Step 3 - Condition & Features
-const overallCondition = 'good';
-const recentRenovations = [];
-const specialFeatures = [];
+let overallCondition = 'good';
+let recentRenovations = [];
+let specialFeatures = [];
 
 // Step 4 - Contact Information
-const contactName = '';
-const contactEmail = '';
-const contactPhone = '';
-const sellingTimeframe = '';
+let contactName = '';
+let contactEmail = '';
+let contactPhone = '';
+let sellingTimeframe = '';
 
 // Results
 let estimatedValue = null;
 let _valueRange = { min: 0, max: 0 };
 let _comparableHomes = [];
-let _formSubmitted = false;
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+let formSubmitted = false;
 let _isCalculating = false;
 
 // Form validation
@@ -177,7 +178,7 @@ async function submitForm() {
   };
 
   _comparableHomes = sampleComparables;
-  _formSubmitted = true;
+  formSubmitted = true;
   _isCalculating = false;
 }
 

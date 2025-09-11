@@ -1,8 +1,8 @@
 <script>
-const homePrice = 500000;
-const downPayment = 100000;
-const interestRate = 6.5;
-const loanTerm = 30;
+let homePrice = 500000;
+let downPayment = 100000;
+let interestRate = 6.5;
+let loanTerm = 30;
 
 $: loanAmount = homePrice - downPayment;
 $: monthlyRate = interestRate / 100 / 12;

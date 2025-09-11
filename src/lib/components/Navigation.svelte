@@ -4,7 +4,8 @@ import { onMount } from 'svelte';
 
 // Navigation state
 let mobileMenuOpen = false;
-let _scrolled = false;
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+let scrolled = false;
 
 // Navigation items
 const navItems = [
@@ -24,7 +25,7 @@ $: {
 
 // Handle scroll for navbar styling
 function handleScroll() {
-  _scrolled = window.scrollY > 10;
+  scrolled = window.scrollY > 10;
 }
 
 // Toggle mobile menu
