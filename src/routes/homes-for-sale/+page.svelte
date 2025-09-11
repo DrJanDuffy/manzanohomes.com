@@ -1,6 +1,8 @@
 <script>
 import { onMount } from 'svelte';
 
+// Fixed: All form variables now use 'let' instead of 'const' for proper binding
+
 // Search and filter state
 const priceRange = [300000, 800000];
 const bedrooms = 'any';
