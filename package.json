@@ -66,6 +66,7 @@
   "type": "module",
   "dependencies": {
     "@fontsource/inter": "^5.0.16",
+    "@sveltejs/adapter-auto": "^6.1.0",
     "cookie": "^0.6.0",
     "date-fns": "^3.0.0",
     "geolib": "^3.3.4",
@@ -73,6 +74,9 @@
     "web-vitals": "^3.5.0"
   },
   "lint-staged": {
-    "*.{js,ts,svelte}": ["biome check --write", "biome format --write"]
+    "*.{js,ts,svelte}": [
+      "biome check --write",
+      "biome format --write"
+    ]
   }
 }
