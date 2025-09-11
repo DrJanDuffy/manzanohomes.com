@@ -1,5 +1,4 @@
 <script>
-export const prerender = true;
 </script>
 
 <svelte:head>
@@ -7,7 +6,7 @@ export const prerender = true;
   <meta name="description" content="Discover the Manzano neighborhood in Las Vegas - a premier community with excellent schools, amenities, and walkability.">
 </svelte:head>
 
-<main class="min-h-screen">
+<main class="min-h-screen" id="main-content">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <h1 class="text-4xl font-bold text-gray-900 mb-8">Neighborhood</h1>
     <div class="prose max-w-none">
