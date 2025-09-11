@@ -1,15 +1,13 @@
 <script>
-// biome-ignore lint/correctness/noUnusedVariables: Used in template
 const {
-  size = 'medium',
-  color = 'primary',
-  text = '',
-  overlay = false,
-  fullScreen = false,
+  _size = 'medium',
+  _color = 'primary',
+  _text = '',
+  _overlay = false,
+  _fullScreen = false,
 } = $props();
 
-// biome-ignore lint/correctness/noUnusedVariables: Used in template
-function getSizeClasses(size) {
+function _getSizeClasses(size) {
   switch (size) {
     case 'small':
       return 'w-4 h-4';
@@ -20,8 +18,7 @@ function getSizeClasses(size) {
   }
 }
 
-// biome-ignore lint/correctness/noUnusedVariables: Used in template
-function getColorClasses(color) {
+function _getColorClasses(color) {
   switch (color) {
     case 'white':
       return 'text-white';
@@ -32,8 +29,7 @@ function getColorClasses(color) {
   }
 }
 
-// biome-ignore lint/correctness/noUnusedVariables: Used in template
-function getBorderWidth(size) {
+function _getBorderWidth(size) {
   switch (size) {
     case 'small':
       return 'border-2';

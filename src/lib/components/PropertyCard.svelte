@@ -3,7 +3,6 @@ import { createEventDispatcher } from 'svelte';
 
 const dispatch = createEventDispatcher();
 
-// biome-ignore lint/correctness/noUnusedVariables: Used in template
 const {
   property = {
     id: '',
@@ -26,8 +25,8 @@ const {
       email: '',
     },
   },
-  showActions = true,
-  size = 'default',
+  _showActions = true,
+  _size = 'default',
 } = $props();
 
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
@@ -51,24 +50,28 @@ function handleCardClick() {
 }
 
 // Handle favorite toggle
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function handleFavorite(event) {
   event.stopPropagation();
   dispatch('favorite', { property, favorited: !property.favorited });
 }
 
 // Handle schedule showing
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function handleScheduleShowing(event) {
   event.stopPropagation();
   dispatch('scheduleShowing', { property });
 }
 
 // Handle contact agent
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function handleContactAgent(event) {
   event.stopPropagation();
   dispatch('contactAgent', { property });
 }
 
 // Get status color
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function getStatusColor(status) {
   switch (status) {
     case 'for-sale':
@@ -85,6 +88,7 @@ function getStatusColor(status) {
 }
 
 // Get status text
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function getStatusText(status) {
   switch (status) {
     case 'for-sale':

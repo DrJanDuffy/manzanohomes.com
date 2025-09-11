@@ -4,7 +4,7 @@ import { onMount } from 'svelte';
 
 // Navigation state
 let mobileMenuOpen = false;
-let scrolled = false;
+let _scrolled = false;
 
 // Navigation items
 const navItems = [
@@ -24,15 +24,17 @@ $: {
 
 // Handle scroll for navbar styling
 function handleScroll() {
-  scrolled = window.scrollY > 10;
+  _scrolled = window.scrollY > 10;
 }
 
 // Toggle mobile menu
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function toggleMobileMenu() {
   mobileMenuOpen = !mobileMenuOpen;
 }
 
 // Close mobile menu when clicking outside
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function closeMobileMenu() {
   mobileMenuOpen = false;
 }

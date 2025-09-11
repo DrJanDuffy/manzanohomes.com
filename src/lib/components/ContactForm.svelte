@@ -51,6 +51,7 @@ function validateForm() {
 }
 
 // Handle form submission
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 async function handleSubmit() {
   if (!validateForm()) {
     return;
@@ -92,6 +93,7 @@ async function handleSubmit() {
 }
 
 // Clear error when user starts typing
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function clearError(field) {
   if (errors[field]) {
     errors = { ...errors, [field]: undefined };

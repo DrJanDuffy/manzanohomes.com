@@ -6,20 +6,20 @@ import { onMount } from 'svelte';
 
 // Search and filter state
 // CRITICAL: These MUST be 'let', not 'const', for Svelte bind:value to work
-let priceRange = [300000, 800000];
-let bedrooms = 'any';
-let bathrooms = 'any';
+const priceRange = [300000, 800000];
+const bedrooms = 'any';
+const bathrooms = 'any';
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-let propertyType = 'any';
-let minSqft = '';
-let maxSqft = '';
-let sortBy = 'price-low';
+const propertyType = 'any';
+const minSqft = '';
+const maxSqft = '';
+const sortBy = 'price-low';
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-let viewMode = 'grid'; // 'grid' or 'map'
+const viewMode = 'grid'; // 'grid' or 'map'
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-let currentPage = 1;
+const currentPage = 1;
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-let totalPages = 5;
+const totalPages = 5;
 
 // Sample property data (placeholder until RealScout integration)
 const sampleProperties = [

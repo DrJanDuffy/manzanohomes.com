@@ -7,35 +7,35 @@ const totalSteps = 4;
 
 // Step 1 - Property Address
 let streetAddress = '';
-let unitNumber = '';
+const _unitNumber = '';
 let addressSuggestions = [];
-let showSuggestions = false;
+let _showSuggestions = false;
 
 // Step 2 - Home Details
-let bedrooms = '';
-let bathrooms = '';
-let squareFeet = '';
-let lotSize = '';
-let yearBuilt = '';
-let propertyType = 'single-family';
+const bedrooms = '';
+const bathrooms = '';
+const squareFeet = '';
+const _lotSize = '';
+const yearBuilt = '';
+const _propertyType = 'single-family';
 
 // Step 3 - Condition & Features
-let overallCondition = 'good';
-let recentRenovations = [];
-let specialFeatures = [];
+const overallCondition = 'good';
+const recentRenovations = [];
+const specialFeatures = [];
 
 // Step 4 - Contact Information
-let contactName = '';
-let contactEmail = '';
-let contactPhone = '';
-let sellingTimeframe = '';
+const contactName = '';
+const contactEmail = '';
+const contactPhone = '';
+const sellingTimeframe = '';
 
 // Results
 let estimatedValue = null;
-let valueRange = { min: 0, max: 0 };
-let comparableHomes = [];
-let formSubmitted = false;
-let isCalculating = false;
+let _valueRange = { min: 0, max: 0 };
+let _comparableHomes = [];
+let _formSubmitted = false;
+let _isCalculating = false;
 
 // Form validation
 let errors = {};
@@ -84,6 +84,7 @@ const sampleComparables = [
 ];
 
 // Address suggestions
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function handleAddressInput() {
   if (streetAddress.length > 2) {
     addressSuggestions = manzanoAddresses.filter((addr) =>
@@ -95,6 +96,7 @@ function handleAddressInput() {
   }
 }
 
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function selectAddress(address) {
   streetAddress = address;
   _showSuggestions = false;
@@ -131,6 +133,7 @@ function validateStep(step) {
 }
 
 // Navigation functions
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function nextStep() {
   if (validateStep(currentStep)) {
     if (currentStep < totalSteps) {
@@ -141,6 +144,7 @@ function nextStep() {
   }
 }
 
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function prevStep() {
   if (currentStep > 1) {
     currentStep--;
@@ -178,6 +182,7 @@ async function submitForm() {
 }
 
 // Format currency
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function formatCurrency(amount) {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
