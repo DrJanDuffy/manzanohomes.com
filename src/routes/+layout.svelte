@@ -30,8 +30,8 @@ function toggleMobileMenu() {
 </script>
 
 <!-- Navigation Header -->
-<header class="bg-white shadow-lg sticky top-0 z-50" role="banner">
-	<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" role="navigation" aria-label="Main navigation">
+<header class="bg-white shadow-lg sticky top-0 z-50">
+	<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
 		<div class="flex justify-between items-center h-16">
 			<!-- Logo -->
 			<div class="flex-shrink-0">
@@ -117,7 +117,7 @@ function toggleMobileMenu() {
 </main>
 
 <!-- Footer -->
-<footer class="bg-gray-900 text-white" role="contentinfo">
+<footer class="bg-gray-900 text-white">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 			<!-- Company Info -->

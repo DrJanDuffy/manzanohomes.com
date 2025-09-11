@@ -72,7 +72,7 @@ onMount(() => {
 </section>
 
 <!-- Featured Properties Section -->
-<section class="py-16 bg-gray-50" role="region" aria-label="Featured properties">
+<section class="py-16 bg-gray-50" aria-label="Featured properties">
 	<div class="max-w-7xl mx-auto px-4">
 		<div class="text-center mb-12">
 			<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Featured Properties</h2>
@@ -227,7 +227,7 @@ onMount(() => {
 </section>
 
 <!-- Neighborhood Highlights -->
-<section class="py-16 bg-white" role="region" aria-label="Neighborhood highlights">
+<section class="py-16 bg-white" aria-label="Neighborhood highlights">
 	<div class="max-w-7xl mx-auto px-4">
 		<div class="text-center mb-12">
 			<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose Manzano?</h2>
@@ -277,7 +277,7 @@ onMount(() => {
 </section>
 
 <!-- Quick Stats Bar -->
-<section class="py-12 bg-primary-600 text-white" role="region" aria-label="Neighborhood statistics">
+<section class="py-12 bg-primary-600 text-white" aria-label="Neighborhood statistics">
 	<div class="max-w-7xl mx-auto px-4">
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
 			<div>
@@ -297,7 +297,7 @@ onMount(() => {
 </section>
 
 <!-- Contact Form Section -->
-<section class="py-16 bg-gray-50" role="region" aria-label="Contact form">
+<section class="py-16 bg-gray-50" aria-label="Contact form">
 	<div class="max-w-4xl mx-auto px-4">
 		<div class="text-center mb-12">
 			<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
@@ -307,7 +307,7 @@ onMount(() => {
 		</div>
 		
 		<div class="bg-white rounded-lg shadow-lg p-8">
-			<form class="space-y-6" role="form" aria-label="Contact form">
+			<form class="space-y-6" aria-label="Contact form">
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 					<div>
 						<label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
