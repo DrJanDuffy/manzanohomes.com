@@ -33,7 +33,8 @@ export function enhance(form, { pending, error, result } = {}) {
 
   /** @param {SubmitEvent} event */
   async function handle_submit(event) {
-    const token = (current_token = {});
+    current_token = {};
+    const token = current_token;
 
     event.preventDefault();
 
@@ -45,9 +46,9 @@ export function enhance(form, { pending, error, result } = {}) {
       const response = await fetch(form.action, {
         method: form.method,
         headers: {
-          accept: 'application/json'
+          accept: 'application/json',
         },
-        body: data
+        body: data,
       });
 
       if (token !== current_token) return;
@@ -77,6 +78,6 @@ export function enhance(form, { pending, error, result } = {}) {
   return {
     destroy() {
       form.removeEventListener('submit', handle_submit);
-    }
+    },
   };
 }

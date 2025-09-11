@@ -1,57 +1,351 @@
 <script>
-	import Counter from '$lib/Counter.svelte';
+import { browser } from '$app/environment';
+import SEO from '$lib/components/SEO.svelte';
+import { initAccessibility } from '$lib/utils/accessibility.js';
+import { onMount } from 'svelte';
+
+let _mounted = false;
+
+onMount(() => {
+  _mounted = true;
+  if (browser) {
+    initAccessibility();
+  }
+});
 </script>
 
-<svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
-</svelte:head>
+<SEO 
+	pageType="HOMEPAGE"
+	title="Manzano Homes - Las Vegas Real Estate | 3693 Manzano Peak Ave"
+	description="Discover your dream home in the Manzano neighborhood of Las Vegas. Prime location near 3693 Manzano Peak Ave with excellent schools, walkability, and modern amenities."
+	keywords="Manzano Las Vegas, Las Vegas real estate, homes for sale Las Vegas, Manzano Peak Ave, Las Vegas neighborhoods, real estate agent Las Vegas"
+	url="https://manzanohomes.com"
+	image="https://manzanohomes.com/og-image.jpg"
+/>
 
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
-
-	<Counter />
+<!-- Hero Section -->
+<section id="main-content" class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800" role="banner" aria-label="Welcome to Manzano Homes">
+	<!-- Background Image Overlay -->
+	<div class="absolute inset-0 bg-black bg-opacity-40"></div>
+	<div class="absolute inset-0 bg-gradient-to-r from-primary-900/50 to-transparent"></div>
+	
+	<!-- Background Image -->
+	<div class="absolute inset-0">
+		<enhanced:img
+			src="./src/lib/assets/images/hero-manzano.jpg"
+			alt="Beautiful Manzano neighborhood in Las Vegas with modern homes and palm trees"
+			sizes="min(1280px, 100vw)"
+			class="w-full h-full object-cover"
+			fetchpriority="high"
+			loading="eager"
+		/>
+	</div>
+	
+	<!-- Hero Content -->
+	<div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+		<h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+			Welcome to <span class="text-secondary-400">Manzano</span>
+		</h1>
+		<h2 class="text-xl md:text-2xl lg:text-3xl mb-4 font-light">
+			Your Dream Home Awaits
+		</h2>
+		<p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto opacity-90">
+			Discover the perfect blend of modern living and prime Las Vegas location in the beautiful Manzano neighborhood
+		</p>
+		
+		<!-- CTA Buttons -->
+		<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+			<button class="bg-secondary-500 hover:bg-secondary-600 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg" aria-label="View available homes for sale in Manzano">
+				View Available Homes
+			</button>
+			<button class="bg-white hover:bg-gray-100 text-primary-700 font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg" aria-label="Get your home value estimate">
+				Get Your Home Value
+			</button>
+		</div>
+	</div>
+	
+	<!-- Scroll Indicator -->
+	<div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce" aria-label="Scroll down to see more content">
+		<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+		</svg>
+	</div>
 </section>
 
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
-	}
+<!-- Featured Properties Section -->
+<section class="py-16 bg-gray-50" role="region" aria-label="Featured properties">
+	<div class="max-w-7xl mx-auto px-4">
+		<div class="text-center mb-12">
+			<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Featured Properties</h2>
+			<p class="text-lg text-gray-600 max-w-2xl mx-auto">
+				Discover the finest homes in the Manzano neighborhood, each offering unique charm and modern amenities
+			</p>
+		</div>
+		
+		<!-- Featured Properties Grid -->
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+			<!-- Sample Property 1 -->
+			<div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300" role="article" aria-label="Modern Family Home property listing">
+				<div class="relative h-48 overflow-hidden">
+					<enhanced:img
+						src="./src/lib/assets/images/property-placeholder.jpg"
+						alt="Beautiful modern home in Manzano neighborhood"
+						sizes="(min-width: 1200px) 400px, (min-width: 768px) 300px, 100vw"
+						class="w-full h-full object-cover"
+					/>
+					<div class="absolute top-4 left-4">
+						<span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+							FOR SALE
+						</span>
+					</div>
+					<div class="absolute top-4 right-4">
+						<span class="px-3 py-1 text-sm font-bold text-white bg-primary-600 rounded-full">
+							$485,000
+						</span>
+					</div>
+				</div>
+				<div class="p-6">
+					<h3 class="text-xl font-semibold text-gray-900 mb-2">Modern Family Home</h3>
+					<p class="text-gray-600 mb-4">3693 Manzano Peak Ave, Las Vegas, NV 89121</p>
+					<div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+						<span class="flex items-center">
+							<span class="iconify w-4 h-4 mr-1" data-icon="mdi:bed"></span>
+							3 bed
+						</span>
+						<span class="flex items-center">
+							<span class="iconify w-4 h-4 mr-1" data-icon="mdi:shower"></span>
+							2 bath
+						</span>
+						<span class="flex items-center">
+							<span class="iconify w-4 h-4 mr-1" data-icon="mdi:square-outline"></span>
+							1,850 sqft
+						</span>
+					</div>
+					<button class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300" aria-label="View details for Modern Family Home">
+						View Details
+					</button>
+				</div>
+			</div>
+			
+			<!-- Sample Property 2 -->
+			<div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300" role="article" aria-label="Luxury Pool Home property listing">
+				<div class="relative h-48 overflow-hidden">
+					<enhanced:img
+						src="./src/lib/assets/images/property-placeholder.jpg"
+						alt="Contemporary home with pool in Manzano"
+						sizes="(min-width: 1200px) 400px, (min-width: 768px) 300px, 100vw"
+						class="w-full h-full object-cover"
+					/>
+					<div class="absolute top-4 left-4">
+						<span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+							FOR SALE
+						</span>
+					</div>
+					<div class="absolute top-4 right-4">
+						<span class="px-3 py-1 text-sm font-bold text-white bg-primary-600 rounded-full">
+							$525,000
+						</span>
+					</div>
+				</div>
+				<div class="p-6">
+					<h3 class="text-xl font-semibold text-gray-900 mb-2">Luxury Pool Home</h3>
+					<p class="text-gray-600 mb-4">3685 Manzano Peak Ave, Las Vegas, NV 89121</p>
+					<div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+						<span class="flex items-center">
+							<span class="iconify w-4 h-4 mr-1" data-icon="mdi:bed"></span>
+							4 bed
+						</span>
+						<span class="flex items-center">
+							<span class="iconify w-4 h-4 mr-1" data-icon="mdi:shower"></span>
+							3 bath
+						</span>
+						<span class="flex items-center">
+							<span class="iconify w-4 h-4 mr-1" data-icon="mdi:square-outline"></span>
+							2,200 sqft
+						</span>
+					</div>
+					<button class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300" aria-label="View details for Luxury Pool Home">
+						View Details
+					</button>
+				</div>
+			</div>
+			
+			<!-- Sample Property 3 -->
+			<div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300" role="article" aria-label="Single-Story Gem property listing">
+				<div class="relative h-48 overflow-hidden">
+					<enhanced:img
+						src="./src/lib/assets/images/property-placeholder.jpg"
+						alt="Stunning single-story home in Manzano"
+						sizes="(min-width: 1200px) 400px, (min-width: 768px) 300px, 100vw"
+						class="w-full h-full object-cover"
+					/>
+					<div class="absolute top-4 left-4">
+						<span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+							FOR SALE
+						</span>
+					</div>
+					<div class="absolute top-4 right-4">
+						<span class="px-3 py-1 text-sm font-bold text-white bg-primary-600 rounded-full">
+							$445,000
+		</span>
+					</div>
+				</div>
+				<div class="p-6">
+					<h3 class="text-xl font-semibold text-gray-900 mb-2">Single-Story Gem</h3>
+					<p class="text-gray-600 mb-4">3679 Manzano Peak Ave, Las Vegas, NV 89121</p>
+					<div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+						<span class="flex items-center">
+							<span class="iconify w-4 h-4 mr-1" data-icon="mdi:bed"></span>
+							3 bed
+						</span>
+						<span class="flex items-center">
+							<span class="iconify w-4 h-4 mr-1" data-icon="mdi:shower"></span>
+							2 bath
+						</span>
+						<span class="flex items-center">
+							<span class="iconify w-4 h-4 mr-1" data-icon="mdi:square-outline"></span>
+							1,650 sqft
+		</span>
+					</div>
+					<button class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300" aria-label="View details for Single-Story Gem">
+						View Details
+					</button>
+				</div>
+			</div>
+		</div>
+		
+		<!-- RealScout Integration Placeholder -->
+		<div id="realscout-featured-homes" class="mt-8 bg-gray-50 rounded-lg p-8 text-center">
+			<div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+				<svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+				</svg>
+			</div>
+			<h3 class="text-xl font-semibold text-gray-900 mb-2">RealScout Integration Ready</h3>
+			<p class="text-gray-600">Dynamic property listings will be integrated here</p>
+		</div>
+	</div>
+</section>
 
-	h1 {
-		width: 100%;
-	}
+<!-- Neighborhood Highlights -->
+<section class="py-16 bg-white" role="region" aria-label="Neighborhood highlights">
+	<div class="max-w-7xl mx-auto px-4">
+		<div class="text-center mb-12">
+			<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose Manzano?</h2>
+			<p class="text-lg text-gray-600 max-w-2xl mx-auto">
+				Experience the best of Las Vegas living in this premier neighborhood
+			</p>
+		</div>
+		
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+			<!-- Feature 1 -->
+			<div class="text-center group">
+				<div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-200 transition-colors duration-300">
+					<span class="iconify w-8 h-8 text-primary-600" data-icon="mdi:map-marker"></span>
+				</div>
+				<h3 class="text-xl font-semibold text-gray-900 mb-2">Prime Location</h3>
+				<p class="text-gray-600">Conveniently located near major highways, shopping centers, and entertainment venues</p>
+			</div>
+			
+			<!-- Feature 2 -->
+			<div class="text-center group">
+				<div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-secondary-200 transition-colors duration-300">
+					<span class="iconify w-8 h-8 text-secondary-600" data-icon="mdi:school"></span>
+				</div>
+				<h3 class="text-xl font-semibold text-gray-900 mb-2">Top-Rated Schools</h3>
+				<p class="text-gray-600">Excellent educational opportunities with highly-rated public and private schools nearby</p>
+			</div>
+			
+			<!-- Feature 3 -->
+			<div class="text-center group">
+				<div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-200 transition-colors duration-300">
+					<span class="iconify w-8 h-8 text-primary-600" data-icon="mdi:home"></span>
+				</div>
+				<h3 class="text-xl font-semibold text-gray-900 mb-2">Modern Amenities</h3>
+				<p class="text-gray-600">Contemporary homes with updated features, smart technology, and energy-efficient designs</p>
+			</div>
+			
+			<!-- Feature 4 -->
+			<div class="text-center group">
+				<div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-secondary-200 transition-colors duration-300">
+					<span class="iconify w-8 h-8 text-secondary-600" data-icon="mdi:heart"></span>
+				</div>
+				<h3 class="text-xl font-semibold text-gray-900 mb-2">Community Spirit</h3>
+				<p class="text-gray-600">A welcoming neighborhood with active community events and friendly neighbors</p>
+			</div>
+		</div>
+	</div>
+</section>
 
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
+<!-- Quick Stats Bar -->
+<section class="py-12 bg-primary-600 text-white" role="region" aria-label="Neighborhood statistics">
+	<div class="max-w-7xl mx-auto px-4">
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+			<div>
+				<div class="text-3xl md:text-4xl font-bold mb-2">$485K</div>
+				<div class="text-primary-100">Median Home Price</div>
+			</div>
+			<div>
+				<div class="text-3xl md:text-4xl font-bold mb-2">8.5/10</div>
+				<div class="text-primary-100">Schools Rating</div>
+			</div>
+			<div>
+				<div class="text-3xl md:text-4xl font-bold mb-2">72</div>
+				<div class="text-primary-100">Walk Score</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
-</style>
+<!-- Contact Form Section -->
+<section class="py-16 bg-gray-50" role="region" aria-label="Contact form">
+	<div class="max-w-4xl mx-auto px-4">
+		<div class="text-center mb-12">
+			<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+			<p class="text-lg text-gray-600">
+				Ready to find your dream home in Manzano? Contact us today for a personalized consultation
+			</p>
+		</div>
+		
+		<div class="bg-white rounded-lg shadow-lg p-8">
+			<form class="space-y-6" role="form" aria-label="Contact form">
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+					<div>
+						<label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+						<input type="text" id="firstName" name="firstName" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent" required aria-required="true" aria-describedby="firstName-error">
+						<div id="firstName-error" class="text-red-600 text-sm mt-1" role="alert" aria-live="polite"></div>
+					</div>
+					<div>
+						<label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+						<input type="text" id="lastName" name="lastName" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent" required aria-required="true" aria-describedby="lastName-error">
+						<div id="lastName-error" class="text-red-600 text-sm mt-1" role="alert" aria-live="polite"></div>
+					</div>
+				</div>
+				
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+					<div>
+						<label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+						<input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent" required aria-required="true" aria-describedby="email-error">
+						<div id="email-error" class="text-red-600 text-sm mt-1" role="alert" aria-live="polite"></div>
+					</div>
+					<div>
+						<label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+						<input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent" aria-describedby="phone-help">
+						<div id="phone-help" class="text-gray-500 text-sm mt-1">Optional - We'll call you to discuss your needs</div>
+					</div>
+				</div>
+				
+				<div>
+					<label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+					<textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent" placeholder="Tell us about your dream home..." aria-describedby="message-help"></textarea>
+					<div id="message-help" class="text-gray-500 text-sm mt-1">Tell us about your ideal home, neighborhood preferences, or any questions you have</div>
+				</div>
+				
+				<button type="submit" class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 px-8 rounded-lg transition-colors duration-300" aria-describedby="submit-help">
+					Send Message
+				</button>
+				<div id="submit-help" class="text-gray-500 text-sm mt-2 text-center">We'll get back to you within 24 hours</div>
+			</form>
+		</div>
+	</div>
+</section>

@@ -1,10 +1,10 @@
 <script>
-	import { enhance } from '$lib/form';
-	import { scale } from 'svelte/transition';
-	import { flip } from 'svelte/animate';
+import { enhance } from '$lib/form';
+import { flip } from 'svelte/animate';
+import { scale } from 'svelte/transition';
 
-	/** @type {import('./$types').PageData} */
-	export let data;
+/** @type {import('./$types').PageData} */
+export let data;
 </script>
 
 <svelte:head>
