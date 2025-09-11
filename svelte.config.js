@@ -7,19 +7,8 @@ const config = {
   kit: {
     adapter: adapter({
       runtime: 'nodejs20.x',
-      regions: ['iad1'], // Washington DC region
+      regions: ['iad1'],
       maxDuration: 10,
-      // Enable edge functions for better performance
-      edge: false,
-      // Configure build output
-      build: {
-        minify: true,
-        sourcemap: false,
-      },
-      // Environment variables
-      env: {
-        dir: './',
-      },
     }),
     // Enable service worker for PWA features
     serviceWorker: {
