@@ -1,15 +1,5 @@
 {
   "version": 2,
-  "name": "manzanohomes",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": ".svelte-kit"
-      }
-    }
-  ],
   "routes": [
     {
       "src": "/sitemap.xml",
@@ -139,12 +129,6 @@
       "destination": "/api/$1"
     }
   ],
-  "functions": {
-    "app/**": {
-      "runtime": "nodejs20.x",
-      "maxDuration": 10
-    }
-  },
   "env": {
     "NODE_ENV": "production"
   },
