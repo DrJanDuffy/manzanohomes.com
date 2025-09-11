@@ -206,45 +206,7 @@ export function preloadComponent(importFn) {
  * Real estate specific lazy loading
  */
 export const RealEstateLazyLoading = {
-  /**
-   * Lazy load property search results
-   */
-  propertySearch: () => import('$lib/components/PropertySearch.svelte'),
-
-  /**
-   * Lazy load property map
-   */
-  propertyMap: () => import('$lib/components/PropertyMap.svelte'),
-
-  /**
-   * Lazy load property comparison tool
-   */
-  propertyComparison: () => import('$lib/components/PropertyComparison.svelte'),
-
-  /**
-   * Lazy load mortgage calculator
-   */
-  mortgageCalculator: () => import('$lib/components/MortgageCalculator.svelte'),
-
-  /**
-   * Lazy load neighborhood analytics
-   */
-  neighborhoodAnalytics: () => import('$lib/components/NeighborhoodAnalytics.svelte'),
-
-  /**
-   * Lazy load property photo gallery
-   */
-  photoGallery: () => import('$lib/components/PhotoGallery.svelte'),
-
-  /**
-   * Lazy load virtual tour
-   */
-  virtualTour: () => import('$lib/components/VirtualTour.svelte'),
-
-  /**
-   * Lazy load contact form
-   */
-  contactForm: () => import('$lib/components/ContactForm.svelte'),
+  // Real estate components will be added when needed
 };
 
 /**

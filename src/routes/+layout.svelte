@@ -36,11 +36,10 @@ function toggleMobileMenu() {
 			<!-- Logo -->
 			<div class="flex-shrink-0">
 				<a href="/" class="flex items-center space-x-2">
-					<enhanced:img
-						src="./src/lib/assets/images/logo-manzano.png"
+					<img
+						src="/logo-manzano.png"
 						alt="Manzano Homes Logo"
 						class="h-8 w-auto"
-						sizes="200px"
 						fetchpriority="high"
 					/>
 					<span class="text-2xl font-bold text-primary-600">Manzano Homes</span>

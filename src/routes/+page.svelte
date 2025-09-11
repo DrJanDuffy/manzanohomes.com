@@ -31,10 +31,9 @@ onMount(() => {
 	
 	<!-- Background Image -->
 	<div class="absolute inset-0">
-		<enhanced:img
-			src="./src/lib/assets/images/hero-manzano.jpg"
+		<img
+			src="/hero-manzano.jpg"
 			alt="Beautiful Manzano neighborhood in Las Vegas with modern homes and palm trees"
-			sizes="min(1280px, 100vw)"
 			class="w-full h-full object-cover"
 			fetchpriority="high"
 			loading="eager"
@@ -87,8 +86,8 @@ onMount(() => {
 			<!-- Sample Property 1 -->
 			<div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300" role="article" aria-label="Modern Family Home property listing">
 				<div class="relative h-48 overflow-hidden">
-					<enhanced:img
-						src="./src/lib/assets/images/property-placeholder.jpg"
+					<img
+						src="/property-placeholder.jpg"
 						alt="Beautiful modern home in Manzano neighborhood"
 						sizes="(min-width: 1200px) 400px, (min-width: 768px) 300px, 100vw"
 						class="w-full h-full object-cover"
@@ -130,8 +129,8 @@ onMount(() => {
 			<!-- Sample Property 2 -->
 			<div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300" role="article" aria-label="Luxury Pool Home property listing">
 				<div class="relative h-48 overflow-hidden">
-					<enhanced:img
-						src="./src/lib/assets/images/property-placeholder.jpg"
+					<img
+						src="/property-placeholder.jpg"
 						alt="Contemporary home with pool in Manzano"
 						sizes="(min-width: 1200px) 400px, (min-width: 768px) 300px, 100vw"
 						class="w-full h-full object-cover"
@@ -173,8 +172,8 @@ onMount(() => {
 			<!-- Sample Property 3 -->
 			<div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300" role="article" aria-label="Single-Story Gem property listing">
 				<div class="relative h-48 overflow-hidden">
-					<enhanced:img
-						src="./src/lib/assets/images/property-placeholder.jpg"
+					<img
+						src="/property-placeholder.jpg"
 						alt="Stunning single-story home in Manzano"
 						sizes="(min-width: 1200px) 400px, (min-width: 768px) 300px, 100vw"
 						class="w-full h-full object-cover"

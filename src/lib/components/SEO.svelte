@@ -52,7 +52,8 @@ const seoData = generatePageSEO(pageType, {
 });
 
 // Generate meta tags
-const _metaTags = generateMetaTags(seoData);
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+const metaTags = generateMetaTags(seoData);
 
 // Generate structured data
 const baseStructuredData = generateRealEstateStructuredData();

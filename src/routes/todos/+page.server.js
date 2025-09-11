@@ -35,28 +35,28 @@ export const load = async ({ locals }) => {
   throw error(response.status);
 };
 
-/** @type {import('./$types').Action} */
-export const POST = async ({ request, locals }) => {
-  const form = await request.formData();
+/** @type {import('./$types').Actions} */
+export const actions = {
+  create: async ({ request, locals }) => {
+    const form = await request.formData();
 
-  await api('POST', `todos/${locals.userid}`, {
-    text: form.get('text'),
-  });
-};
+    await api('POST', `todos/${locals.userid}`, {
+      text: form.get('text'),
+    });
+  },
 
-/** @type {import('./$types').Action} */
-export const PATCH = async ({ request, locals }) => {
-  const form = await request.formData();
+  update: async ({ request, locals }) => {
+    const form = await request.formData();
 
-  await api('PATCH', `todos/${locals.userid}/${form.get('uid')}`, {
-    text: form.has('text') ? form.get('text') : undefined,
-    done: form.has('done') ? !!form.get('done') : undefined,
-  });
-};
+    await api('PATCH', `todos/${locals.userid}/${form.get('uid')}`, {
+      text: form.has('text') ? form.get('text') : undefined,
+      done: form.has('done') ? !!form.get('done') : undefined,
+    });
+  },
 
-/** @type {import('./$types').Action} */
-export const DELETE = async ({ request, locals }) => {
-  const form = await request.formData();
+  delete: async ({ request, locals }) => {
+    const form = await request.formData();
 
-  await api('DELETE', `todos/${locals.userid}/${form.get('uid')}`);
+    await api('DELETE', `todos/${locals.userid}/${form.get('uid')}`);
+  },
 };

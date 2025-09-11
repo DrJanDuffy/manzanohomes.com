@@ -17,7 +17,7 @@ export let data;
 
 	<form
 		class="new"
-		action="/todos"
+		action="?/create"
 		method="post"
 		use:enhance={{
 			result: async ({ form }) => {
@@ -36,7 +36,7 @@ export let data;
 			animate:flip={{ duration: 200 }}
 		>
 			<form
-				action="/todos?_method=PATCH"
+				action="?/update"
 				method="post"
 				use:enhance={{
 					pending: ({ data }) => {
@@ -46,24 +46,24 @@ export let data;
 			>
 				<input type="hidden" name="uid" value={todo.uid} />
 				<input type="hidden" name="done" value={todo.done ? '' : 'true'} />
-				<button class="toggle" aria-label="Mark todo as {todo.done ? 'not done' : 'done'}" />
+				<button class="toggle" aria-label="Mark todo as {todo.done ? 'not done' : 'done'}"></button>
 			</form>
 
-			<form class="text" action="/todos?_method=PATCH" method="post" use:enhance>
+			<form class="text" action="?/update" method="post" use:enhance>
 				<input type="hidden" name="uid" value={todo.uid} />
 				<input aria-label="Edit todo" type="text" name="text" value={todo.text} />
-				<button class="save" aria-label="Save todo" />
+				<button class="save" aria-label="Save todo"></button>
 			</form>
 
 			<form
-				action="/todos?_method=DELETE"
+				action="?/delete"
 				method="post"
 				use:enhance={{
 					pending: () => (todo.pending_delete = true)
 				}}
 			>
 				<input type="hidden" name="uid" value={todo.uid} />
-				<button class="delete" aria-label="Delete todo" disabled={todo.pending_delete} />
+				<button class="delete" aria-label="Delete todo" disabled={todo.pending_delete}></button>
 			</form>
 		</div>
 	{/each}
