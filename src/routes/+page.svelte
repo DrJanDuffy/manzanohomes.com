@@ -55,13 +55,19 @@ onMount(() => {
 	
 	<!-- Background Image -->
 	<div class="absolute inset-0">
-		<img
-			src="/hero-manzano.jpg"
-			alt="Beautiful Manzano neighborhood in Las Vegas with modern homes and palm trees"
-			class="w-full h-full object-cover"
-			fetchpriority="high"
-			loading="eager"
-		/>
+		<picture>
+			<source media="(min-width: 768px)" srcset="/hero-manzano.jpg" type="image/jpeg">
+			<img
+				src="/hero-manzano.jpg"
+				alt="Beautiful Manzano neighborhood in Las Vegas with modern homes and palm trees - Premier real estate community in Southeast Las Vegas"
+				class="w-full h-full object-cover"
+				fetchpriority="high"
+				loading="eager"
+				width="1920"
+				height="1080"
+				decoding="async"
+			/>
+		</picture>
 	</div>
 	
 	<!-- Hero Content -->
@@ -261,3 +267,40 @@ onMount(() => {
 		</div>
 	</div>
 </section>
+
+<style>
+	/* Hero Image Optimizations */
+	.hero-gradient {
+		min-height: 100vh;
+		background: linear-gradient(135deg, #0A2540 0%, #3A8DDE 100%);
+	}
+	
+	.hero-gradient picture img {
+		transition: transform 0.3s ease-in-out;
+		will-change: transform;
+	}
+	
+	.hero-gradient:hover picture img {
+		transform: scale(1.02);
+	}
+	
+	/* Image Loading Optimization */
+	.hero-gradient picture {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	
+	/* Responsive Image Handling */
+	@media (max-width: 768px) {
+		.hero-gradient {
+			min-height: 80vh;
+		}
+	}
+	
+	/* Performance Optimization */
+	.hero-gradient img {
+		image-rendering: -webkit-optimize-contrast;
+		image-rendering: crisp-edges;
+	}
+</style>
