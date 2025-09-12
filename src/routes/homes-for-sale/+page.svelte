@@ -450,8 +450,11 @@ let pageSchemas = [
               href="https://drjanduffy.realscout.com/homesearch/shared-searches/U2hhcmVhYmxlU2VhcmNoTGluay0zMzcx"
               target="_blank"
               rel="noopener noreferrer"
-              class="bg-primary-600 text-white px-4 py-2 rounded-md hover:bg-primary-700 transition-colors"
+              class="bg-primary-600 text-white px-4 py-2 rounded-md hover:bg-primary-700 transition-colors flex items-center"
             >
+              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+              </svg>
               Live MLS Search
             </a>
             <button
@@ -473,21 +476,31 @@ let pageSchemas = [
                 <p class="text-gray-600">Fetching the latest property listings...</p>
               </div>
             {:else if realscoutError}
-              <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                <div class="flex">
-                  <svg class="w-5 h-5 text-blue-400 mr-3 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
-                  </svg>
-                  <div>
-                    <h3 class="text-sm font-medium text-blue-800">Enhanced Search Available</h3>
-                    <p class="text-sm text-blue-700 mt-1">
-                      <a href="https://drjanduffy.realscout.com/homesearch/shared-searches/U2hhcmVhYmxlU2VhcmNoTGluay0zMzcx" 
-                         target="_blank" 
-                         rel="noopener noreferrer"
-                         class="underline hover:text-blue-900">
-                        View live MLS search results
-                      </a> with advanced filters and real-time updates.
+              <div class="bg-gradient-to-r from-blue-50 to-primary-50 border border-blue-200 rounded-lg p-6">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0">
+                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
+                      <svg class="w-8 h-8 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="ml-4 flex-1">
+                    <h3 class="text-lg font-semibold text-blue-900 mb-2">🔍 Enhanced MLS Search Available</h3>
+                    <p class="text-blue-700 mb-4">
+                      Access live MLS data with advanced filters, real-time updates, and professional property photos.
                     </p>
+                    <a 
+                      href="https://drjanduffy.realscout.com/homesearch/shared-searches/U2hhcmVhYmxlU2VhcmNoTGluay0zMzcx" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors shadow-lg transform hover:scale-105"
+                    >
+                      <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                      </svg>
+                      View Live MLS Results
+                    </a>
                   </div>
                 </div>
               </div>
