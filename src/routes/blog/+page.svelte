@@ -37,7 +37,7 @@ const blogPosts = [
 
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
 const categories = ['All', 'Market Analysis', 'Buying Guide', 'Selling Tips', 'Local News'];
-let selectedCategory = 'All';
+const selectedCategory = 'All';
 
 $: filteredPosts =
   selectedCategory === 'All'
@@ -163,7 +163,7 @@ $: filteredPosts =
     <div class="max-w-4xl mx-auto px-4 text-center">
       <h2 id="newsletter-heading" class="text-3xl font-bold mb-4">Stay Updated</h2>
       <p class="text-xl text-primary-100 mb-8">Get the latest market insights and real estate tips delivered to your inbox</p>
-      <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto" on:submit|preventDefault>
+      <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto" onsubmit={(e) => e.preventDefault()}>
         <label for="newsletter-email" class="sr-only">Email address</label>
         <input
           id="newsletter-email"
