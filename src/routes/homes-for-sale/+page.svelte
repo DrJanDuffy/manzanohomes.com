@@ -298,147 +298,15 @@ let pageSchemas = [
     </div>
   </section>
 
-  <!-- Search and Filter Bar -->
+  <!-- RealScout Advanced Search Widget -->
   <section class="bg-white shadow-lg py-6 sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
-        <!-- Price Range -->
-        <div class="lg:col-span-3">
-          <fieldset>
-            <legend class="block text-sm font-medium text-gray-700 mb-2">Price Range</legend>
-            <div class="flex items-center space-x-2">
-              <input
-                type="number"
-                bind:value={priceRange[0]}
-                placeholder="Min"
-                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
-                aria-label="Minimum price"
-              />
-              <span class="text-gray-500">to</span>
-              <input
-                type="number"
-                bind:value={priceRange[1]}
-                placeholder="Max"
-                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
-                aria-label="Maximum price"
-              />
-            </div>
-          </fieldset>
-        </div>
-
-        <!-- Bedrooms -->
-        <div class="lg:col-span-2">
-          <label for="bedrooms" class="block text-sm font-medium text-gray-700 mb-2">Bedrooms</label>
-          <select
-            id="bedrooms"
-            bind:value={bedrooms}
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
-          >
-            <option value="any">Any</option>
-            <option value="1">1+</option>
-            <option value="2">2+</option>
-            <option value="3">3+</option>
-            <option value="4">4+</option>
-            <option value="5">5+</option>
-          </select>
-        </div>
-
-        <!-- Bathrooms -->
-        <div class="lg:col-span-2">
-          <label for="bathrooms" class="block text-sm font-medium text-gray-700 mb-2">Bathrooms</label>
-          <select
-            id="bathrooms"
-            bind:value={bathrooms}
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
-          >
-            <option value="any">Any</option>
-            <option value="1">1+</option>
-            <option value="2">2+</option>
-            <option value="3">3+</option>
-            <option value="4">4+</option>
-            <option value="5">5+</option>
-          </select>
-        </div>
-
-        <!-- Property Type -->
-        <div class="lg:col-span-2">
-          <label for="propertyType" class="block text-sm font-medium text-gray-700 mb-2">Property Type</label>
-          <select
-            id="propertyType"
-            bind:value={propertyType}
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
-          >
-            <option value="any">Any Type</option>
-            <option value="single-family">Single Family</option>
-            <option value="condo">Condo</option>
-            <option value="townhouse">Townhouse</option>
-          </select>
-        </div>
-
-        <!-- Sort -->
-        <div class="lg:col-span-2">
-          <label for="sortBy" class="block text-sm font-medium text-gray-700 mb-2">Sort By</label>
-          <select
-            id="sortBy"
-            bind:value={sortBy}
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
-          >
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
-            <option value="newest">Newest First</option>
-            <option value="sqft-high">Largest First</option>
-            <option value="sqft-low">Smallest First</option>
-          </select>
-        </div>
-
-        <!-- View Toggle -->
-        <div class="lg:col-span-1 flex items-end">
-          <div class="flex border border-gray-300 rounded-md">
-            <button
-              class="px-3 py-2 {viewMode === 'grid' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'}"
-              onclick={() => viewMode = 'grid'}
-              aria-label="Grid view"
-            >
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-              </svg>
-            </button>
-            <button
-              class="px-3 py-2 {viewMode === 'map' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'}"
-              onclick={() => viewMode = 'map'}
-              aria-label="Map view"
-            >
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-              </svg>
-            </button>
-          </div>
-        </div>
+      <div class="text-center mb-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">Advanced Property Search</h2>
+        <p class="text-gray-600">Search live MLS data with professional filters</p>
       </div>
-
-      <!-- Square Footage Filter -->
-      <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label for="minSqft" class="block text-sm font-medium text-gray-700 mb-2">Min Square Feet</label>
-          <input
-            id="minSqft"
-            type="number"
-            bind:value={minSqft}
-            placeholder="Min sq ft"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
-          />
-        </div>
-        <div>
-          <label for="maxSqft" class="block text-sm font-medium text-gray-700 mb-2">Max Square Feet</label>
-          <input
-            id="maxSqft"
-            type="number"
-            bind:value={maxSqft}
-            placeholder="Max sq ft"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
-          />
-        </div>
-      </div>
+      
+      <realscout-advanced-search agent-encoded-id="QWdlbnQtMjI1MDUw"></realscout-advanced-search>
     </div>
   </section>
 
@@ -701,5 +569,12 @@ let pageSchemas = [
   realscout-office-listings {
     --rs-listing-divider-color: rgb(101, 141, 172);
     width: 100%;
+  }
+  
+  realscout-advanced-search {
+    --rs-as-button-text-color: #ffffff;
+    --rs-as-background-color: #ffffff;
+    --rs-as-button-color: rgb(35, 93, 137);
+    --rs-as-widget-width: 100% !important;
   }
 </style>
