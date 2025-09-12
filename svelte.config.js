@@ -6,25 +6,8 @@ const config = {
   preprocess: vitePreprocess(),
   kit: {
     adapter: adapter({
-      // Optimize for Vercel Edge Runtime
+      // Use Node.js runtime for better compatibility
       runtime: 'nodejs20.x',
-      // Enable ISR (Incremental Static Regeneration) for dynamic content
-      isr: {
-        // Enable ISR for API routes that don't need real-time updates
-        enable: true,
-        // Cache duration for ISR pages (in seconds)
-        expiration: 3600, // 1 hour
-      },
-      // Optimize function configuration
-      functions: {
-        // API routes configuration
-        'src/routes/api/**': {
-          maxDuration: 30,
-          memory: 1024,
-        },
-      },
-      // Enable edge functions for better performance
-      edge: false, // Set to true for edge runtime if needed
     }),
     // Enable service worker for PWA features
     serviceWorker: {
