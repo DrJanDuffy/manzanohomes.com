@@ -62,12 +62,9 @@ const socialLinks = [
       <!-- Company Info -->
       <div class="lg:col-span-2">
         <div class="flex items-center space-x-2 mb-4">
-          <img
-            src="/logo-manzano.png"
-            alt="Manzano Homes Logo"
-            class="h-8 w-auto"
-          />
-          <span class="text-xl font-bold">Manzano Homes</span>
+          <div class="phone-flash-footer text-2xl font-bold text-white">
+            (702) 500-1942
+          </div>
         </div>
         <p class="text-gray-300 mb-6 max-w-md">
           Premier real estate services in the Manzano neighborhood of Las Vegas, NV. 
@@ -213,3 +210,20 @@ const socialLinks = [
     </div>
   </div>
 </footer>
+
+<style>
+  .phone-flash-footer {
+    animation: flash-footer 2s infinite;
+  }
+  
+  @keyframes flash-footer {
+    0%, 50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    25%, 75% {
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
+  }
+</style>

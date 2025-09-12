@@ -56,18 +56,12 @@ onMount(() => {
 <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 {scrolled ? 'bg-white shadow-lg' : 'bg-transparent'}">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
-      <!-- Logo -->
+      <!-- Phone Number -->
       <div class="flex-shrink-0">
-        <a href="/" class="flex items-center space-x-2">
-          <img
-            src="/logo-manzano.png"
-            alt="Manzano Homes Logo"
-            class="h-8 w-auto"
-            fetchpriority="high"
-          />
-          <span class="text-xl font-bold text-gray-900 {scrolled ? 'text-gray-900' : 'text-white'}">
-            Manzano Homes
-          </span>
+        <a href="tel:+17025001942" class="flex items-center space-x-2">
+          <div class="phone-flash text-2xl font-bold {scrolled ? 'text-primary-600' : 'text-white'}">
+            (702) 500-1942
+          </div>
         </a>
       </div>
 
@@ -171,6 +165,23 @@ onMount(() => {
     </div>
   </div>
 </nav>
+
+<style>
+  .phone-flash {
+    animation: flash 2s infinite;
+  }
+  
+  @keyframes flash {
+    0%, 50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    25%, 75% {
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
+  }
+</style>
 
 <!-- Mobile menu overlay -->
 {#if mobileMenuOpen}
