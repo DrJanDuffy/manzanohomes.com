@@ -1,31 +1,32 @@
 <script>
 import { onMount } from 'svelte';
 
-let testResults = $state(null);
-let isLoading = $state(false);
-let testPhone = $state('+17025001942');
+let _testResults = $state(null);
+let _isLoading = $state(false);
+const testPhone = $state('+17025001942');
 
 async function runAPITest() {
-  isLoading = true;
-  testResults = null;
+  _isLoading = true;
+  _testResults = null;
 
   try {
     const response = await fetch('/api/test/follow-up-boss');
     const data = await response.json();
-    testResults = data;
+    _testResults = data;
   } catch (error) {
-    testResults = {
+    _testResults = {
       success: false,
       error: error.message,
       message: 'Failed to connect to test endpoint',
     };
   } finally {
-    isLoading = false;
+    _isLoading = false;
   }
 }
 
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 async function runCustomTest(testType) {
-  isLoading = true;
+  _isLoading = true;
 
   try {
     const response = await fetch('/api/test/follow-up-boss', {
@@ -40,15 +41,15 @@ async function runCustomTest(testType) {
     });
 
     const data = await response.json();
-    testResults = data;
+    _testResults = data;
   } catch (error) {
-    testResults = {
+    _testResults = {
       success: false,
       error: error.message,
       message: `Failed to run ${testType} test`,
     };
   } finally {
-    isLoading = false;
+    _isLoading = false;
   }
 }
 
@@ -72,31 +73,31 @@ onMount(() => {
         <div class="flex flex-wrap gap-4 mb-4">
           <button
             on:click={runAPITest}
-            disabled={isLoading}
+            disabled={_isLoading}
             class="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            {isLoading ? 'Testing...' : 'Test API Connection'}
+            {_isLoading ? 'Testing...' : 'Test API Connection'}
           </button>
-          
+
           <button
             on:click={() => runCustomTest('createLead')}
-            disabled={isLoading}
+            disabled={_isLoading}
             class="px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             Test Create Lead
           </button>
-          
+
           <button
             on:click={() => runCustomTest('searchLead')}
-            disabled={isLoading}
+            disabled={_isLoading}
             class="px-6 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             Test Search Lead
           </button>
-          
+
           <button
             on:click={() => runCustomTest('sendSMS')}
-            disabled={isLoading}
+            disabled={_isLoading}
             class="px-6 py-3 bg-orange-600 text-white rounded-lg font-medium hover:bg-orange-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             Test Send SMS
@@ -116,11 +117,11 @@ onMount(() => {
       </div>
       
       <!-- Test Results -->
-      {#if testResults}
+      {#if _testResults}
         <div class="border-t pt-8">
           <h2 class="text-xl font-semibold text-gray-900 mb-4">Test Results</h2>
-          
-          {#if testResults.success}
+
+          {#if _testResults.success}
             <div class="bg-green-50 border border-green-200 rounded-lg p-6">
               <div class="flex items-center mb-4">
                 <svg class="w-6 h-6 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -128,34 +129,34 @@ onMount(() => {
                 </svg>
                 <h3 class="text-lg font-medium text-green-900">✅ Test Passed</h3>
               </div>
-              
-              <p class="text-green-700 mb-4">{testResults.message}</p>
-              
-              {#if testResults.existingLead}
+
+              <p class="text-green-700 mb-4">{_testResults.message}</p>
+
+              {#if _testResults.existingLead}
                 <div class="bg-white rounded-lg p-4">
                   <h4 class="font-medium text-gray-900 mb-2">Existing Lead Found:</h4>
-                  <pre class="text-sm text-gray-600 overflow-auto">{JSON.stringify(testResults.existingLead, null, 2)}</pre>
+                  <pre class="text-sm text-gray-600 overflow-auto">{JSON.stringify(_testResults.existingLead, null, 2)}</pre>
                 </div>
               {/if}
-              
-              {#if testResults.newLead}
+
+              {#if _testResults.newLead}
                 <div class="bg-white rounded-lg p-4">
                   <h4 class="font-medium text-gray-900 mb-2">New Lead Created:</h4>
-                  <pre class="text-sm text-gray-600 overflow-auto">{JSON.stringify(testResults.newLead, null, 2)}</pre>
+                  <pre class="text-sm text-gray-600 overflow-auto">{JSON.stringify(_testResults.newLead, null, 2)}</pre>
                 </div>
               {/if}
-              
-              {#if testResults.lead}
+
+              {#if _testResults.lead}
                 <div class="bg-white rounded-lg p-4">
                   <h4 class="font-medium text-gray-900 mb-2">Lead Data:</h4>
-                  <pre class="text-sm text-gray-600 overflow-auto">{JSON.stringify(testResults.lead, null, 2)}</pre>
+                  <pre class="text-sm text-gray-600 overflow-auto">{JSON.stringify(_testResults.lead, null, 2)}</pre>
                 </div>
               {/if}
-              
-              {#if testResults.sms}
+
+              {#if _testResults.sms}
                 <div class="bg-white rounded-lg p-4">
                   <h4 class="font-medium text-gray-900 mb-2">SMS Result:</h4>
-                  <pre class="text-sm text-gray-600 overflow-auto">{JSON.stringify(testResults.sms, null, 2)}</pre>
+                  <pre class="text-sm text-gray-600 overflow-auto">{JSON.stringify(_testResults.sms, null, 2)}</pre>
                 </div>
               {/if}
             </div>
@@ -167,13 +168,13 @@ onMount(() => {
                 </svg>
                 <h3 class="text-lg font-medium text-red-900">❌ Test Failed</h3>
               </div>
-              
-              <p class="text-red-700 mb-4">{testResults.message || testResults.error}</p>
-              
-              {#if testResults.details}
+
+              <p class="text-red-700 mb-4">{_testResults.message || _testResults.error}</p>
+
+              {#if _testResults.details}
                 <div class="bg-white rounded-lg p-4">
                   <h4 class="font-medium text-gray-900 mb-2">Error Details:</h4>
-                  <pre class="text-sm text-gray-600 overflow-auto">{JSON.stringify(testResults.details, null, 2)}</pre>
+                  <pre class="text-sm text-gray-600 overflow-auto">{JSON.stringify(_testResults.details, null, 2)}</pre>
                 </div>
               {/if}
             </div>
