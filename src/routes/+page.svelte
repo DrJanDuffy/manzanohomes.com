@@ -15,8 +15,8 @@ onMount(() => {
 </script>
 
 <SEO 
-	title="Homes for Sale Near KB Home Manzano | Las Vegas 89121 Real Estate"
-	description="Skip the KB Home wait. Find move-in ready homes near Vales & Glades at Manzano. Same great Boulder Highway location, immediate availability. 3693 Manzano Peak Ave area expert."
+	title="Manzano Area Real Estate Experts | Complete Home Buying & Selling Services | Las Vegas 89121"
+	description="Expert real estate guidance in Manzano neighborhood. From new construction to resale homes near 3693 Manzano Peak Ave. Full-service real estate partners for your journey."
 	canonical="https://www.manzanohomes.com/"
 	image="/og-default.jpg"
 	schemas={[
@@ -42,7 +42,7 @@ onMount(() => {
 				},
 				"geoRadius": "5000"
 			},
-			"description": "Real estate services for the Manzano area, including resale homes near KB Home developments"
+			"description": "Complete real estate services for the Manzano area, including new construction guidance, resale homes, and comprehensive real estate expertise"
 		}
 	]}
 />
@@ -67,13 +67,13 @@ onMount(() => {
 	<!-- Hero Content -->
 	<div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
 		<h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
-			Manzano Area Homes - Move In Faster Than <span class="text-secondary-400 drop-shadow-md">KB Home</span> New Construction
+			Manzano Area Homes - Your Complete <span class="text-secondary-400 drop-shadow-md">Real Estate Solution</span>
 		</h1>
 		<h2 class="text-xl md:text-2xl lg:text-3xl mb-4 font-light text-white drop-shadow-md">
-			Skip the 6-12 Month Wait
+			From New Construction to Resale - We Guide Your Journey
 		</h2>
 		<p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-white drop-shadow-md">
-			Looking at Vales or Glades at Manzano? Discover move-in ready alternatives near 3693 Manzano Peak Ave with no construction delays.
+			Discover move-in ready homes near 3693 Manzano Peak Ave with expert guidance every step of the way. Whether you're considering new construction or resale, we're your trusted real estate partners.
 		</p>
 		
 		<!-- Trust Signals -->
@@ -82,19 +82,19 @@ onMount(() => {
 				<svg class="w-5 h-5 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
 					<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
 				</svg>
-				Same Manzano location
+				Expert guidance
 			</span>
 			<span class="flex items-center bg-white/20 px-4 py-2 rounded-full">
 				<svg class="w-5 h-5 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
 					<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
 				</svg>
-				Move in 30 days
+				Immediate availability
 			</span>
 			<span class="flex items-center bg-white/20 px-4 py-2 rounded-full">
 				<svg class="w-5 h-5 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
 					<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
 				</svg>
-				See exactly what you buy
+				Full service support
 			</span>
 		</div>
 		
@@ -103,8 +103,8 @@ onMount(() => {
 			<a href="/homes-for-sale" class="bg-secondary-500 hover:bg-secondary-600 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg" aria-label="View available homes for sale in Manzano">
 				View Available Homes
 			</a>
-			<a href="/kb-home-alternative" class="bg-white hover:bg-gray-100 text-primary-700 font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg" aria-label="Compare to KB Home new construction">
-				Compare to KB Home
+			<a href="/home-valuation" class="bg-white hover:bg-gray-100 text-primary-700 font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg" aria-label="Get expert home valuation and guidance">
+				Get Expert Guidance
 			</a>
 		</div>
 	</div>
