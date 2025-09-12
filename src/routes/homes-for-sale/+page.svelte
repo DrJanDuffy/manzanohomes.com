@@ -446,6 +446,14 @@ let pageSchemas = [
             <p class="text-gray-600">in Manzano, Las Vegas 89121</p>
           </div>
           <div class="flex space-x-4">
+            <a
+              href="https://drjanduffy.realscout.com/homesearch/shared-searches/U2hhcmVhYmxlU2VhcmNoTGluay0zMzcx"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-primary-600 text-white px-4 py-2 rounded-md hover:bg-primary-700 transition-colors"
+            >
+              Live MLS Search
+            </a>
             <button
               onclick={handleSaveSearch}
               class="bg-gray-100 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-200 transition-colors"
@@ -465,14 +473,21 @@ let pageSchemas = [
                 <p class="text-gray-600">Fetching the latest property listings...</p>
               </div>
             {:else if realscoutError}
-              <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+              <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
                 <div class="flex">
-                  <svg class="w-5 h-5 text-yellow-400 mr-3 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                  <svg class="w-5 h-5 text-blue-400 mr-3 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
                   </svg>
                   <div>
-                    <h3 class="text-sm font-medium text-yellow-800">RealScout Widget Unavailable</h3>
-                    <p class="text-sm text-yellow-700 mt-1">Showing sample listings below. RealScout integration coming soon.</p>
+                    <h3 class="text-sm font-medium text-blue-800">Enhanced Search Available</h3>
+                    <p class="text-sm text-blue-700 mt-1">
+                      <a href="https://drjanduffy.realscout.com/homesearch/shared-searches/U2hhcmVhYmxlU2VhcmNoTGluay0zMzcx" 
+                         target="_blank" 
+                         rel="noopener noreferrer"
+                         class="underline hover:text-blue-900">
+                        View live MLS search results
+                      </a> with advanced filters and real-time updates.
+                    </p>
                   </div>
                 </div>
               </div>
