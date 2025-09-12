@@ -29,7 +29,8 @@ const sortBy = $state('price-low');
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
 const viewMode = $state('grid'); // 'grid' or 'map'
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-const currentPage = $state(1);
+// biome-ignore lint/style/useConst: This variable needs to be let for onclick assignment
+let currentPage = $state(1);
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
 const totalPages = $state(5);
 

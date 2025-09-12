@@ -169,4 +169,4 @@ const _downPaymentPercent = $derived(((downPayment / homePrice) * 100).toFixed(1
       </a>
     </div>
   </div>
-</div>
+</section>

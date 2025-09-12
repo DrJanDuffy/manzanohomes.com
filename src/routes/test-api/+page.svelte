@@ -73,7 +73,7 @@ onMount(() => {
       <div class="mb-8">
         <div class="flex flex-wrap gap-4 mb-4">
           <button
-            on:click={runAPITest}
+            onclick={runAPITest}
             disabled={_isLoading}
             class="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
@@ -81,7 +81,7 @@ onMount(() => {
           </button>
 
           <button
-            on:click={() => runCustomTest('createLead')}
+            onclick={() => runCustomTest('createLead')}
             disabled={_isLoading}
             class="px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
@@ -89,7 +89,7 @@ onMount(() => {
           </button>
 
           <button
-            on:click={() => runCustomTest('searchLead')}
+            onclick={() => runCustomTest('searchLead')}
             disabled={_isLoading}
             class="px-6 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
@@ -97,7 +97,7 @@ onMount(() => {
           </button>
 
           <button
-            on:click={() => runCustomTest('sendSMS')}
+            onclick={() => runCustomTest('sendSMS')}
             disabled={_isLoading}
             class="px-6 py-3 bg-orange-600 text-white rounded-lg font-medium hover:bg-orange-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
