@@ -70,7 +70,7 @@ export function generateRealEstateStructuredData(options = {}) {
     url = 'https://manzanohomes.com',
     logo = 'https://manzanohomes.com/logo.png',
     image = 'https://manzanohomes.com/og-image.jpg',
-    telephone = '+1-702-555-0123',
+    telephone = '+1-702-500-1942',
     email = 'info@manzanohomes.com',
     address = {
       streetAddress: '3693 Manzano Peak Ave',
@@ -202,7 +202,7 @@ export function generateLocalBusinessStructuredData(options = {}) {
     name = 'Manzano Homes',
     description = 'Premier real estate services in the Manzano neighborhood of Las Vegas',
     url = 'https://manzanohomes.com',
-    telephone = '+1-702-555-0123',
+    telephone = '+1-702-500-1942',
     email = 'info@manzanohomes.com',
     address = {
       streetAddress: '3693 Manzano Peak Ave',

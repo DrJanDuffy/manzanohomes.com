@@ -142,8 +142,8 @@
               If you experience any accessibility barriers on our website, please let us know:
             </p>
             <div class="bg-primary-50 p-6 rounded-lg">
-              <p class="text-gray-700"><strong>Email:</strong> accessibility@manzanohome.com</p>
-              <p class="text-gray-700"><strong>Phone:</strong> (702) 555-0123</p>
+              <p class="text-gray-700"><strong>Email:</strong> accessibility@manzanohomes.com</p>
+              <p class="text-gray-700"><strong>Phone:</strong> (702) 500-1942</p>
               <p class="text-gray-700"><strong>Address:</strong> 3693 Manzano Peak Ave, Las Vegas, NV 89121</p>
             </div>
           </div>

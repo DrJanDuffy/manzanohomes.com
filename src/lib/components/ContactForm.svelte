@@ -166,7 +166,7 @@ function clearError(/** @type {string} */ field) {
             bind:value={formData.phone}
             oninput={() => clearError('phone')}
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500 {errors.phone ? 'border-red-500' : ''}"
-            placeholder="(702) 555-0123"
+            placeholder="(702) 500-1942"
             required
           />
           {#if errors.phone}
