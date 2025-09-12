@@ -40,7 +40,7 @@ export async function POST({ request }) {
         `Website Form Submission:\nSubject: ${formData.subject}\nMessage: ${formData.message}\nPreferred Contact: ${formData.preferredContact}\nProperty Interest: ${formData.propertyInterest}\nTimeframe: ${formData.timeframe}\nBudget: ${formData.budget}`
       );
 
-      const _result = { id: existingLead.id, existing: true };
+      const result = { id: existingLead.id, existing: true };
     } else {
       // Create new lead
       const leadData = {
@@ -63,7 +63,7 @@ export async function POST({ request }) {
         },
       };
 
-      const _result = await followUpBoss.createLead(leadData);
+      const result = await followUpBoss.createLead(leadData);
     }
 
     // Send SMS if preferred contact method is SMS
