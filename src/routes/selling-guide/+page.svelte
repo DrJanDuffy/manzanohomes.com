@@ -1,133 +1,138 @@
 <script>
-  import SEO from '$lib/components/SEO.svelte';
-  import { ManzanoSchemas } from '$lib/seo/schemas.js';
+import SEO from '$lib/components/SEO.svelte';
+import { ManzanoSchemas } from '$lib/seo/schemas.js';
 
-  // Generate schemas
-  const schemas = new ManzanoSchemas();
-  const pageSchemas = [
-    schemas.website(),
-    schemas.breadcrumbs([
-      { name: 'Home', url: '/' },
-      { name: 'Selling Guide', url: '/selling-guide' }
-    ])
-  ];
+// Generate schemas
+const schemas = new ManzanoSchemas();
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+const pageSchemas = [
+  schemas.website(),
+  schemas.breadcrumbs([
+    { name: 'Home', url: '/' },
+    { name: 'Selling Guide', url: '/selling-guide' },
+  ]),
+];
 
-  // Selling process steps
-  const sellingSteps = [
-    {
-      step: 1,
-      title: "Home Valuation & Market Analysis",
-      description: "Get a comprehensive market analysis and accurate home valuation for your Manzano area property.",
-      icon: "calculator",
-      details: [
-        "Professional CMA (Comparative Market Analysis)",
-        "Current market trends in 89121 zip code",
-        "Recent sales data and pricing strategies",
-        "Timeline recommendations for optimal sale"
-      ]
-    },
-    {
-      step: 2,
-      title: "Pre-Listing Preparation",
-      description: "Prepare your home for maximum market appeal and faster sale.",
-      icon: "home",
-      details: [
-        "Staging recommendations and decluttering",
-        "Minor repairs and improvements",
-        "Professional photography and virtual tours",
-        "Curb appeal enhancements"
-      ]
-    },
-    {
-      step: 3,
-      title: "Strategic Marketing & Listing",
-      description: "Launch your home with a comprehensive marketing strategy across all channels.",
-      icon: "megaphone",
-      details: [
-        "MLS listing with professional photos",
-        "Social media and digital marketing",
-        "Open house coordination",
-        "Targeted buyer outreach"
-      ]
-    },
-    {
-      step: 4,
-      title: "Showings & Negotiations",
-      description: "Manage showings professionally and negotiate the best possible terms.",
-      icon: "handshake",
-      details: [
-        "Flexible showing scheduling",
-        "Buyer qualification and screening",
-        "Offer evaluation and counter-offers",
-        "Contract negotiation expertise"
-      ]
-    },
-    {
-      step: 5,
-      title: "Transaction Management",
-      description: "Guide you through the closing process with minimal stress.",
-      icon: "document",
-      details: [
-        "Contract management and deadlines",
-        "Inspection coordination",
-        "Appraisal process oversight",
-        "Closing coordination and support"
-      ]
-    }
-  ];
+// Selling process steps
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+const sellingSteps = [
+  {
+    step: 1,
+    title: 'Home Valuation & Market Analysis',
+    description:
+      'Get a comprehensive market analysis and accurate home valuation for your Manzano area property.',
+    icon: 'calculator',
+    details: [
+      'Professional CMA (Comparative Market Analysis)',
+      'Current market trends in 89121 zip code',
+      'Recent sales data and pricing strategies',
+      'Timeline recommendations for optimal sale',
+    ],
+  },
+  {
+    step: 2,
+    title: 'Pre-Listing Preparation',
+    description: 'Prepare your home for maximum market appeal and faster sale.',
+    icon: 'home',
+    details: [
+      'Staging recommendations and decluttering',
+      'Minor repairs and improvements',
+      'Professional photography and virtual tours',
+      'Curb appeal enhancements',
+    ],
+  },
+  {
+    step: 3,
+    title: 'Strategic Marketing & Listing',
+    description: 'Launch your home with a comprehensive marketing strategy across all channels.',
+    icon: 'megaphone',
+    details: [
+      'MLS listing with professional photos',
+      'Social media and digital marketing',
+      'Open house coordination',
+      'Targeted buyer outreach',
+    ],
+  },
+  {
+    step: 4,
+    title: 'Showings & Negotiations',
+    description: 'Manage showings professionally and negotiate the best possible terms.',
+    icon: 'handshake',
+    details: [
+      'Flexible showing scheduling',
+      'Buyer qualification and screening',
+      'Offer evaluation and counter-offers',
+      'Contract negotiation expertise',
+    ],
+  },
+  {
+    step: 5,
+    title: 'Transaction Management',
+    description: 'Guide you through the closing process with minimal stress.',
+    icon: 'document',
+    details: [
+      'Contract management and deadlines',
+      'Inspection coordination',
+      'Appraisal process oversight',
+      'Closing coordination and support',
+    ],
+  },
+];
 
-  // Market insights
-  const marketInsights = [
-    {
-      metric: "Average Days on Market",
-      value: "28 days",
-      trend: "+12%",
-      description: "Faster than Las Vegas average"
-    },
-    {
-      metric: "Average Sale Price",
-      value: "$485,000",
-      trend: "+8.5%",
-      description: "Strong appreciation in Manzano area"
-    },
-    {
-      metric: "List-to-Sale Ratio",
-      value: "98.2%",
-      trend: "+2.1%",
-      description: "Excellent pricing accuracy"
-    },
-    {
-      metric: "Market Activity",
-      value: "High",
-      trend: "+15%",
-      description: "Increased buyer demand"
-    }
-  ];
+// Market insights
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+const marketInsights = [
+  {
+    metric: 'Average Days on Market',
+    value: '28 days',
+    trend: '+12%',
+    description: 'Faster than Las Vegas average',
+  },
+  {
+    metric: 'Average Sale Price',
+    value: '$485,000',
+    trend: '+8.5%',
+    description: 'Strong appreciation in Manzano area',
+  },
+  {
+    metric: 'List-to-Sale Ratio',
+    value: '98.2%',
+    trend: '+2.1%',
+    description: 'Excellent pricing accuracy',
+  },
+  {
+    metric: 'Market Activity',
+    value: 'High',
+    trend: '+15%',
+    description: 'Increased buyer demand',
+  },
+];
 
-  // Pricing strategies
-  const pricingStrategies = [
-    {
-      strategy: "Competitive Pricing",
-      description: "Price slightly below market to generate multiple offers",
-      pros: ["Quick sale", "Multiple offers", "Above asking price potential"],
-      cons: ["Lower initial price", "May sell too quickly"],
-      bestFor: "Sellers who need to move quickly"
-    },
-    {
-      strategy: "Market Value Pricing",
-      description: "Price at current market value for steady interest",
-      pros: ["Fair market price", "Steady showings", "Reasonable timeline"],
-      cons: ["Longer market time", "May need price adjustments"],
-      bestFor: "Sellers with flexible timeline"
-    },
-    {
-      strategy: "Premium Pricing",
-      description: "Price above market for unique or luxury properties",
-      pros: ["Higher potential profit", "Attracts serious buyers", "No lowball offers"],
-      cons: ["Longer market time", "May need price reductions", "Limited buyer pool"],
-      bestFor: "Unique or luxury properties"
-    }
-  ];
+// Pricing strategies
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+const pricingStrategies = [
+  {
+    strategy: 'Competitive Pricing',
+    description: 'Price slightly below market to generate multiple offers',
+    pros: ['Quick sale', 'Multiple offers', 'Above asking price potential'],
+    cons: ['Lower initial price', 'May sell too quickly'],
+    bestFor: 'Sellers who need to move quickly',
+  },
+  {
+    strategy: 'Market Value Pricing',
+    description: 'Price at current market value for steady interest',
+    pros: ['Fair market price', 'Steady showings', 'Reasonable timeline'],
+    cons: ['Longer market time', 'May need price adjustments'],
+    bestFor: 'Sellers with flexible timeline',
+  },
+  {
+    strategy: 'Premium Pricing',
+    description: 'Price above market for unique or luxury properties',
+    pros: ['Higher potential profit', 'Attracts serious buyers', 'No lowball offers'],
+    cons: ['Longer market time', 'May need price reductions', 'Limited buyer pool'],
+    bestFor: 'Unique or luxury properties',
+  },
+];
 </script>
 
 <SEO 
@@ -145,7 +150,31 @@
       <div class="text-center">
         <h1 class="text-4xl md:text-5xl font-bold mb-4">Selling Your Manzano Home</h1>
         <p class="text-xl text-primary-100 mb-6">Expert guidance to maximize your home's value and sell faster</p>
-        <p class="text-lg text-primary-200">Get the most from your Las Vegas real estate investment with our proven selling strategies</p>
+        <p class="text-lg text-primary-200 mb-8">Get the most from your Las Vegas real estate investment with our proven selling strategies</p>
+        
+        <!-- Featured Seller Guide Resource -->
+        <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 max-w-2xl mx-auto">
+          <div class="flex items-center justify-center mb-3">
+            <svg class="w-5 h-5 text-primary-200 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            <span class="text-sm font-medium text-primary-200 uppercase tracking-wide">Featured Guide</span>
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-2">Complete Home Selling Guide</h3>
+          <p class="text-primary-100 mb-4 text-sm">Comprehensive market insights and expert strategies for maximizing your home's value</p>
+          <a 
+            href="https://www.simplifyingthemarket.com/en/sellers/?a=956758-ef2edda2f940e018328655620ea05f18" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="inline-flex items-center px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-colors focus:ring-4 focus:ring-primary-200"
+            aria-label="Access comprehensive seller guide from Simplifying the Market (opens in new tab)"
+          >
+            View Seller Guide
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
