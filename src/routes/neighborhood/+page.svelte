@@ -35,6 +35,12 @@ onMount(() => {
     currentTestimonial = (currentTestimonial + 1) % testimonials.length;
   }, 5000);
 
+  // Load RealScout Web Components
+  const script = document.createElement('script');
+  script.src = 'https://em.realscout.com/widgets/realscout-web-components.umd.js';
+  script.type = 'module';
+  document.head.appendChild(script);
+
   return () => {
     if (testimonialInterval) clearInterval(testimonialInterval);
   };
@@ -138,17 +144,22 @@ const marketStats = {
         <h1 class="text-4xl md:text-6xl font-bold mb-6">Discover the Manzano Neighborhood</h1>
         <p class="text-xl md:text-2xl mb-8 text-primary-100">Southeast Las Vegas's Premier Family Community</p>
         
-        <!-- Interactive Map Placeholder -->
-        <div class="bg-white/10 backdrop-blur-sm rounded-lg p-8 max-w-4xl mx-auto">
-          <div class="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
-            <div class="text-center text-gray-600">
-              <svg class="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-              </svg>
-              <p class="text-lg font-semibold">Interactive Map</p>
-              <p class="text-sm">Centered on 3693 Manzano Peak Ave, Las Vegas, NV 89121</p>
-              <p class="text-xs mt-2 text-gray-500">RealScout Map Widget Integration Coming Soon</p>
-            </div>
+        <!-- RealScout Office Listings Widget -->
+        <div class="bg-white/10 backdrop-blur-sm rounded-lg p-8 max-w-6xl mx-auto">
+          <div class="text-center mb-6">
+            <h2 class="text-2xl font-bold text-white mb-2">Live MLS Listings</h2>
+            <p class="text-primary-100">Centered on 3693 Manzano Peak Ave, Las Vegas, NV 89121</p>
+          </div>
+          
+          <div class="bg-white rounded-lg p-6">
+            <realscout-office-listings 
+              agent-encoded-id="QWdlbnQtMjI1MDUw" 
+              sort-order="STATUS_AND_SIGNIFICANT_CHANGE" 
+              listing-status="For Sale" 
+              property-types="SFR,MF" 
+              price-min="500000" 
+              price-max="600000">
+            </realscout-office-listings>
           </div>
         </div>
       </div>
@@ -451,3 +462,10 @@ const marketStats = {
     </div>
   </section>
 </main>
+
+<style>
+  realscout-office-listings {
+    --rs-listing-divider-color: rgb(101, 141, 172);
+    width: 100%;
+  }
+</style>
