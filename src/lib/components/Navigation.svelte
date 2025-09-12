@@ -58,8 +58,13 @@ onMount(() => {
     <div class="flex justify-between items-center h-16">
       <!-- Phone Number -->
       <div class="flex-shrink-0">
-        <a href="tel:+17025001942" class="flex items-center space-x-2">
-          <div class="phone-flash text-2xl font-bold {scrolled ? 'text-primary-600' : 'text-white'}">
+        <a href="tel:+17025001942" class="flex items-center space-x-2 group">
+          <!-- Phone Icon -->
+          <svg class="w-6 h-6 {scrolled ? 'text-primary-600' : 'text-white'} group-hover:text-primary-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+          </svg>
+          <!-- Phone Number -->
+          <div class="phone-flash text-xl font-bold {scrolled ? 'text-primary-600' : 'text-white'} group-hover:text-primary-500 transition-colors">
             (702) 500-1942
           </div>
         </a>
@@ -139,6 +144,17 @@ onMount(() => {
     id="mobile-menu"
   >
     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
+      <!-- Mobile Phone Number -->
+      <div class="px-3 py-2 border-b border-gray-200 mb-2">
+        <a href="tel:+17025001942" class="flex items-center space-x-2 group">
+          <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+          </svg>
+          <div class="phone-flash-mobile text-lg font-bold text-primary-600">
+            (702) 500-1942
+          </div>
+        </a>
+      </div>
       {#each navItems as item}
         <a
           href={item.href}
@@ -168,16 +184,50 @@ onMount(() => {
 
 <style>
   .phone-flash {
-    animation: flash 2s infinite;
+    animation: phone-pulse 2s infinite;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
   }
   
-  @keyframes flash {
-    0%, 50% {
+  @keyframes phone-pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+      text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+      text-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+    }
+  }
+  
+  /* Ensure phone number is always visible */
+  .phone-flash {
+    display: inline-block;
+    min-width: 180px;
+    text-align: left;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .phone-flash {
+      font-size: 1rem;
+      min-width: 140px;
+    }
+  }
+  
+  /* Mobile phone flash animation */
+  .phone-flash-mobile {
+    animation: phone-pulse-mobile 2s infinite;
+  }
+  
+  @keyframes phone-pulse-mobile {
+    0%, 100% {
       opacity: 1;
       transform: scale(1);
     }
-    25%, 75% {
-      opacity: 0.7;
+    50% {
+      opacity: 0.8;
       transform: scale(1.05);
     }
   }
