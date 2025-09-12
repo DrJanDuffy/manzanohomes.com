@@ -13,23 +13,23 @@ let addressSuggestions = [];
 let _showSuggestions = false;
 
 // Step 2 - Home Details
-const bedrooms = '';
-const bathrooms = '';
-const squareFeet = '';
-const _lotSize = '';
-const yearBuilt = '';
-const _propertyType = 'single-family';
+let bedrooms = '';
+let bathrooms = '';
+let squareFeet = '';
+let _lotSize = '';
+let yearBuilt = '';
+let _propertyType = 'single-family';
 
 // Step 3 - Condition & Features
-const overallCondition = 'good';
-const recentRenovations = [];
-const specialFeatures = [];
+let overallCondition = 'good';
+let recentRenovations = [];
+let specialFeatures = [];
 
 // Step 4 - Contact Information
-const contactName = '';
-const contactEmail = '';
-const contactPhone = '';
-const sellingTimeframe = '';
+let contactName = '';
+let contactEmail = '';
+let contactPhone = '';
+let sellingTimeframe = '';
 
 // Results
 /** @type {number | null} */
