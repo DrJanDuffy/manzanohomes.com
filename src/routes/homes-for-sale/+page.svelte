@@ -15,22 +15,54 @@ onMount(() => {
 // Fixed: All form variables now use 'let' instead of 'const' for proper binding
 // This ensures Svelte bind:value works correctly and prevents deployment failures
 
-// Search and filter state
-// CRITICAL: These MUST be 'let', not 'const', for Svelte bind:value to work
-const priceRange = [300000, 800000];
-const bedrooms = 'any';
-const bathrooms = 'any';
-// biome-ignore lint/correctness/noUnusedVariables: Used in template
-const propertyType = 'any';
-const minSqft = '';
-const maxSqft = '';
-const sortBy = 'price-low';
-// biome-ignore lint/correctness/noUnusedVariables: Used in template
-const viewMode = 'grid'; // 'grid' or 'map'
-// biome-ignore lint/correctness/noUnusedVariables: Used in template
-const currentPage = 1;
-// biome-ignore lint/correctness/noUnusedVariables: Used in template
-const totalPages = 5;
+// Search and filter state - Enhanced for better UX
+let priceRange = [300000, 800000];
+let bedrooms = 'any';
+let bathrooms = 'any';
+let propertyType = 'any';
+let minSqft = '';
+let maxSqft = '';
+let sortBy = 'price-low';
+let viewMode = 'grid'; // 'grid' or 'map'
+let currentPage = 1;
+let totalPages = 5;
+let showFilters = false;
+let savedSearches = [];
+let searchResults = [];
+let isLoading = false;
+
+// Enhanced filter options
+const filterOptions = {
+  bedrooms: [
+    { value: 'any', label: 'Any Bedrooms' },
+    { value: '1', label: '1+ Bedrooms' },
+    { value: '2', label: '2+ Bedrooms' },
+    { value: '3', label: '3+ Bedrooms' },
+    { value: '4', label: '4+ Bedrooms' },
+    { value: '5', label: '5+ Bedrooms' }
+  ],
+  bathrooms: [
+    { value: 'any', label: 'Any Bathrooms' },
+    { value: '1', label: '1+ Bathrooms' },
+    { value: '2', label: '2+ Bathrooms' },
+    { value: '3', label: '3+ Bathrooms' },
+    { value: '4', label: '4+ Bathrooms' }
+  ],
+  propertyTypes: [
+    { value: 'any', label: 'All Property Types' },
+    { value: 'single-family', label: 'Single Family' },
+    { value: 'condo', label: 'Condominium' },
+    { value: 'townhouse', label: 'Townhouse' },
+    { value: 'new-construction', label: 'New Construction' }
+  ],
+  sortOptions: [
+    { value: 'price-low', label: 'Price: Low to High' },
+    { value: 'price-high', label: 'Price: High to Low' },
+    { value: 'newest', label: 'Newest Listings' },
+    { value: 'sqft-high', label: 'Largest Homes' },
+    { value: 'price-per-sqft', label: 'Best Value' }
+  ]
+};
 
 // Sample property data (placeholder until RealScout integration)
 const sampleProperties = [
