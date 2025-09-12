@@ -16,8 +16,8 @@ let formData = {
 };
 
 let errors = /** @type {Record<string, string>} */ ({});
-let _isSubmitting = false;
-let _submitted = false;
+let isSubmitting = false;
+let submitted = false;
 
 // Form validation
 function validateForm() {
@@ -115,7 +115,7 @@ function clearError(/** @type {string} */ field) {
       <p class="text-green-700">Thank you for contacting us. We'll get back to you within 24 hours.</p>
     </div>
   {:else}
-    <form on:submit|preventDefault={handleSubmit} class="space-y-6">
+    <form onsubmit={(e) => e.preventDefault(); handleSubmit(e)} class="space-y-6">
       <!-- Personal Information -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
@@ -126,7 +126,7 @@ function clearError(/** @type {string} */ field) {
             id="name"
             type="text"
             bind:value={formData.name}
-            on:input={() => clearError('name')}
+            oninput={() => clearError('name')}
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500 {errors.name ? 'border-red-500' : ''}"
             placeholder="Enter your full name"
             required
@@ -144,7 +144,7 @@ function clearError(/** @type {string} */ field) {
             id="email"
             type="email"
             bind:value={formData.email}
-            on:input={() => clearError('email')}
+            oninput={() => clearError('email')}
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500 {errors.email ? 'border-red-500' : ''}"
             placeholder="your@email.com"
             required
@@ -164,7 +164,7 @@ function clearError(/** @type {string} */ field) {
             id="phone"
             type="tel"
             bind:value={formData.phone}
-            on:input={() => clearError('phone')}
+            oninput={() => clearError('phone')}
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500 {errors.phone ? 'border-red-500' : ''}"
             placeholder="(702) 555-0123"
             required
@@ -181,7 +181,7 @@ function clearError(/** @type {string} */ field) {
           <select
             id="subject"
             bind:value={formData.subject}
-            on:change={() => clearError('subject')}
+            onchange={() => clearError('subject')}
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500 {errors.subject ? 'border-red-500' : ''}"
             required
           >
@@ -267,7 +267,7 @@ function clearError(/** @type {string} */ field) {
         <textarea
           id="message"
           bind:value={formData.message}
-          on:input={() => clearError('message')}
+          oninput={() => clearError('message')}
           rows="5"
           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500 {errors.message ? 'border-red-500' : ''}"
           placeholder="Tell us more about your real estate needs..."

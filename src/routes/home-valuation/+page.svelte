@@ -269,7 +269,7 @@ onMount(() => {
   <section class="py-12">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       {#if !formSubmitted}
-        <form on:submit|preventDefault={nextStep} class="bg-white rounded-lg shadow-lg p-8">
+        <form onsubmit={(e) => e.preventDefault(); nextStep(e)} class="bg-white rounded-lg shadow-lg p-8">
           <!-- Step 1: Property Address -->
           {#if currentStep === 1}
             <h2 class="text-2xl font-bold text-gray-900 mb-6">Property Address</h2>
@@ -284,7 +284,7 @@ onMount(() => {
                     id="streetAddress"
                     type="text"
                     bind:value={streetAddress}
-                    on:input={handleAddressInput}
+                    oninput={handleAddressInput}
                     placeholder="Enter your street address"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500 {errors.streetAddress ? 'border-red-500' : ''}"
                     required
@@ -295,7 +295,7 @@ onMount(() => {
                         <button
                           type="button"
                           class="w-full text-left px-3 py-2 hover:bg-gray-100"
-                          on:click={() => selectAddress(suggestion)}
+                          onclick={() => selectAddress(suggestion)}
                         >
                           {suggestion}
                         </button>
@@ -577,7 +577,7 @@ onMount(() => {
           <div class="flex justify-between mt-8 pt-6 border-t border-gray-200">
             <button
               type="button"
-              on:click={prevStep}
+              onclick={prevStep}
               class="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 {currentStep === 1 ? 'invisible' : ''}"
             >
               Previous

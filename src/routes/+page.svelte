@@ -18,7 +18,7 @@ onMount(() => {
 	title="Homes for Sale Near KB Home Manzano | Las Vegas 89121 Real Estate"
 	description="Skip the KB Home wait. Find move-in ready homes near Vales & Glades at Manzano. Same great Boulder Highway location, immediate availability. 3693 Manzano Peak Ave area expert."
 	canonical="https://www.manzanohomes.com/"
-	image="https://www.manzanohomes.com/og-image.jpg"
+	image="/og-default.jpg"
 	schemas={[
 		{
 			"@context": "https://schema.org",

@@ -262,7 +262,7 @@ $: {
 
 // Generate schemas for this page
 const schemas = new ManzanoSchemas();
-const _pageSchemas = [
+let pageSchemas = [
   schemas.website(),
   schemas.breadcrumbs([
     { name: 'Home', url: '/' },
@@ -387,7 +387,7 @@ const _pageSchemas = [
           <div class="flex border border-gray-300 rounded-md">
             <button
               class="px-3 py-2 {viewMode === 'grid' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'}"
-              on:click={() => viewMode = 'grid'}
+              onclick={() => viewMode = 'grid'}
               aria-label="Grid view"
             >
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -396,7 +396,7 @@ const _pageSchemas = [
             </button>
             <button
               class="px-3 py-2 {viewMode === 'map' ? 'bg-primary-600 text-white' : 'bg-white text-gray-700'}"
-              on:click={() => viewMode = 'map'}
+              onclick={() => viewMode = 'map'}
               aria-label="Map view"
             >
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -447,7 +447,7 @@ const _pageSchemas = [
           </div>
           <div class="flex space-x-4">
             <button
-              on:click={handleSaveSearch}
+              onclick={handleSaveSearch}
               class="bg-gray-100 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-200 transition-colors"
             >
               Save Search
@@ -575,7 +575,7 @@ const _pageSchemas = [
             <button
               class="px-3 py-2 text-gray-500 hover:text-gray-700 disabled:opacity-50"
               disabled={currentPage === 1}
-              on:click={() => currentPage = Math.max(1, currentPage - 1)}
+              onclick={() => currentPage = Math.max(1, currentPage - 1)}
             >
               Previous
             </button>
@@ -583,7 +583,7 @@ const _pageSchemas = [
             {#each Array(totalPages) as _, i}
               <button
                 class="px-3 py-2 {currentPage === i + 1 ? 'bg-primary-600 text-white' : 'text-gray-700 hover:bg-gray-100'} rounded-md"
-                on:click={() => currentPage = i + 1}
+                onclick={() => currentPage = i + 1}
               >
                 {i + 1}
               </button>
@@ -592,7 +592,7 @@ const _pageSchemas = [
             <button
               class="px-3 py-2 text-gray-500 hover:text-gray-700 disabled:opacity-50"
               disabled={currentPage === totalPages}
-              on:click={() => currentPage = Math.min(totalPages, currentPage + 1)}
+              onclick={() => currentPage = Math.min(totalPages, currentPage + 1)}
             >
               Next
             </button>
@@ -614,7 +614,7 @@ const _pageSchemas = [
         <!-- Schedule a Showing Form -->
         <div class="bg-white rounded-lg shadow-lg p-6">
           <h3 class="text-xl font-semibold text-gray-900 mb-4">Schedule a Showing</h3>
-          <form on:submit|preventDefault={handleShowingRequest} class="space-y-4">
+          <form onsubmit={(e) => e.preventDefault(); handleShowingRequest(e)} class="space-y-4">
             <div>
               <label for="showingName" class="block text-sm font-medium text-gray-700 mb-1">Name *</label>
               <input
@@ -711,7 +711,7 @@ const _pageSchemas = [
         <div class="bg-white rounded-lg shadow-lg p-6">
           <h3 class="text-xl font-semibold text-gray-900 mb-4">Get Email Alerts</h3>
           <p class="text-gray-600 text-sm mb-4">Be the first to know about new listings</p>
-          <form on:submit|preventDefault={handleEmailAlerts} class="space-y-3">
+          <form onsubmit={(e) => e.preventDefault(); handleEmailAlerts(e)} class="space-y-3">
             <input
               type="email"
               bind:value={emailAlerts}

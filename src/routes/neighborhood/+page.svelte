@@ -424,7 +424,7 @@ const marketStats = {
           {#each testimonials as _, index}
             <button
               class="w-3 h-3 rounded-full {index === currentTestimonial ? 'bg-primary-600' : 'bg-gray-300'}"
-              on:click={() => currentTestimonial = index}
+              onclick={() => currentTestimonial = index}
               aria-label="View testimonial {index + 1}"
             ></button>
           {/each}

@@ -27,14 +27,14 @@ const {
 } = $props();
 
 // Get icon name
-const _iconName = getSocialIcon(platform);
+let iconName = getSocialIcon(platform);
 
 // Use provided values or defaults
-const _iconSize = size || ICON_CONFIGS.SOCIAL.size;
+let iconSize = size || ICON_CONFIGS.SOCIAL.size;
 const iconColor = color || ICON_CONFIGS.SOCIAL.color;
 
 // Generate title if not provided
-const _iconTitle = title || `Follow us on ${platform}`;
+let iconTitle = title || `Follow us on ${platform}`;
 
 // Platform-specific colors
 const platformColors = /** @type {Record<string, string>} */ ({
@@ -46,7 +46,7 @@ const platformColors = /** @type {Record<string, string>} */ ({
   whatsapp: 'text-green-600',
 });
 
-const _platformColor = platformColors[platform?.toLowerCase()] || iconColor;
+let platformColor = platformColors[platform?.toLowerCase()] || iconColor;
 </script>
 
 {#if href}

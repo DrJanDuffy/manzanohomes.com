@@ -109,7 +109,7 @@ onMount(() => {
           class="inline-flex items-center justify-center p-2 rounded-md {scrolled ? 'text-gray-700' : 'text-white'} hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
           aria-controls="mobile-menu"
           aria-expanded={mobileMenuOpen}
-          on:click={toggleMobileMenu}
+          onclick={toggleMobileMenu}
         >
           <span class="sr-only">Open main menu</span>
           <!-- Hamburger icon -->
@@ -154,7 +154,7 @@ onMount(() => {
               : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
           }"
           aria-current={item.current ? 'page' : undefined}
-          on:click={closeMobileMenu}
+          onclick={closeMobileMenu}
         >
           {item.label}
         </a>
@@ -163,7 +163,7 @@ onMount(() => {
         <a
           href="/contact"
           class="block w-full bg-primary-600 text-white px-4 py-2 rounded-lg text-center font-medium hover:bg-primary-700 transition-colors duration-200"
-          on:click={closeMobileMenu}
+          onclick={closeMobileMenu}
         >
           Get Started
         </a>
@@ -176,7 +176,7 @@ onMount(() => {
 {#if mobileMenuOpen}
   <div
     class="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden"
-    on:click={closeMobileMenu}
+    onclick={closeMobileMenu}
     on:keydown={(e) => e.key === 'Escape' && closeMobileMenu()}
     role="button"
     tabindex="0"
