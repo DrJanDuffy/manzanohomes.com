@@ -3,6 +3,15 @@ import SEO from '$lib/components/SEO.svelte';
 import { ManzanoSchemas } from '$lib/seo/schemas';
 import { onMount } from 'svelte';
 
+// RealScout Widget Script Loading
+onMount(() => {
+  // Load RealScout Web Components
+  const script = document.createElement('script');
+  script.src = 'https://em.realscout.com/widgets/realscout-web-components.umd.js';
+  script.type = 'module';
+  document.head.appendChild(script);
+});
+
 // Fixed: All form variables now use 'let' instead of 'const' for proper binding
 // This ensures Svelte bind:value works correctly and prevents deployment failures
 
@@ -508,94 +517,22 @@ let pageSchemas = [
           </div>
         </div>
 
-        <!-- Results Grid -->
-        {#if viewMode === 'grid'}
-          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            {#each filteredProperties as property}
-              <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <!-- Property Image -->
-                <div class="relative h-48 bg-gray-200">
-                  <img
-                    src={property.image}
-                    alt={property.address}
-                    class="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  <div class="absolute top-4 left-4">
-                    <span class="bg-green-500 text-white px-2 py-1 rounded-full text-sm font-semibold">
-                      {property.status}
-                    </span>
-                  </div>
-                  <div class="absolute top-4 right-4">
-                    <button 
-                      class="bg-white/90 hover:bg-white text-gray-800 p-2 rounded-full transition-colors"
-                      aria-label="Save property to favorites"
-                    >
-                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-
-                <!-- Property Details -->
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-semibold text-gray-900">{formatPrice(property.price)}</h3>
-                    <span class="text-sm text-gray-500">{property.daysOnMarket} days on market</span>
-                  </div>
-                  
-                  <p class="text-gray-600 mb-4">{property.address}</p>
-                  
-                  <div class="flex items-center space-x-4 text-sm text-gray-600 mb-4">
-                    <span class="flex items-center">
-                      <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                      </svg>
-                      {property.beds} bed
-                    </span>
-                    <span class="flex items-center">
-                      <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
-                      </svg>
-                      {property.baths} bath
-                    </span>
-                    <span class="flex items-center">
-                      <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
-                      </svg>
-                      {property.sqft.toLocaleString()} sq ft
-                    </span>
-                  </div>
-
-                  <p class="text-gray-600 text-sm mb-4">{property.description}</p>
-
-                  <div class="flex space-x-2">
-                    <button class="flex-1 bg-primary-600 text-white px-4 py-2 rounded-md hover:bg-primary-700 transition-colors">
-                      View Details
-                    </button>
-                    <button class="flex-1 border border-primary-600 text-primary-600 px-4 py-2 rounded-md hover:bg-primary-50 transition-colors">
-                      Schedule Tour
-                    </button>
-                  </div>
-                </div>
-              </div>
-            {/each}
+        <!-- RealScout Office Listings Widget -->
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <div class="text-center mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Live MLS Listings</h2>
+            <p class="text-gray-600">Real-time property data from the Las Vegas MLS</p>
           </div>
-        {:else}
-          <!-- Map View Placeholder -->
-          <div class="bg-white rounded-lg shadow-lg p-8 text-center">
-            <div class="bg-gray-200 rounded-lg h-96 flex items-center justify-center">
-              <div class="text-center text-gray-600">
-                <svg class="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-                </svg>
-                <p class="text-lg font-semibold">Interactive Map View</p>
-                <p class="text-sm">Map integration coming soon</p>
-              </div>
-            </div>
-          </div>
-        {/if}
+          
+          <realscout-office-listings 
+            agent-encoded-id="QWdlbnQtMjI1MDUw" 
+            sort-order="STATUS_AND_SIGNIFICANT_CHANGE" 
+            listing-status="For Sale" 
+            property-types="SFR" 
+            price-min="400000" 
+            price-max="500000">
+          </realscout-office-listings>
+        </div>
 
         <!-- Pagination -->
         <div class="mt-8 flex justify-center">
@@ -759,3 +696,10 @@ let pageSchemas = [
     </div>
   </div>
 </main>
+
+<style>
+  realscout-office-listings {
+    --rs-listing-divider-color: rgb(101, 141, 172);
+    width: 100%;
+  }
+</style>
