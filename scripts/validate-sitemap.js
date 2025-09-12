@@ -5,42 +5,42 @@
  * Validates sitemap XML structure and content
  */
 
-import { SitemapMonitor } from '../src/lib/seo/sitemap-monitor.js';
+import { SitemapMonitor } from '../src/lib/seo/sitemap-monitor.ts';
 
 const DOMAIN = 'https://www.manzanohomes.com';
 const sitemaps = [
   `${DOMAIN}/sitemap.xml`,
   `${DOMAIN}/sitemap-properties.xml`,
-  `${DOMAIN}/sitemap-index.xml`
+  `${DOMAIN}/sitemap-index.xml`,
 ];
 
 async function validateAllSitemaps() {
   console.log('🔍 Validating sitemaps...\n');
-  
+
   const monitor = new SitemapMonitor();
   let allValid = true;
-  
+
   for (const sitemapUrl of sitemaps) {
     console.log(`📋 Validating: ${sitemapUrl}`);
-    
+
     const report = await monitor.generateSitemapReport(sitemapUrl);
-    
+
     if (report.isValid) {
       console.log(`✅ Valid - ${report.urlCount} URLs`);
       if (report.lastModified) {
         console.log(`   Last modified: ${report.lastModified}`);
       }
     } else {
-      console.log(`❌ Invalid`);
-      report.errors.forEach(error => {
+      console.log('❌ Invalid');
+      report.errors.forEach((error) => {
         console.log(`   - ${error}`);
       });
       allValid = false;
     }
-    
+
     console.log('');
   }
-  
+
   if (allValid) {
     console.log('🎉 All sitemaps are valid!');
   } else {
