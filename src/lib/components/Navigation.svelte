@@ -177,7 +177,7 @@ onMount(() => {
   <div
     class="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden"
     onclick={closeMobileMenu}
-    on:keydown={(e) => e.key === 'Escape' && closeMobileMenu()}
+      onkeydown={(e) => e.key === 'Escape' && closeMobileMenu()}
     role="button"
     tabindex="0"
     aria-label="Close mobile menu"
