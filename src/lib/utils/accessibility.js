@@ -9,7 +9,7 @@
 export class FocusManager {
   /** @type {HTMLElement[]} */
   focusHistory;
-  
+
   /** @type {Array<{container: HTMLElement, handleKeyDown: (e: KeyboardEvent) => void}>} */
   trapStack;
 
@@ -422,7 +422,11 @@ export function initAccessibility() {
     // Handle skip links
     if (event.key === 'Tab' && event.shiftKey === false) {
       const skipLink = document.querySelector('a[href="#main-content"]');
-      if (skipLink && document.activeElement === skipLink && skipLink instanceof HTMLAnchorElement) {
+      if (
+        skipLink &&
+        document.activeElement === skipLink &&
+        skipLink instanceof HTMLAnchorElement
+      ) {
         skipLink.click();
       }
     }

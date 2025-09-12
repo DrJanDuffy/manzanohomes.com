@@ -137,7 +137,8 @@ export const ICON_COLORS = {
  */
 export function getIconClasses(size = 'MD', color = 'GRAY') {
   const sizeClass = ICON_SIZES[/** @type {keyof typeof ICON_SIZES} */ (size)] || ICON_SIZES.MD;
-  const colorClass = ICON_COLORS[/** @type {keyof typeof ICON_COLORS} */ (color)] || ICON_COLORS.GRAY;
+  const colorClass =
+    ICON_COLORS[/** @type {keyof typeof ICON_COLORS} */ (color)] || ICON_COLORS.GRAY;
   return `${sizeClass} ${colorClass}`;
 }
 

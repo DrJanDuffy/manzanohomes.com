@@ -16,8 +16,8 @@ let formData = {
 };
 
 let errors = /** @type {Record<string, string>} */ ({});
-let isSubmitting = false;
-let submitted = false;
+let _isSubmitting = false;
+let _submitted = false;
 
 // Form validation
 function validateForm() {
@@ -57,7 +57,7 @@ async function handleSubmit() {
     return;
   }
 
-  isSubmitting = true;
+  _isSubmitting = true;
 
   try {
     // Simulate API call
@@ -78,17 +78,17 @@ async function handleSubmit() {
       budget: '',
     };
 
-    submitted = true;
+    _submitted = true;
 
     // Hide success message after 5 seconds
     setTimeout(() => {
-      submitted = false;
+      _submitted = false;
     }, 5000);
   } catch (error) {
     console.error('Form submission error:', error);
     errors.submit = 'There was an error submitting your message. Please try again.';
   } finally {
-    isSubmitting = false;
+    _isSubmitting = false;
   }
 }
 

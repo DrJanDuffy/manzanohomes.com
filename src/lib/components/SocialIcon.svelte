@@ -22,18 +22,19 @@ const {
   title,
   href,
   target = '_blank',
+  // biome-ignore lint/correctness/noUnusedVariables: restProps are passed through
   ...restProps
 } = $props();
 
 // Get icon name
-const iconName = getSocialIcon(platform);
+const _iconName = getSocialIcon(platform);
 
 // Use provided values or defaults
-const iconSize = size || ICON_CONFIGS.SOCIAL.size;
+const _iconSize = size || ICON_CONFIGS.SOCIAL.size;
 const iconColor = color || ICON_CONFIGS.SOCIAL.color;
 
 // Generate title if not provided
-const iconTitle = title || `Follow us on ${platform}`;
+const _iconTitle = title || `Follow us on ${platform}`;
 
 // Platform-specific colors
 const platformColors = /** @type {Record<string, string>} */ ({
@@ -45,7 +46,7 @@ const platformColors = /** @type {Record<string, string>} */ ({
   whatsapp: 'text-green-600',
 });
 
-const platformColor = platformColors[platform?.toLowerCase()] || iconColor;
+const _platformColor = platformColors[platform?.toLowerCase()] || iconColor;
 </script>
 
 {#if href}

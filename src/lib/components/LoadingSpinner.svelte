@@ -1,12 +1,18 @@
 <script>
 const {
+  // biome-ignore lint/correctness/noUnusedVariables: Used in template
   size = 'medium',
+  // biome-ignore lint/correctness/noUnusedVariables: Used in template
   color = 'primary',
+  // biome-ignore lint/correctness/noUnusedVariables: Used in template
   text = '',
+  // biome-ignore lint/correctness/noUnusedVariables: Used in template
   overlay = false,
+  // biome-ignore lint/correctness/noUnusedVariables: Used in template
   fullScreen = false,
 } = $props();
 
+// biome-ignore lint/correctness/noUnusedVariables: Functions are used in template
 function getSizeClasses(/** @type {string} */ size) {
   switch (size) {
     case 'small':
@@ -18,6 +24,7 @@ function getSizeClasses(/** @type {string} */ size) {
   }
 }
 
+// biome-ignore lint/correctness/noUnusedVariables: Functions are used in template
 function getColorClasses(/** @type {string} */ color) {
   switch (color) {
     case 'white':
@@ -29,6 +36,7 @@ function getColorClasses(/** @type {string} */ color) {
   }
 }
 
+// biome-ignore lint/correctness/noUnusedVariables: Functions are used in template
 function getBorderWidth(/** @type {string} */ size) {
   switch (size) {
     case 'small':

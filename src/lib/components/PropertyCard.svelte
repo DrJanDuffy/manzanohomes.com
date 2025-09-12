@@ -50,7 +50,9 @@ const {
       email: '',
     },
   },
+  // biome-ignore lint/correctness/noUnusedVariables: Used in template
   showActions = true,
+  // biome-ignore lint/correctness/noUnusedVariables: Used in template
   size = 'default',
 } = props;
 

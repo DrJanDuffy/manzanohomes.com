@@ -22,7 +22,7 @@
     "validate:schemas": "tsc --noEmit src/lib/seo/*.ts",
     "sitemap:generate": "node scripts/generate-sitemap.cjs",
     "sitemap:validate": "node scripts/validate-sitemap.js",
-    "sitemap:submit": "node scripts/submit-sitemap.js",
+    "sitemap:submit": "node scripts/submit-sitemap-simple.js",
     "test:coverage": "vitest --coverage",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",

@@ -1,8 +1,8 @@
-import type { RequestHandler } from './$types';
 import { ManzanoSchemas } from '$lib/seo/schemas';
+import type { RequestHandler } from './$types';
 
 const DOMAIN = 'https://www.manzanohomes.com';
-const PAGES_PER_SITEMAP = 50000; // Google's limit
+const _PAGES_PER_SITEMAP = 50000; // Google's limit
 
 interface SitemapEntry {
   url: string;
@@ -17,10 +17,10 @@ interface SitemapEntry {
   }>;
 }
 
-export const GET: RequestHandler = async ({ fetch }) => {
+export const GET: RequestHandler = async ({ fetch: _fetch }) => {
   try {
     const entries: SitemapEntry[] = [];
-    
+
     // Static pages with priorities
     const staticPages = [
       { path: '/', priority: 1.0, changefreq: 'daily' as const },
@@ -33,17 +33,17 @@ export const GET: RequestHandler = async ({ fetch }) => {
       { path: '/terms-of-service', priority: 0.3, changefreq: 'yearly' as const },
       { path: '/disclaimer', priority: 0.3, changefreq: 'yearly' as const },
     ];
-    
+
     // Add static pages
     for (const page of staticPages) {
       entries.push({
         url: `${DOMAIN}${page.path}`,
         lastmod: new Date().toISOString().split('T')[0],
         changefreq: page.changefreq,
-        priority: page.priority
+        priority: page.priority,
       });
     }
-    
+
     // Fetch dynamic property listings from RealScout or database
     try {
       // For now, we'll use sample data since we don't have a real API
@@ -55,11 +55,14 @@ export const GET: RequestHandler = async ({ fetch }) => {
           status: 'active',
           featured: true,
           images: [
-            { url: '/images/properties/3693-manzano-peak-1.jpg', caption: 'Front view of 3693 Manzano Peak Ave' },
+            {
+              url: '/images/properties/3693-manzano-peak-1.jpg',
+              caption: 'Front view of 3693 Manzano Peak Ave',
+            },
             { url: '/images/properties/3693-manzano-peak-2.jpg', caption: 'Living room' },
-            { url: '/images/properties/3693-manzano-peak-3.jpg', caption: 'Kitchen' }
+            { url: '/images/properties/3693-manzano-peak-3.jpg', caption: 'Kitchen' },
           ],
-          updatedAt: '2024-01-15'
+          updatedAt: '2024-01-15',
         },
         {
           id: '3687-manzano-peak',
@@ -68,12 +71,15 @@ export const GET: RequestHandler = async ({ fetch }) => {
           status: 'active',
           featured: false,
           images: [
-            { url: '/images/properties/3687-manzano-peak-1.jpg', caption: 'Front view of 3687 Manzano Peak Ave' }
+            {
+              url: '/images/properties/3687-manzano-peak-1.jpg',
+              caption: 'Front view of 3687 Manzano Peak Ave',
+            },
           ],
-          updatedAt: '2024-01-10'
-        }
+          updatedAt: '2024-01-10',
+        },
       ];
-      
+
       for (const property of sampleProperties) {
         entries.push({
           url: `${DOMAIN}/property/${property.id}`,
@@ -84,26 +90,26 @@ export const GET: RequestHandler = async ({ fetch }) => {
             url: img.url.startsWith('http') ? img.url : `${DOMAIN}${img.url}`,
             title: `${property.address} - ${img.caption || 'Property Image'}`,
             caption: img.caption,
-            geo_location: 'Las Vegas, Nevada'
-          }))
+            geo_location: 'Las Vegas, Nevada',
+          })),
         });
       }
     } catch (error) {
       console.error('Error fetching properties for sitemap:', error);
     }
-    
+
     // Generate XML
     const xml = generateSitemapXML(entries);
-    
+
     return new Response(xml, {
       headers: {
         'Content-Type': 'text/xml; charset=utf-8',
-        'Cache-Control': 'public, max-age=3600' // Cache for 1 hour
-      }
+        'Cache-Control': 'public, max-age=3600', // Cache for 1 hour
+      },
     });
   } catch (error) {
     console.error('Sitemap generation error:', error);
-    
+
     // Return a minimal valid sitemap on error
     const fallbackXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -114,69 +120,71 @@ export const GET: RequestHandler = async ({ fetch }) => {
     <priority>1.0</priority>
   </url>
 </urlset>`;
-    
+
     return new Response(fallbackXml, {
       headers: {
         'Content-Type': 'text/xml; charset=utf-8',
-        'Cache-Control': 'public, max-age=300' // Shorter cache on error
-      }
+        'Cache-Control': 'public, max-age=300', // Shorter cache on error
+      },
     });
   }
 };
 
 function generateSitemapXML(entries: SitemapEntry[]): string {
-  const urlset = entries.map(entry => {
-    let url = `
+  const urlset = entries
+    .map((entry) => {
+      let url = `
     <url>
       <loc>${escapeXML(entry.url)}</loc>`;
-    
-    if (entry.lastmod) {
-      url += `
-      <lastmod>${entry.lastmod}</lastmod>`;
-    }
-    
-    if (entry.changefreq) {
-      url += `
-      <changefreq>${entry.changefreq}</changefreq>`;
-    }
-    
-    if (entry.priority !== undefined) {
-      url += `
-      <priority>${entry.priority}</priority>`;
-    }
-    
-    if (entry.images && entry.images.length > 0) {
-      for (const image of entry.images) {
+
+      if (entry.lastmod) {
         url += `
+      <lastmod>${entry.lastmod}</lastmod>`;
+      }
+
+      if (entry.changefreq) {
+        url += `
+      <changefreq>${entry.changefreq}</changefreq>`;
+      }
+
+      if (entry.priority !== undefined) {
+        url += `
+      <priority>${entry.priority}</priority>`;
+      }
+
+      if (entry.images && entry.images.length > 0) {
+        for (const image of entry.images) {
+          url += `
       <image:image>
         <image:loc>${escapeXML(image.url)}</image:loc>`;
-        
-        if (image.title) {
-          url += `
+
+          if (image.title) {
+            url += `
         <image:title>${escapeXML(image.title)}</image:title>`;
-        }
-        
-        if (image.caption) {
-          url += `
+          }
+
+          if (image.caption) {
+            url += `
         <image:caption>${escapeXML(image.caption)}</image:caption>`;
-        }
-        
-        if (image.geo_location) {
-          url += `
+          }
+
+          if (image.geo_location) {
+            url += `
         <image:geo_location>${escapeXML(image.geo_location)}</image:geo_location>`;
-        }
-        
-        url += `
+          }
+
+          url += `
       </image:image>`;
+        }
       }
-    }
-    
-    url += `
+
+      url += `
     </url>`;
-    
-    return url;
-  }).join('');
-  
+
+      return url;
+    })
+    .join('');
+
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
@@ -192,7 +200,7 @@ function escapeXML(str: string): string {
       '<': '&lt;',
       '>': '&gt;',
       '"': '&quot;',
-      "'": '&apos;'
+      "'": '&apos;',
     };
     return escapeMap[match];
   });

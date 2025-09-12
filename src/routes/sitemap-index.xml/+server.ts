@@ -9,20 +9,24 @@ export const GET: RequestHandler = async () => {
     { loc: `${DOMAIN}/sitemap-properties.xml`, lastmod: new Date().toISOString() },
     { loc: `${DOMAIN}/sitemap-images.xml`, lastmod: new Date().toISOString() },
   ];
-  
+
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemaps.map(sitemap => `
+${sitemaps
+  .map(
+    (sitemap) => `
   <sitemap>
     <loc>${sitemap.loc}</loc>
     <lastmod>${sitemap.lastmod}</lastmod>
-  </sitemap>`).join('')}
+  </sitemap>`
+  )
+  .join('')}
 </sitemapindex>`;
-  
+
   return new Response(xml, {
     headers: {
       'Content-Type': 'text/xml; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600'
-    }
+      'Cache-Control': 'public, max-age=3600',
+    },
   });
 };

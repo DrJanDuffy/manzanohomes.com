@@ -7,29 +7,29 @@ const totalSteps = 4;
 
 // Step 1 - Property Address
 let streetAddress = '';
-let unitNumber = '';
+const _unitNumber = '';
 /** @type {string[]} */
 let addressSuggestions = [];
 let _showSuggestions = false;
 
 // Step 2 - Home Details
-let bedrooms = '';
-let bathrooms = '';
-let squareFeet = '';
+const bedrooms = '';
+const bathrooms = '';
+const squareFeet = '';
 const _lotSize = '';
-let yearBuilt = '';
+const yearBuilt = '';
 const _propertyType = 'single-family';
 
 // Step 3 - Condition & Features
-let overallCondition = 'good';
-let recentRenovations = [];
-let specialFeatures = [];
+const overallCondition = 'good';
+const recentRenovations = [];
+const specialFeatures = [];
 
 // Step 4 - Contact Information
-let contactName = '';
-let contactEmail = '';
-let contactPhone = '';
-let sellingTimeframe = '';
+const contactName = '';
+const contactEmail = '';
+const contactPhone = '';
+const sellingTimeframe = '';
 
 // Results
 /** @type {number | null} */

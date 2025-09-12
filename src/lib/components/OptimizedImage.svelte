@@ -31,14 +31,17 @@ const {
   loading = 'lazy',
   fetchpriority = 'auto',
   style = {},
+  // biome-ignore lint/correctness/noUnusedVariables: restProps are passed through
   ...restProps
 } = $props();
 
 // Get optimization settings based on type
-const optimization = IMAGE_OPTIMIZATION[/** @type {keyof typeof IMAGE_OPTIMIZATION} */ (type.toUpperCase())] || IMAGE_OPTIMIZATION.PROPERTY;
+const optimization =
+  IMAGE_OPTIMIZATION[/** @type {keyof typeof IMAGE_OPTIMIZATION} */ (type.toUpperCase())] ||
+  IMAGE_OPTIMIZATION.PROPERTY;
 
 // Generate query string for enhanced images
-const query = generateImageQuery({
+const _query = generateImageQuery({
   quality: quality || optimization.quality,
   format: format || optimization.format,
   blur,
@@ -46,7 +49,7 @@ const query = generateImageQuery({
 });
 
 // Use provided sizes or default from optimization settings
-const imageSizes = sizes || optimization.sizes;
+const _imageSizes = sizes || optimization.sizes;
 
 // Ensure alt text is provided for accessibility
 if (!alt) {

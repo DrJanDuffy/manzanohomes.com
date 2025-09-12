@@ -11,28 +11,32 @@ export const PropertyDataSchema = z.object({
     state: z.string().optional(),
     zip: z.string().optional(),
     lat: z.number(),
-    lng: z.number()
+    lng: z.number(),
   }),
   details: z.object({
     bedrooms: z.number().int().positive(),
     bathrooms: z.number().positive(),
     squareFeet: z.number().positive(),
-    yearBuilt: z.number().int().min(1800).max(new Date().getFullYear())
+    yearBuilt: z.number().int().min(1800).max(new Date().getFullYear()),
   }),
-  images: z.array(z.object({
-    url: z.string().url(),
-    caption: z.string().optional()
-  })).min(1)
+  images: z
+    .array(
+      z.object({
+        url: z.string().url(),
+        caption: z.string().optional(),
+      })
+    )
+    .min(1),
 });
 
 export const FAQDataSchema = z.object({
   question: z.string().min(1),
-  answer: z.string().min(1)
+  answer: z.string().min(1),
 });
 
 export const BreadcrumbDataSchema = z.object({
   name: z.string().min(1),
-  url: z.string().min(1)
+  url: z.string().min(1),
 });
 
 export function validatePropertyData(data: unknown) {

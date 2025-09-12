@@ -109,7 +109,10 @@ class PerformanceMonitor {
           if (entry.entryType === 'largest-contentful-paint') {
             // Check if LCP is a property image
             const lcpEntry = /** @type {any} */ (entry);
-            if (lcpEntry.element?.tagName === 'IMG' && lcpEntry.element?.src?.includes('property')) {
+            if (
+              lcpEntry.element?.tagName === 'IMG' &&
+              lcpEntry.element?.src?.includes('property')
+            ) {
               this.recordMetric(REAL_ESTATE_METRICS.PROPERTY_IMAGE_LOAD, {
                 value: entry.startTime,
                 name: 'property_image_lcp',
@@ -208,7 +211,7 @@ class PerformanceMonitor {
   sendToAnalytics(/** @type {string} */ name, /** @type {any} */ metric) {
     // This would integrate with your analytics service
     // For example, Google Analytics 4 custom events
-    if (typeof /** @type {any} */ (globalThis).gtag !== 'undefined') {
+    if (typeof (/** @type {any} */ (globalThis).gtag) !== 'undefined') {
       /** @type {any} */ (globalThis).gtag('event', 'performance_metric', {
         metric_name: name,
         metric_value: metric.value,
@@ -292,7 +295,10 @@ export function measurePerformance(/** @type {string} */ name, /** @type {() => 
 /**
  * Measure async performance metric
  */
-export async function measureAsyncPerformance(/** @type {string} */ name, /** @type {() => Promise<any>} */ fn) {
+export async function measureAsyncPerformance(
+  /** @type {string} */ name,
+  /** @type {() => Promise<any>} */ fn
+) {
   if (!performanceMonitor.isEnabled) {
     return await fn();
   }

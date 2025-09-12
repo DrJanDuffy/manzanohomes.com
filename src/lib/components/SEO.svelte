@@ -1,22 +1,22 @@
 <script lang="ts">
-  import JsonLd from './JsonLd.svelte';
-  import { ManzanoSchemas } from '$lib/seo/schemas';
-  import type { WithContext, Thing } from 'schema-dts';
-  
-  export let title: string;
-  export let description: string;
-  export let canonical: string | undefined = undefined;
-  export let image = '/og-default.jpg';
-  export let noindex = false;
-  export let schemas: WithContext<Thing>[] = [];
-  
-  const schemaBuilder = new ManzanoSchemas();
-  
-  // Always include organization schema
-  const baseSchemas = [schemaBuilder.organization()];
-  
-  $: fullTitle = title.includes('Manzano') ? title : `${title} | Manzano Homes`;
-  $: allSchemas = [...baseSchemas, ...schemas];
+import { ManzanoSchemas } from '$lib/seo/schemas';
+import type { Thing, WithContext } from 'schema-dts';
+import JsonLd from './JsonLd.svelte';
+
+export let title: string;
+export let description: string;
+export const canonical: string | undefined = undefined;
+export const image = '/og-default.jpg';
+export const noindex = false;
+export const schemas: WithContext<Thing>[] = [];
+
+const schemaBuilder = new ManzanoSchemas();
+
+// Always include organization schema
+const baseSchemas = [schemaBuilder.organization()];
+
+$: fullTitle = title.includes('Manzano') ? title : `${title} | Manzano Homes`;
+$: allSchemas = [...baseSchemas, ...schemas];
 </script>
 
 <svelte:head>

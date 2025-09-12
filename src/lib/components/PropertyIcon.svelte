@@ -13,29 +13,33 @@ import Icon from './Icon.svelte';
  */
 
 /** @type {PropertyIconProps} */
-const { 
-  type = 'feature', 
-  name, 
-  size, 
-  color, 
-  className = '', 
+const {
+  type = 'feature',
+  name,
+  // biome-ignore lint/correctness/noUnusedVariables: Used in template
+  size,
+  // biome-ignore lint/correctness/noUnusedVariables: Used in template
+  color,
+  className = '',
+  // biome-ignore lint/correctness/noUnusedVariables: Used in template
   title,
-  ...restProps 
+  // biome-ignore lint/correctness/noUnusedVariables: restProps are passed through
+  ...restProps
 } = $props();
 
 // Get icon name based on type
-const iconName = type === 'feature' ? getPropertyFeatureIcon(name) : getPropertyTypeIcon(name);
+const _iconName = type === 'feature' ? getPropertyFeatureIcon(name) : getPropertyTypeIcon(name);
 
 // Get default config based on type
 const defaultConfig =
   type === 'feature' ? ICON_CONFIGS.PROPERTY_FEATURE : ICON_CONFIGS.PROPERTY_TYPE;
 
 // Use provided values or defaults
-const iconSize = size || defaultConfig.size;
-const iconColor = color || defaultConfig.color;
+const _iconSize = size || defaultConfig.size;
+const _iconColor = color || defaultConfig.color;
 
 // Generate title if not provided
-const iconTitle = title || `${type === 'feature' ? 'Property feature' : 'Property type'}: ${name}`;
+const _iconTitle = title || `${type === 'feature' ? 'Property feature' : 'Property type'}: ${name}`;
 </script>
 
 <Icon

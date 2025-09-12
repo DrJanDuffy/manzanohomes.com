@@ -34,18 +34,16 @@ try {
       state: 'NV',
       zip: '89121',
       lat: 36.0839,
-      lng: -115.0891
+      lng: -115.0891,
     },
     details: {
       bedrooms: 4,
       bathrooms: 3,
       squareFeet: 2500,
-      yearBuilt: 2020
+      yearBuilt: 2020,
     },
-    images: [
-      { url: 'https://example.com/image1.jpg', caption: 'Front view' }
-    ],
-    description: 'Beautiful home in Manzano'
+    images: [{ url: 'https://example.com/image1.jpg', caption: 'Front view' }],
+    description: 'Beautiful home in Manzano',
   });
   console.log('✅ Property schema generated successfully');
   console.log(`   - Name: ${propertySchema.name}`);
@@ -59,7 +57,7 @@ try {
 try {
   const breadcrumbSchema = schemas.breadcrumbs([
     { name: 'Home', url: '/' },
-    { name: 'Homes for Sale', url: '/homes-for-sale' }
+    { name: 'Homes for Sale', url: '/homes-for-sale' },
   ]);
   console.log('✅ Breadcrumb schema generated successfully');
   console.log(`   - Type: ${breadcrumbSchema['@type']}`);
@@ -81,7 +79,7 @@ try {
 
 console.log('🎉 Schema testing completed!');
 console.log('\n📋 Next steps:');
-console.log('1. Test your schemas with Google\'s Rich Results Test:');
+console.log("1. Test your schemas with Google's Rich Results Test:");
 console.log('   https://search.google.com/test/rich-results');
 console.log('2. Validate JSON-LD with:');
 console.log('   https://validator.schema.org/');

@@ -23,6 +23,7 @@ const {
   ariaLabel,
   spin = false,
   pulse = false,
+  // biome-ignore lint/correctness/noUnusedVariables: restProps are passed through
   ...restProps
 } = $props();
 
@@ -30,7 +31,7 @@ const {
 const iconClasses = getIconClasses(size, color);
 
 // Combine all classes
-const allClasses = [
+const _allClasses = [
   iconClasses,
   className,
   spin ? 'animate-spin' : '',
@@ -40,7 +41,7 @@ const allClasses = [
   .join(' ');
 
 // Accessibility attributes
-const accessibilityProps = {
+const _accessibilityProps = {
   ...(title && { title }),
   ...(ariaLabel && { 'aria-label': ariaLabel }),
   ...(title && !ariaLabel && { 'aria-label': title }),

@@ -1,25 +1,25 @@
 <script>
-import { onMount } from 'svelte';
 import SEO from '$lib/components/SEO.svelte';
 import { ManzanoSchemas } from '$lib/seo/schemas';
+import { onMount } from 'svelte';
 
 // Fixed: All form variables now use 'let' instead of 'const' for proper binding
 // This ensures Svelte bind:value works correctly and prevents deployment failures
 
 // Search and filter state
 // CRITICAL: These MUST be 'let', not 'const', for Svelte bind:value to work
-let priceRange = [300000, 800000];
-let bedrooms = 'any';
-let bathrooms = 'any';
+const priceRange = [300000, 800000];
+const bedrooms = 'any';
+const bathrooms = 'any';
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-let propertyType = 'any';
-let minSqft = '';
-let maxSqft = '';
-let sortBy = 'price-low';
+const propertyType = 'any';
+const minSqft = '';
+const maxSqft = '';
+const sortBy = 'price-low';
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-let viewMode = 'grid'; // 'grid' or 'map'
+const viewMode = 'grid'; // 'grid' or 'map'
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-let currentPage = 1;
+const currentPage = 1;
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
 const totalPages = 5;
 
@@ -262,12 +262,12 @@ $: {
 
 // Generate schemas for this page
 const schemas = new ManzanoSchemas();
-const pageSchemas = [
+const _pageSchemas = [
   schemas.website(),
   schemas.breadcrumbs([
     { name: 'Home', url: '/' },
-    { name: 'Homes for Sale', url: '/homes-for-sale' }
-  ])
+    { name: 'Homes for Sale', url: '/homes-for-sale' },
+  ]),
 ];
 </script>
 

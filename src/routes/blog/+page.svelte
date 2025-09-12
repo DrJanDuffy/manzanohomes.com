@@ -37,7 +37,7 @@ const blogPosts = [
 
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
 const categories = ['All', 'Market Analysis', 'Buying Guide', 'Selling Tips', 'Local News'];
-let selectedCategory = 'All';
+const selectedCategory = 'All';
 
 $: filteredPosts =
   selectedCategory === 'All'

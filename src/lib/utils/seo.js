@@ -372,7 +372,8 @@ export const SEO_CONFIGS = {
  * @returns {Object} Complete SEO data
  */
 export function generatePageSEO(pageType, customData = {}) {
-  const baseConfig = SEO_CONFIGS[/** @type {keyof typeof SEO_CONFIGS} */ (pageType)] || SEO_CONFIGS.HOMEPAGE;
+  const baseConfig =
+    SEO_CONFIGS[/** @type {keyof typeof SEO_CONFIGS} */ (pageType)] || SEO_CONFIGS.HOMEPAGE;
 
   return {
     ...baseConfig,

@@ -3,22 +3,28 @@ import type { RequestHandler } from './$types';
 const DOMAIN = 'https://www.manzanohomes.com';
 
 export const GET: RequestHandler = async ({ url }) => {
-  const isProduction = url.hostname === 'www.manzanohomes.com' || url.hostname === 'manzanohomes.com';
-  
+  const isProduction =
+    url.hostname === 'www.manzanohomes.com' || url.hostname === 'manzanohomes.com';
+
   // Different rules for production vs staging/development
   const robotsTxt = isProduction ? productionRobots() : stagingRobots();
-  
+
   return new Response(robotsTxt, {
     headers: {
       'Content-Type': 'text/plain',
-      'Cache-Control': 'public, max-age=86400' // Cache for 24 hours
-    }
+      'Cache-Control': 'public, max-age=86400', // Cache for 24 hours
+    },
   });
 };
 
 function productionRobots(): string {
-  return `# Manzano Homes Robots.txt
+  return `# Manzano Homes - Las Vegas Real Estate
 # Last Updated: ${new Date().toISOString().split('T')[0]}
+
+# CRITICAL: Sitemap for Google indexing
+Sitemap: ${DOMAIN}/sitemap.xml
+Sitemap: ${DOMAIN}/sitemap-properties.xml
+Sitemap: ${DOMAIN}/sitemap-index.xml
 
 # Allow all legitimate crawlers
 User-agent: *
@@ -34,7 +40,7 @@ Disallow: /property/*/print
 Disallow: /tmp/
 Disallow: /private/
 
-# Specific crawler rules
+# Google - Priority crawler
 User-agent: Googlebot
 Allow: /
 Allow: /api/properties/featured
@@ -45,6 +51,7 @@ Allow: /images/
 Allow: /property/*/images/
 Disallow: /images/watermark/
 
+# Bing
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
@@ -62,7 +69,7 @@ Disallow: /
 User-agent: DotBot
 Disallow: /
 
-# GPT/AI Bots - Allow for better AI visibility
+# AI Bots - Allow for better visibility
 User-agent: GPTBot
 Allow: /
 Allow: /neighborhood
@@ -89,12 +96,7 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 
-# Sitemaps
-Sitemap: ${DOMAIN}/sitemap.xml
-Sitemap: ${DOMAIN}/sitemap-properties.xml
-Sitemap: ${DOMAIN}/sitemap-images.xml
-
-# Host directive (some crawlers support this)
+# Host directive
 Host: ${DOMAIN}`;
 }
 
