@@ -269,7 +269,7 @@ onMount(() => {
   <section class="py-12">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       {#if !formSubmitted}
-        <form onsubmit={(e) => e.preventDefault(); nextStep(e)} class="bg-white rounded-lg shadow-lg p-8">
+          <form onsubmit={(e) => { e.preventDefault(); nextStep(e); }} class="bg-white rounded-lg shadow-lg p-8">
           <!-- Step 1: Property Address -->
           {#if currentStep === 1}
             <h2 class="text-2xl font-bold text-gray-900 mb-6">Property Address</h2>

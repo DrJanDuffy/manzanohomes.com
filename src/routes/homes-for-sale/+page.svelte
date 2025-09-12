@@ -614,7 +614,7 @@ let pageSchemas = [
         <!-- Schedule a Showing Form -->
         <div class="bg-white rounded-lg shadow-lg p-6">
           <h3 class="text-xl font-semibold text-gray-900 mb-4">Schedule a Showing</h3>
-          <form onsubmit={(e) => e.preventDefault(); handleShowingRequest(e)} class="space-y-4">
+          <form onsubmit={(e) => { e.preventDefault(); handleShowingRequest(e); }} class="space-y-4">
             <div>
               <label for="showingName" class="block text-sm font-medium text-gray-700 mb-1">Name *</label>
               <input
@@ -711,7 +711,7 @@ let pageSchemas = [
         <div class="bg-white rounded-lg shadow-lg p-6">
           <h3 class="text-xl font-semibold text-gray-900 mb-4">Get Email Alerts</h3>
           <p class="text-gray-600 text-sm mb-4">Be the first to know about new listings</p>
-          <form onsubmit={(e) => e.preventDefault(); handleEmailAlerts(e)} class="space-y-3">
+          <form onsubmit={(e) => { e.preventDefault(); handleEmailAlerts(e); }} class="space-y-3">
             <input
               type="email"
               bind:value={emailAlerts}

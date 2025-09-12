@@ -115,7 +115,7 @@ function clearError(/** @type {string} */ field) {
       <p class="text-green-700">Thank you for contacting us. We'll get back to you within 24 hours.</p>
     </div>
   {:else}
-    <form onsubmit={(e) => e.preventDefault(); handleSubmit(e)} class="space-y-6">
+    <form onsubmit={(e) => { e.preventDefault(); handleSubmit(e); }} class="space-y-6">
       <!-- Personal Information -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
