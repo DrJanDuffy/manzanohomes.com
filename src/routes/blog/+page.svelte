@@ -110,7 +110,7 @@ $: filteredPosts =
             role="tab"
             aria-selected={selectedCategory === category}
             aria-controls="blog-posts"
-            on:click={() => selectedCategory = category}
+            onclick={() => selectedCategory = category}
             class="px-4 py-2 rounded-full transition-colors focus:ring-4 focus:ring-primary-200 {selectedCategory === category ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}"
           >
             {category}
