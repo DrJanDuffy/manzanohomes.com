@@ -17,7 +17,8 @@ onMount(() => {
 
 // Search and filter state
 // CRITICAL: These MUST be 'let', not 'const', for Svelte bind:value to work
-const priceRange = $state([300000, 800000]);
+// biome-ignore lint/style/useConst: These variables need to be let for bind:value directives
+let priceRange = $state([300000, 800000]);
 const bedrooms = $state('any');
 const bathrooms = $state('any');
 // biome-ignore lint/correctness/noUnusedVariables: Used in template

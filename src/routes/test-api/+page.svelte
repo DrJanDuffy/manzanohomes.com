@@ -3,7 +3,8 @@ import { onMount } from 'svelte';
 
 let _testResults = $state(null);
 let _isLoading = $state(false);
-const testPhone = $state('+17025001942');
+// biome-ignore lint/style/useConst: This variable needs to be let for bind:value directive
+let testPhone = $state('+17025001942');
 
 async function runAPITest() {
   _isLoading = true;
