@@ -122,24 +122,24 @@ const sampleProperties = [
 ];
 
 // Filtered properties based on search criteria
-let filteredProperties = sampleProperties;
+let filteredProperties = $state(sampleProperties);
 
 // RealScout integration state
-let realscoutLoaded = false;
+let realscoutLoaded = $state(false);
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-let realscoutError = false;
+let realscoutError = $state(false);
 
 // Form state
-let saveSearchName = '';
-let emailAlerts = '';
-let showingForm = {
+let saveSearchName = $state('');
+let emailAlerts = $state('');
+let showingForm = $state({
   name: '',
   email: '',
   phone: '',
   preferredDate: '',
   preferredTime: '',
   message: '',
-};
+});
 
 // Filter properties based on search criteria
 function filterProperties() {

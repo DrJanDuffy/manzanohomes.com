@@ -275,10 +275,10 @@ function clearError(/** @type {string} */ field) {
       </div>
 
       <!-- Preferred Contact Method -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-3">
+      <fieldset>
+        <legend class="block text-sm font-medium text-gray-700 mb-3">
           How would you like us to contact you? *
-        </label>
+        </legend>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 {formData.preferredContact === 'email' ? 'border-primary-500 bg-primary-50' : ''}">
             <input
@@ -319,7 +319,7 @@ function clearError(/** @type {string} */ field) {
             </div>
           </label>
         </div>
-      </div>
+      </fieldset>
 
       <!-- SMS Quick Contact -->
       {#if formData.preferredContact === 'sms'}
