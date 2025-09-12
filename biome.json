@@ -95,8 +95,7 @@
       "linter": {
         "rules": {
           "style": {
-            "useTemplate": "off",
-            "useConst": "off"
+            "useTemplate": "off"
           }
         }
       }
