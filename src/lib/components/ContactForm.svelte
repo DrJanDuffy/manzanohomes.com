@@ -61,8 +61,21 @@ async function handleSubmit() {
   _isSubmitting = true;
 
   try {
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // Submit to Follow Up Boss API
+    const response = await fetch('/api/contact/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to submit form');
+    }
+
+    const result = await response.json();
+    console.log('Lead created in Follow Up Boss:', result);
 
     // Dispatch success event
     dispatch('submit', formData);
