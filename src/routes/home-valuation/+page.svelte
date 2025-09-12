@@ -7,7 +7,7 @@ const totalSteps = 4;
 
 // Step 1 - Property Address
 let streetAddress = '';
-const _unitNumber = '';
+let unitNumber = '';
 /** @type {string[]} */
 let addressSuggestions = [];
 let _showSuggestions = false;
