@@ -66,7 +66,7 @@ onMount(() => {
 				width="1920"
 				height="1080"
 				decoding="async"
-				onerror="this.style.display='none'"
+				onerror={(e) => e.target.style.display = 'none'}
 			/>
 		</picture>
 	</div>
