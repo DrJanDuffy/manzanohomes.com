@@ -83,26 +83,31 @@
 
 <main class="min-h-screen" id="main-content">
   <!-- Hero Section -->
-  <section class="bg-gradient-primary text-white py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="bg-gradient-to-br from-primary-500 to-primary-700 text-white py-20 relative overflow-hidden">
+    <!-- Background overlay for better text contrast -->
+    <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6">Contact Our Real Estate Experts</h1>
-        <p class="text-xl md:text-2xl mb-8 text-primary-100">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
+          Contact Our Real Estate Experts
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 text-white drop-shadow-md max-w-4xl mx-auto">
           Ready to buy or sell in the Manzano neighborhood? We're here to help every step of the way.
         </p>
         <div class="flex flex-wrap justify-center gap-6 text-lg">
-          <div class="flex items-center">
-            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <div class="flex items-center bg-white bg-opacity-20 backdrop-blur-sm px-4 py-2 rounded-lg">
+            <svg class="w-6 h-6 mr-2 text-white" fill="currentColor" viewBox="0 0 20 20">
               <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
               <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
             </svg>
-            <span>info@manzanohome.com</span>
+            <span class="text-white font-medium">info@manzanohome.com</span>
           </div>
-          <div class="flex items-center">
-            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <div class="flex items-center bg-white bg-opacity-20 backdrop-blur-sm px-4 py-2 rounded-lg">
+            <svg class="w-6 h-6 mr-2 text-white" fill="currentColor" viewBox="0 0 20 20">
               <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
             </svg>
-            <span>(702) 555-0123</span>
+            <span class="text-white font-medium">(702) 555-0123</span>
           </div>
         </div>
       </div>
@@ -253,7 +258,7 @@
           <h3 class="text-lg font-semibold text-gray-900 mb-2">Do you offer free home valuations?</h3>
           <p class="text-gray-600">Yes! We provide complimentary home valuations for all Manzano area properties. Our detailed reports include comparable sales, market trends, and pricing recommendations.</p>
         </div>
-      </div>
     </div>
+  </div>
   </section>
 </main>

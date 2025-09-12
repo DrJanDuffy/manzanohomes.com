@@ -48,10 +48,10 @@ onMount(() => {
 />
 
 <!-- Hero Section -->
-	<section id="main-content" class="hero-gradient" role="banner" aria-label="Welcome to Manzano Homes">
+	<section id="main-content" class="hero-gradient relative overflow-hidden" role="banner" aria-label="Welcome to Manzano Homes">
 	<!-- Background Image Overlay -->
-	<div class="absolute inset-0 bg-black bg-opacity-40"></div>
-		<div class="absolute inset-0 bg-gradient-to-r from-manzano-dark/50 to-transparent"></div>
+	<div class="absolute inset-0 bg-black bg-opacity-30"></div>
+		<div class="absolute inset-0 bg-gradient-to-r from-manzano-dark/40 to-transparent"></div>
 	
 	<!-- Background Image -->
 	<div class="absolute inset-0">
@@ -66,13 +66,13 @@ onMount(() => {
 	
 	<!-- Hero Content -->
 	<div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-		<h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-			Manzano Area Homes - Move In Faster Than <span class="text-secondary-400">KB Home</span> New Construction
+		<h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
+			Manzano Area Homes - Move In Faster Than <span class="text-secondary-400 drop-shadow-md">KB Home</span> New Construction
 		</h1>
-		<h2 class="text-xl md:text-2xl lg:text-3xl mb-4 font-light">
+		<h2 class="text-xl md:text-2xl lg:text-3xl mb-4 font-light text-white drop-shadow-md">
 			Skip the 6-12 Month Wait
 		</h2>
-		<p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto opacity-90">
+		<p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-white drop-shadow-md">
 			Looking at Vales or Glades at Manzano? Discover move-in ready alternatives near 3693 Manzano Peak Ave with no construction delays.
 		</p>
 		
