@@ -563,6 +563,28 @@ let pageSchemas = [
       </div>
     </div>
   </div>
+
+  <!-- Interactive Map Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Interactive Map</h2>
+        <p class="text-lg text-gray-600 mb-2">Centered on 3693 Manzano Peak Ave, Las Vegas, NV 89121</p>
+        <p class="text-sm text-gray-500">RealScout Map Widget Integration Coming Soon</p>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <realscout-office-listings 
+          agent-encoded-id="QWdlbnQtMjI1MDUw" 
+          sort-order="STATUS_AND_SIGNIFICANT_CHANGE" 
+          listing-status="For Sale" 
+          property-types="SFR,MF" 
+          price-min="500000" 
+          price-max="600000">
+        </realscout-office-listings>
+      </div>
+    </div>
+  </section>
 </main>
 
 <style>
