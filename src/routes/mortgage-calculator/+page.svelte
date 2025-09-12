@@ -1,19 +1,19 @@
 <script>
-let homePrice = $state(500000);
-let downPayment = $state(100000);
-let interestRate = $state(6.5);
-let loanTerm = $state(30);
+const homePrice = $state(500000);
+const downPayment = $state(100000);
+const interestRate = $state(6.5);
+const loanTerm = $state(30);
 
-let loanAmount = $derived(homePrice - downPayment);
-let monthlyRate = $derived(interestRate / 100 / 12);
-let numPayments = $derived(loanTerm * 12);
-let monthlyPayment = $derived(
+const loanAmount = $derived(homePrice - downPayment);
+const monthlyRate = $derived(interestRate / 100 / 12);
+const numPayments = $derived(loanTerm * 12);
+const monthlyPayment = $derived(
   (loanAmount * (monthlyRate * (1 + monthlyRate) ** numPayments)) /
-  ((1 + monthlyRate) ** numPayments - 1)
+    ((1 + monthlyRate) ** numPayments - 1)
 );
-let totalPaid = $derived(monthlyPayment * numPayments);
-let totalInterest = $derived(totalPaid - loanAmount);
-let downPaymentPercent = $derived(((downPayment / homePrice) * 100).toFixed(1));
+const totalPaid = $derived(monthlyPayment * numPayments);
+const _totalInterest = $derived(totalPaid - loanAmount);
+const _downPaymentPercent = $derived(((downPayment / homePrice) * 100).toFixed(1));
 </script>
 
 <svelte:head>

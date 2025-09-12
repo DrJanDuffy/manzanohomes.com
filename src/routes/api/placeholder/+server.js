@@ -5,8 +5,8 @@ import { json } from '@sveltejs/kit';
  * Generates placeholder images with specified dimensions
  */
 export async function GET({ url }) {
-  const width = parseInt(url.searchParams.get('w') || '400');
-  const height = parseInt(url.searchParams.get('h') || '250');
+  const width = Number.parseInt(url.searchParams.get('w') || '400');
+  const height = Number.parseInt(url.searchParams.get('h') || '250');
   const text = url.searchParams.get('text') || `${width}x${height}`;
   const bgColor = url.searchParams.get('bg') || 'f3f4f6';
   const textColor = url.searchParams.get('color') || '6b7280';

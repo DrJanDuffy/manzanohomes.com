@@ -1,5 +1,5 @@
-# Dependencies
-node_modules/
+# Dependencies (keep node_modules for faster builds)
+# node_modules/
 .pnpm-store/
 
 # Build outputs
@@ -7,10 +7,11 @@ node_modules/
 build/
 dist/
 
-# Environment files
+# Environment files (keep .env.example for reference)
 .env
 .env.local
 .env.production
+.env.development
 
 # IDE files
 .vscode/
@@ -80,3 +81,30 @@ jspm_packages/
 
 # Biome cache
 .biome/
+
+# Testing files
+tests/
+playwright-report/
+test-results/
+coverage/
+
+# Storybook
+storybook-static/
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Development tools
+.lighthouseci/
+.husky/
+commitlint.config.js
+biome.json
+vitest.config.js
+playwright.config.js
+lighthouserc.js
+
+# Temporary files
+tmp/
+temp/

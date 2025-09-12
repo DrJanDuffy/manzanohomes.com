@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite dev",
     "build": "npm run sitemap:generate && vite build",
+    "build:vercel": "npm run sitemap:generate && vite build --mode production",
+    "optimize:vercel": "node scripts/optimize-for-vercel.js",
     "package": "svelte-kit package",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./jsconfig.json",
@@ -31,7 +33,8 @@
     "analyze:bundle": "vite build --mode analyze",
     "prepare": "husky install",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "postinstall": "npm run sitemap:generate"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.4.1",
