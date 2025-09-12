@@ -108,7 +108,8 @@ class PerformanceMonitor {
         for (const entry of list.getEntries()) {
           if (entry.entryType === 'largest-contentful-paint') {
             // Check if LCP is a property image
-            if (entry.element?.tagName === 'IMG' && entry.element?.src?.includes('property')) {
+            const lcpEntry = /** @type {any} */ (entry);
+            if (lcpEntry.element?.tagName === 'IMG' && lcpEntry.element?.src?.includes('property')) {
               this.recordMetric(REAL_ESTATE_METRICS.PROPERTY_IMAGE_LOAD, {
                 value: entry.startTime,
                 name: 'property_image_lcp',
@@ -137,7 +138,7 @@ class PerformanceMonitor {
   observeFormSubmissions() {
     // Monitor contact form submissions
     document.addEventListener('submit', (event) => {
-      if (event.target.matches('form')) {
+      if (event.target && event.target instanceof HTMLElement && event.target.matches('form')) {
         const startTime = performance.now();
 
         event.target.addEventListener(
@@ -158,8 +159,9 @@ class PerformanceMonitor {
   /**
    * Analyze resource loading performance
    */
-  analyzeResource(entry) {
-    const { name, duration, transferSize } = entry;
+  analyzeResource(/** @type {PerformanceEntry} */ entry) {
+    const { name, duration } = entry;
+    const transferSize = /** @type {any} */ (entry).transferSize || 0;
 
     // Flag slow resources
     if (duration > 1000) {
@@ -186,7 +188,7 @@ class PerformanceMonitor {
   /**
    * Record a performance metric
    */
-  recordMetric(name, metric) {
+  recordMetric(/** @type {string} */ name, /** @type {any} */ metric) {
     this.metrics.set(name, metric);
 
     // Log to console in development
@@ -203,11 +205,11 @@ class PerformanceMonitor {
   /**
    * Send metrics to analytics
    */
-  sendToAnalytics(name, metric) {
+  sendToAnalytics(/** @type {string} */ name, /** @type {any} */ metric) {
     // This would integrate with your analytics service
     // For example, Google Analytics 4 custom events
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'performance_metric', {
+    if (typeof /** @type {any} */ (globalThis).gtag !== 'undefined') {
+      /** @type {any} */ (globalThis).gtag('event', 'performance_metric', {
         metric_name: name,
         metric_value: metric.value,
         metric_id: metric.id,
@@ -219,10 +221,10 @@ class PerformanceMonitor {
    * Get performance report
    */
   getReport() {
-    const report = {};
+    const report = /** @type {Record<string, any>} */ ({});
 
     for (const [name, metric] of this.metrics) {
-      report[name] = {
+      report[/** @type {string} */ (name)] = {
         value: metric.value,
         rating: this.getRating(name, metric.value),
         timestamp: Date.now(),
@@ -235,8 +237,8 @@ class PerformanceMonitor {
   /**
    * Get performance rating
    */
-  getRating(metricName, value) {
-    const config = PERFORMANCE_CONFIG[metricName];
+  getRating(/** @type {string} */ metricName, /** @type {number} */ value) {
+    const config = PERFORMANCE_CONFIG[/** @type {keyof typeof PERFORMANCE_CONFIG} */ (metricName)];
     if (!config) return 'unknown';
 
     if (value <= config.good) return 'good';
@@ -270,7 +272,7 @@ export function initPerformanceMonitoring() {
 /**
  * Measure custom performance metric
  */
-export function measurePerformance(name, fn) {
+export function measurePerformance(/** @type {string} */ name, /** @type {() => any} */ fn) {
   if (!performanceMonitor.isEnabled) {
     return fn();
   }
@@ -290,7 +292,7 @@ export function measurePerformance(name, fn) {
 /**
  * Measure async performance metric
  */
-export async function measureAsyncPerformance(name, fn) {
+export async function measureAsyncPerformance(/** @type {string} */ name, /** @type {() => Promise<any>} */ fn) {
   if (!performanceMonitor.isEnabled) {
     return await fn();
   }

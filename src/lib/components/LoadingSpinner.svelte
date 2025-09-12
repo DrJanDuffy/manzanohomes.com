@@ -1,13 +1,13 @@
 <script>
 const {
-  _size = 'medium',
-  _color = 'primary',
-  _text = '',
-  _overlay = false,
-  _fullScreen = false,
+  size = 'medium',
+  color = 'primary',
+  text = '',
+  overlay = false,
+  fullScreen = false,
 } = $props();
 
-function _getSizeClasses(size) {
+function getSizeClasses(/** @type {string} */ size) {
   switch (size) {
     case 'small':
       return 'w-4 h-4';
@@ -18,7 +18,7 @@ function _getSizeClasses(size) {
   }
 }
 
-function _getColorClasses(color) {
+function getColorClasses(/** @type {string} */ color) {
   switch (color) {
     case 'white':
       return 'text-white';
@@ -29,7 +29,7 @@ function _getColorClasses(color) {
   }
 }
 
-function _getBorderWidth(size) {
+function getBorderWidth(/** @type {string} */ size) {
   switch (size) {
     case 'small':
       return 'border-2';

@@ -10,16 +10,16 @@ import { IMAGE_OPTIMIZATION, generateImageQuery } from '$lib/utils/imageUtils.js
  * @property {number} [quality] - Image quality (1-100)
  * @property {string} [format] - Image format (webp,avif,jpg,png)
  * @property {number} [blur] - Blur amount for placeholder
- * @property {string} [widths] - Custom widths for srcset
+ * @property {number} [widths] - Custom width for image
  * @property {string} [className] - CSS classes
- * @property {boolean} [loading] - Loading strategy (lazy, eager)
+ * @property {string} [loading] - Loading strategy (lazy, eager)
  * @property {string} [fetchpriority] - Fetch priority (high, low, auto)
  * @property {Object} [style] - Inline styles
  */
 
 /** @type {OptimizedImageProps} */
 const {
-  src: _src,
+  src,
   alt,
   type = 'property',
   sizes,
@@ -27,17 +27,18 @@ const {
   format,
   blur,
   widths,
-  className: _className = '',
-  loading: _loading = 'lazy',
-  fetchpriority: _fetchpriority = 'auto',
-  style: _style = {},
+  className = '',
+  loading = 'lazy',
+  fetchpriority = 'auto',
+  style = {},
+  ...restProps
 } = $props();
 
 // Get optimization settings based on type
-const optimization = IMAGE_OPTIMIZATION[type.toUpperCase()] || IMAGE_OPTIMIZATION.PROPERTY;
+const optimization = IMAGE_OPTIMIZATION[/** @type {keyof typeof IMAGE_OPTIMIZATION} */ (type.toUpperCase())] || IMAGE_OPTIMIZATION.PROPERTY;
 
 // Generate query string for enhanced images
-const _query = generateImageQuery({
+const query = generateImageQuery({
   quality: quality || optimization.quality,
   format: format || optimization.format,
   blur,
@@ -45,7 +46,7 @@ const _query = generateImageQuery({
 });
 
 // Use provided sizes or default from optimization settings
-const _imageSizes = sizes || optimization.sizes;
+const imageSizes = sizes || optimization.sizes;
 
 // Ensure alt text is provided for accessibility
 if (!alt) {
@@ -56,8 +57,8 @@ if (!alt) {
 <enhanced:img
   src="{src}{query}"
   {alt}
-  {sizes}
-  {className}
+  sizes={imageSizes}
+  class={className}
   {loading}
   {fetchpriority}
   {style}

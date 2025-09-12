@@ -3,7 +3,7 @@ import { sequence } from '@sveltejs/kit/hooks';
 /** @type {import('@sveltejs/kit').Handle} */
 async function fontPreloading({ event, resolve }) {
   const response = await resolve(event, {
-    preload: ({ type, href }) => {
+    preload: ({ type, path }) => {
       // Preload critical fonts
       if (type === 'font') {
         // Only preload Inter font weights that are actually used
@@ -13,7 +13,7 @@ async function fontPreloading({ event, resolve }) {
           '/node_modules/@fontsource/inter/files/inter-latin-700-normal.woff2',
         ];
 
-        return criticalFonts.some((font) => href?.includes(font));
+        return criticalFonts.some((font) => path?.includes(font));
       }
 
       // Preload other critical resources

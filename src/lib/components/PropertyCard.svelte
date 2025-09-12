@@ -3,6 +3,30 @@ import { createEventDispatcher } from 'svelte';
 
 const dispatch = createEventDispatcher();
 
+/**
+ * @typedef {Object} Property
+ * @property {string} id
+ * @property {string} address
+ * @property {number} price
+ * @property {number} bedrooms
+ * @property {number} bathrooms
+ * @property {number} squareFeet
+ * @property {number} lotSize
+ * @property {number} yearBuilt
+ * @property {string[]} images
+ * @property {string[]} features
+ * @property {string} status
+ * @property {number} daysOnMarket
+ * @property {string} mlsNumber
+ * @property {string} description
+ * @property {boolean} favorited
+ * @property {Object} agent
+ * @property {string} agent.name
+ * @property {string} agent.phone
+ * @property {string} agent.email
+ */
+
+const props = $props();
 const {
   property = {
     id: '',
@@ -19,18 +43,22 @@ const {
     daysOnMarket: 0,
     mlsNumber: '',
     description: '',
+    favorited: false,
     agent: {
       name: '',
       phone: '',
       email: '',
     },
   },
-  _showActions = true,
-  _size = 'default',
-} = $props();
+  showActions = true,
+  size = 'default',
+} = props;
+
+/** @type {Property} */
+const typedProperty = property;
 
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-function formatCurrency(amount) {
+function formatCurrency(/** @type {number} */ amount) {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -40,39 +68,39 @@ function formatCurrency(amount) {
 }
 
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-function formatSqft(sqft) {
+function formatSqft(/** @type {number} */ sqft) {
   return sqft.toLocaleString();
 }
 
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
 function handleCardClick() {
-  dispatch('click', { property });
+  dispatch('click', { property: typedProperty });
 }
 
 // Handle favorite toggle
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-function handleFavorite(event) {
+function handleFavorite(/** @type {Event} */ event) {
   event.stopPropagation();
-  dispatch('favorite', { property, favorited: !property.favorited });
+  dispatch('favorite', { property: typedProperty, favorited: !typedProperty.favorited });
 }
 
 // Handle schedule showing
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-function handleScheduleShowing(event) {
+function handleScheduleShowing(/** @type {Event} */ event) {
   event.stopPropagation();
-  dispatch('scheduleShowing', { property });
+  dispatch('scheduleShowing', { property: typedProperty });
 }
 
 // Handle contact agent
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-function handleContactAgent(event) {
+function handleContactAgent(/** @type {Event} */ event) {
   event.stopPropagation();
-  dispatch('contactAgent', { property });
+  dispatch('contactAgent', { property: typedProperty });
 }
 
 // Get status color
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-function getStatusColor(status) {
+function getStatusColor(/** @type {string} */ status) {
   switch (status) {
     case 'for-sale':
       return 'bg-green-100 text-green-800';
@@ -89,7 +117,7 @@ function getStatusColor(status) {
 
 // Get status text
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-function getStatusText(status) {
+function getStatusText(/** @type {string} */ status) {
   switch (status) {
     case 'for-sale':
       return 'For Sale';
@@ -106,19 +134,19 @@ function getStatusText(status) {
 </script>
 
 <div
-  class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer group {size === 'large' ? 'max-w-sm' : size === 'compact' ? 'max-w-xs' : 'max-w-sm'}"
-  on:click={handleCardClick}
-  on:keydown={(e) => e.key === 'Enter' && handleCardClick()}
+  class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer group {size === 'small' ? 'max-w-xs' : 'max-w-sm'}"
+  onclick={handleCardClick}
+  onkeydown={(e) => e.key === 'Enter' && handleCardClick()}
   role="button"
   tabindex="0"
-  aria-label="View property details for {property.address}"
+  aria-label="View property details for {typedProperty.address}"
 >
   <!-- Image Container -->
   <div class="relative aspect-w-16 aspect-h-12 overflow-hidden">
-    {#if property.images && property.images.length > 0}
+    {#if typedProperty.images && typedProperty.images.length > 0}
       <img
-        src={property.images[0]}
-        alt={property.address}
+        src={typedProperty.images[0]}
+        alt={typedProperty.address}
         class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
         loading="lazy"
       />
@@ -133,8 +161,8 @@ function getStatusText(status) {
     
     <!-- Status Badge -->
     <div class="absolute top-3 left-3">
-      <span class="px-2 py-1 text-xs font-medium rounded-full {getStatusColor(property.status)}">
-        {getStatusText(property.status)}
+      <span class="px-2 py-1 text-xs font-medium rounded-full {getStatusColor(typedProperty.status)}">
+        {getStatusText(typedProperty.status)}
       </span>
     </div>
     
@@ -142,11 +170,11 @@ function getStatusText(status) {
     {#if showActions}
       <button
         class="absolute top-3 right-3 p-2 bg-white/80 hover:bg-white rounded-full shadow-md transition-colors duration-200"
-        on:click={handleFavorite}
-        aria-label={property.favorited ? 'Remove from favorites' : 'Add to favorites'}
+        onclick={handleFavorite}
+        aria-label={typedProperty.favorited ? 'Remove from favorites' : 'Add to favorites'}
       >
         <svg
-          class="w-5 h-5 {property.favorited ? 'text-red-500 fill-current' : 'text-gray-600'}"
+          class="w-5 h-5 {typedProperty.favorited ? 'text-red-500 fill-current' : 'text-gray-600'}"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -157,9 +185,9 @@ function getStatusText(status) {
     {/if}
     
     <!-- Days on Market -->
-    {#if property.daysOnMarket > 0}
+    {#if typedProperty.daysOnMarket > 0}
       <div class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded">
-        {property.daysOnMarket} days on market
+        {typedProperty.daysOnMarket} days on market
       </div>
     {/if}
   </div>
@@ -168,12 +196,12 @@ function getStatusText(status) {
   <div class="p-4">
     <!-- Price -->
     <div class="text-2xl font-bold text-gray-900 mb-2">
-      {formatCurrency(property.price)}
+      {formatCurrency(typedProperty.price)}
     </div>
     
     <!-- Address -->
     <div class="text-sm text-gray-600 mb-3 line-clamp-1">
-      {property.address}
+      {typedProperty.address}
     </div>
     
     <!-- Property Details -->
@@ -182,42 +210,42 @@ function getStatusText(status) {
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
           <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
         </svg>
-        <span>{property.bedrooms} bed</span>
+        <span>{typedProperty.bedrooms} bed</span>
       </div>
       <div class="flex items-center space-x-1">
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" clip-rule="evenodd"/>
         </svg>
-        <span>{property.bathrooms} bath</span>
+        <span>{typedProperty.bathrooms} bath</span>
       </div>
       <div class="flex items-center space-x-1">
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
         </svg>
-        <span>{formatSqft(property.squareFeet)} sqft</span>
+        <span>{formatSqft(typedProperty.squareFeet)} sqft</span>
       </div>
     </div>
     
     <!-- Features -->
-    {#if property.features && property.features.length > 0}
+    {#if typedProperty.features && typedProperty.features.length > 0}
       <div class="flex flex-wrap gap-1 mb-3">
-        {#each property.features.slice(0, 3) as feature}
+        {#each typedProperty.features.slice(0, 3) as feature}
           <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">
             {feature}
           </span>
         {/each}
-        {#if property.features.length > 3}
+        {#if typedProperty.features.length > 3}
           <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">
-            +{property.features.length - 3} more
+            +{typedProperty.features.length - 3} more
           </span>
         {/if}
       </div>
     {/if}
     
     <!-- Description -->
-    {#if property.description && size !== 'compact'}
+    {#if typedProperty.description && size !== 'compact'}
       <p class="text-sm text-gray-600 mb-4 line-clamp-2">
-        {property.description}
+        {typedProperty.description}
       </p>
     {/if}
     
@@ -226,13 +254,13 @@ function getStatusText(status) {
       <div class="flex space-x-2">
         <button
           class="flex-1 bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700 transition-colors duration-200"
-          on:click={handleScheduleShowing}
+          onclick={handleScheduleShowing}
         >
           Schedule Showing
         </button>
         <button
           class="flex-1 border border-primary-600 text-primary-600 px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-50 transition-colors duration-200"
-          on:click={handleContactAgent}
+          onclick={handleContactAgent}
         >
           Contact Agent
         </button>
@@ -245,6 +273,7 @@ function getStatusText(status) {
   .line-clamp-1 {
     display: -webkit-box;
     -webkit-line-clamp: 1;
+    line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
@@ -252,6 +281,7 @@ function getStatusText(status) {
   .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }

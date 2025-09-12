@@ -6,8 +6,8 @@
 /**
  * Lazy load a component with loading state
  * @param {Function} importFn - Function that returns a dynamic import
- * @param {Object} options - Loading options
- * @returns {Object} Component with loading state
+ * @param {{errorFallback?: any, timeout?: number}} options - Loading options
+ * @returns {{component: any, loading: boolean, error: any, load: () => Promise<any>, fallback: any, errorFallback: any}} Component with loading state
  */
 export function lazyLoad(importFn, options = {}) {
   const { errorFallback = null, timeout = 10000 } = options;
@@ -31,8 +31,8 @@ export function lazyLoad(importFn, options = {}) {
         const endTime = performance.now();
 
         // Record loading performance
-        if (typeof window !== 'undefined' && window.performanceMonitor) {
-          window.performanceMonitor.recordMetric('component_load', {
+        if (typeof window !== 'undefined' && /** @type {any} */ (window).performanceMonitor) {
+          /** @type {any} */ (window).performanceMonitor.recordMetric('component_load', {
             value: endTime - startTime,
             name: 'component_load_time',
           });
@@ -56,7 +56,7 @@ export function lazyLoad(importFn, options = {}) {
     },
 
     get fallback() {
-      return fallback;
+      return null;
     },
 
     get errorFallback() {
@@ -91,28 +91,30 @@ class LazyLoader {
     this.observer = new IntersectionObserver(this.handleIntersection.bind(this), this.options);
   }
 
-  handleIntersection(entries) {
+  handleIntersection(/** @type {IntersectionObserverEntry[]} */ entries) {
     for (const entry of entries) {
       if (entry.isIntersecting) {
         const element = entry.target;
-        const callback = this.elements.get(element);
+        if (element instanceof HTMLElement) {
+          const callback = this.elements.get(element);
 
-        if (callback) {
-          callback();
-          this.unobserve(element);
+          if (callback) {
+            callback();
+            this.unobserve(element);
+          }
         }
       }
     }
   }
 
-  observe(element, callback) {
+  observe(/** @type {HTMLElement} */ element, /** @type {() => void} */ callback) {
     if (!this.observer) return;
 
     this.elements.set(element, callback);
     this.observer.observe(element);
   }
 
-  unobserve(element) {
+  unobserve(/** @type {HTMLElement} */ element) {
     if (!this.observer) return;
 
     this.elements.delete(element);
@@ -134,7 +136,7 @@ export const lazyLoader = new LazyLoader();
  * Lazy load component when element comes into view
  * @param {HTMLElement} element - Element to observe
  * @param {Function} importFn - Function that returns a dynamic import
- * @param {Object} options - Loading options
+ * @param {{errorFallback?: any, timeout?: number}} options - Loading options
  */
 export function lazyLoadOnIntersection(element, importFn, options = {}) {
   if (!element) return;
@@ -142,8 +144,8 @@ export function lazyLoadOnIntersection(element, importFn, options = {}) {
   const { errorFallback = null, timeout = 10000 } = options;
 
   // Show fallback immediately
-  if (fallback && element) {
-    element.innerHTML = fallback;
+  if (element) {
+    element.innerHTML = '';
   }
 
   lazyLoader.observe(element, async () => {
@@ -160,8 +162,8 @@ export function lazyLoadOnIntersection(element, importFn, options = {}) {
       const endTime = performance.now();
 
       // Record loading performance
-      if (typeof window !== 'undefined' && window.performanceMonitor) {
-        window.performanceMonitor.recordMetric('lazy_component_load', {
+      if (typeof window !== 'undefined' && /** @type {any} */ (window).performanceMonitor) {
+        /** @type {any} */ (window).performanceMonitor.recordMetric('lazy_component_load', {
           value: endTime - startTime,
           name: 'lazy_component_load_time',
         });
@@ -207,6 +209,8 @@ export function preloadComponent(importFn) {
  */
 export const RealEstateLazyLoading = {
   // Real estate components will be added when needed
+  propertySearch: null,
+  contactForm: null,
 };
 
 /**
@@ -216,15 +220,19 @@ export function preloadCriticalComponents() {
   if (typeof window === 'undefined') return;
 
   // Preload components that are likely to be needed
-  preloadComponent(RealEstateLazyLoading.propertySearch);
-  preloadComponent(RealEstateLazyLoading.contactForm);
+  if (RealEstateLazyLoading.propertySearch) {
+    preloadComponent(RealEstateLazyLoading.propertySearch);
+  }
+  if (RealEstateLazyLoading.contactForm) {
+    preloadComponent(RealEstateLazyLoading.contactForm);
+  }
 }
 
 /**
  * Lazy load based on user interaction
  * @param {HTMLElement} trigger - Element that triggers loading
  * @param {Function} importFn - Function that returns a dynamic import
- * @param {Object} options - Loading options
+ * @param {{event?: string, errorFallback?: any, timeout?: number}} options - Loading options
  */
 export function lazyLoadOnInteraction(trigger, importFn, options = {}) {
   if (!trigger) return;
@@ -250,8 +258,8 @@ export function lazyLoadOnInteraction(trigger, importFn, options = {}) {
       const endTime = performance.now();
 
       // Record loading performance
-      if (typeof window !== 'undefined' && window.performanceMonitor) {
-        window.performanceMonitor.recordMetric('interaction_component_load', {
+      if (typeof window !== 'undefined' && /** @type {any} */ (window).performanceMonitor) {
+        /** @type {any} */ (window).performanceMonitor.recordMetric('interaction_component_load', {
           value: endTime - startTime,
           name: 'interaction_component_load_time',
         });

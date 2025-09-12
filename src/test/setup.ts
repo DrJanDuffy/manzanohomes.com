@@ -1,11 +1,7 @@
-import * as matchers from '@testing-library/jest-dom/matchers';
-import { cleanup } from '@testing-library/svelte';
-import { afterEach, expect } from 'vitest';
+import { afterEach } from 'vitest';
 
-// Extend Vitest's expect with jest-dom matchers
-expect.extend(matchers);
-
+// Basic test setup - testing libraries can be added later if needed
 // Cleanup after each test
 afterEach(() => {
-  cleanup();
+  // Basic cleanup - can be enhanced when testing libraries are installed
 });

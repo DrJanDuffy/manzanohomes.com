@@ -136,8 +136,8 @@ export const ICON_COLORS = {
  * @returns {string} Combined CSS classes
  */
 export function getIconClasses(size = 'MD', color = 'GRAY') {
-  const sizeClass = ICON_SIZES[size] || ICON_SIZES.MD;
-  const colorClass = ICON_COLORS[color] || ICON_COLORS.GRAY;
+  const sizeClass = ICON_SIZES[/** @type {keyof typeof ICON_SIZES} */ (size)] || ICON_SIZES.MD;
+  const colorClass = ICON_COLORS[/** @type {keyof typeof ICON_COLORS} */ (color)] || ICON_COLORS.GRAY;
   return `${sizeClass} ${colorClass}`;
 }
 
@@ -147,7 +147,7 @@ export function getIconClasses(size = 'MD', color = 'GRAY') {
  * @returns {string} Icon name
  */
 export function getPropertyFeatureIcon(feature) {
-  const featureMap = {
+  const featureMap = /** @type {Record<string, string>} */ ({
     bedrooms: REAL_ESTATE_ICONS.BEDROOM,
     bathrooms: REAL_ESTATE_ICONS.BATHROOM,
     square_feet: REAL_ESTATE_ICONS.SQUARE_FOOT,
@@ -156,7 +156,7 @@ export function getPropertyFeatureIcon(feature) {
     garden: REAL_ESTATE_ICONS.GARDEN,
     fireplace: REAL_ESTATE_ICONS.FIREPLACE,
     deck: REAL_ESTATE_ICONS.DECK,
-  };
+  });
 
   return featureMap[feature] || REAL_ESTATE_ICONS.HOUSE;
 }
@@ -167,13 +167,13 @@ export function getPropertyFeatureIcon(feature) {
  * @returns {string} Icon name
  */
 export function getPropertyTypeIcon(type) {
-  const typeMap = {
+  const typeMap = /** @type {Record<string, string>} */ ({
     house: REAL_ESTATE_ICONS.HOUSE,
     condo: REAL_ESTATE_ICONS.CONDO,
     townhouse: REAL_ESTATE_ICONS.TOWNHOUSE,
     apartment: REAL_ESTATE_ICONS.APARTMENT,
     land: REAL_ESTATE_ICONS.LAND,
-  };
+  });
 
   return typeMap[type?.toLowerCase()] || REAL_ESTATE_ICONS.HOUSE;
 }
@@ -184,7 +184,7 @@ export function getPropertyTypeIcon(type) {
  * @returns {string} Icon name
  */
 export function getAmenityIcon(amenity) {
-  const amenityMap = {
+  const amenityMap = /** @type {Record<string, string>} */ ({
     school: REAL_ESTATE_ICONS.SCHOOL,
     hospital: REAL_ESTATE_ICONS.HOSPITAL,
     shopping: REAL_ESTATE_ICONS.SHOPPING,
@@ -192,7 +192,7 @@ export function getAmenityIcon(amenity) {
     park: REAL_ESTATE_ICONS.PARK,
     beach: REAL_ESTATE_ICONS.BEACH,
     mountain: REAL_ESTATE_ICONS.MOUNTAIN,
-  };
+  });
 
   return amenityMap[amenity?.toLowerCase()] || REAL_ESTATE_ICONS.LOCATION;
 }
@@ -203,14 +203,14 @@ export function getAmenityIcon(amenity) {
  * @returns {string} Icon name
  */
 export function getSocialIcon(platform) {
-  const socialMap = {
+  const socialMap = /** @type {Record<string, string>} */ ({
     facebook: REAL_ESTATE_ICONS.FACEBOOK,
     twitter: REAL_ESTATE_ICONS.TWITTER,
     instagram: REAL_ESTATE_ICONS.INSTAGRAM,
     linkedin: REAL_ESTATE_ICONS.LINKEDIN,
     youtube: REAL_ESTATE_ICONS.YOUTUBE,
     whatsapp: REAL_ESTATE_ICONS.WHATSAPP,
-  };
+  });
 
   return socialMap[platform?.toLowerCase()] || REAL_ESTATE_ICONS.SHARE;
 }
@@ -221,14 +221,14 @@ export function getSocialIcon(platform) {
  * @returns {string} Icon name
  */
 export function getStatusIcon(status) {
-  const statusMap = {
+  const statusMap = /** @type {Record<string, string>} */ ({
     success: REAL_ESTATE_ICONS.SUCCESS,
     error: REAL_ESTATE_ICONS.ERROR,
     warning: REAL_ESTATE_ICONS.WARNING,
     info: REAL_ESTATE_ICONS.INFO,
     check: REAL_ESTATE_ICONS.CHECK,
     close: REAL_ESTATE_ICONS.CLOSE,
-  };
+  });
 
   return statusMap[status?.toLowerCase()] || REAL_ESTATE_ICONS.INFO;
 }

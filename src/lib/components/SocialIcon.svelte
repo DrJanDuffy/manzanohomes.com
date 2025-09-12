@@ -18,33 +18,34 @@ const {
   platform,
   size,
   color,
-  className: _className = '',
+  className = '',
   title,
-  href: _href,
-  target: _target = '_blank',
+  href,
+  target = '_blank',
+  ...restProps
 } = $props();
 
 // Get icon name
-const _iconName = getSocialIcon(platform);
+const iconName = getSocialIcon(platform);
 
 // Use provided values or defaults
-const _iconSize = size || ICON_CONFIGS.SOCIAL.size;
+const iconSize = size || ICON_CONFIGS.SOCIAL.size;
 const iconColor = color || ICON_CONFIGS.SOCIAL.color;
 
 // Generate title if not provided
-const _iconTitle = title || `Follow us on ${platform}`;
+const iconTitle = title || `Follow us on ${platform}`;
 
 // Platform-specific colors
-const platformColors = {
+const platformColors = /** @type {Record<string, string>} */ ({
   facebook: 'text-blue-600',
   twitter: 'text-blue-400',
   instagram: 'text-pink-600',
   linkedin: 'text-blue-700',
   youtube: 'text-red-600',
   whatsapp: 'text-green-600',
-};
+});
 
-const _platformColor = platformColors[platform?.toLowerCase()] || iconColor;
+const platformColor = platformColors[platform?.toLowerCase()] || iconColor;
 </script>
 
 {#if href}

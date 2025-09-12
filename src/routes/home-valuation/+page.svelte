@@ -8,6 +8,7 @@ const totalSteps = 4;
 // Step 1 - Property Address
 let streetAddress = '';
 let unitNumber = '';
+/** @type {string[]} */
 let addressSuggestions = [];
 let _showSuggestions = false;
 
@@ -31,14 +32,17 @@ let contactPhone = '';
 let sellingTimeframe = '';
 
 // Results
+/** @type {number | null} */
 let estimatedValue = null;
 let _valueRange = { min: 0, max: 0 };
+/** @type {Array<{price: number, address: string, beds: number, baths: number, sqft: number, yearBuilt: number, daysOnMarket: number}>} */
 let _comparableHomes = [];
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
 let formSubmitted = false;
 let _isCalculating = false;
 
 // Form validation
+/** @type {Record<string, string>} */
 let errors = {};
 
 // Manzano area address suggestions
@@ -98,13 +102,13 @@ function handleAddressInput() {
 }
 
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-function selectAddress(address) {
+function selectAddress(/** @type {string} */ address) {
   streetAddress = address;
   _showSuggestions = false;
 }
 
 // Form validation
-function validateStep(step) {
+function validateStep(/** @type {number} */ step) {
   errors = {};
 
   switch (step) {
@@ -184,7 +188,7 @@ async function submitForm() {
 
 // Format currency
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-function formatCurrency(amount) {
+function formatCurrency(/** @type {number} */ amount) {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -285,7 +289,7 @@ onMount(() => {
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500 {errors.streetAddress ? 'border-red-500' : ''}"
                     required
                   />
-                  {#if showSuggestions}
+                  {#if _showSuggestions}
                     <div class="absolute z-10 w-full bg-white border border-gray-300 rounded-md shadow-lg mt-1">
                       {#each addressSuggestions as suggestion}
                         <button
@@ -415,9 +419,9 @@ onMount(() => {
             
             <div class="space-y-8">
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-4">
+                <div class="block text-sm font-medium text-gray-700 mb-4">
                   Overall Condition
-                </label>
+                </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {#each ['excellent', 'good', 'fair'] as condition}
                     <label class="flex items-center p-4 border rounded-lg cursor-pointer hover:bg-gray-50 {overallCondition === condition ? 'border-primary-500 bg-primary-50' : 'border-gray-300'}">
@@ -441,11 +445,11 @@ onMount(() => {
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-4">
+                <div class="block text-sm font-medium text-gray-700 mb-4">
                   Recent Renovations (select all that apply)
-                </label>
+                </div>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                  {#each renovationOptions as option}
+                  {#each _renovationOptions as option}
                     <label class="flex items-center">
                       <input
                         type="checkbox"
@@ -460,11 +464,11 @@ onMount(() => {
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-4">
+                <div class="block text-sm font-medium text-gray-700 mb-4">
                   Special Features (select all that apply)
-                </label>
+                </div>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                  {#each specialFeatureOptions as option}
+                  {#each _specialFeatureOptions as option}
                     <label class="flex items-center">
                       <input
                         type="checkbox"
@@ -592,7 +596,7 @@ onMount(() => {
       <!-- Results Display -->
       {#if formSubmitted}
         <div class="bg-white rounded-lg shadow-lg p-8">
-          {#if isCalculating}
+          {#if _isCalculating}
             <div class="text-center py-12">
               <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
               <h3 class="text-xl font-semibold text-gray-900 mb-2">Calculating Your Home Value</h3>
@@ -603,10 +607,10 @@ onMount(() => {
             <div class="text-center mb-8">
               <h2 class="text-3xl font-bold text-gray-900 mb-4">Your Estimated Home Value</h2>
               <div class="text-5xl font-bold text-primary-600 mb-2">
-                {formatCurrency(estimatedValue)}
+                {formatCurrency(estimatedValue || 0)}
               </div>
               <div class="text-lg text-gray-600">
-                Range: {formatCurrency(valueRange.min)} - {formatCurrency(valueRange.max)}
+                Range: {formatCurrency(_valueRange.min)} - {formatCurrency(_valueRange.max)}
               </div>
             </div>
 
@@ -624,7 +628,7 @@ onMount(() => {
             <div class="mb-8">
               <h3 class="text-2xl font-bold text-gray-900 mb-6">Recent Sales in Manzano</h3>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {#each comparableHomes as home}
+                {#each _comparableHomes as home}
                   <div class="border border-gray-200 rounded-lg p-4">
                     <div class="font-semibold text-lg text-gray-900">{formatCurrency(home.price)}</div>
                     <div class="text-sm text-gray-600 mb-2">{home.address}</div>

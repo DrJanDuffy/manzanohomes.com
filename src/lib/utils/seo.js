@@ -5,7 +5,7 @@
 
 /**
  * Generate meta tags for real estate pages
- * @param {Object} options - SEO options
+ * @param {{title?: string, description?: string, keywords?: string, url?: string, image?: string, type?: string, siteName?: string, locale?: string, canonical?: string, noindex?: boolean, nofollow?: boolean}} options - SEO options
  * @returns {Object} Meta tags object
  */
 export function generateMetaTags(options = {}) {
@@ -59,7 +59,7 @@ export function generateMetaTags(options = {}) {
 
 /**
  * Generate structured data for real estate
- * @param {Object} options - Structured data options
+ * @param {{type?: string, name?: string, description?: string, url?: string, logo?: string, image?: string, telephone?: string, email?: string, address?: any, geo?: any, openingHours?: string[], sameAs?: string[]}} options - Structured data options
  * @returns {Object} JSON-LD structured data
  */
 export function generateRealEstateStructuredData(options = {}) {
@@ -126,7 +126,7 @@ export function generateRealEstateStructuredData(options = {}) {
 
 /**
  * Generate structured data for property listings
- * @param {Object} property - Property data
+ * @param {{id?: string, name?: string, description?: string, price?: number, currency?: string, address?: any, bedrooms?: number, bathrooms?: number, squareFeet?: number, yearBuilt?: number, images?: string[], amenities?: string[], agent?: any}} property - Property data
  * @returns {Object} JSON-LD structured data
  */
 export function generatePropertyStructuredData(property) {
@@ -194,7 +194,7 @@ export function generatePropertyStructuredData(property) {
 
 /**
  * Generate structured data for local business
- * @param {Object} options - Local business options
+ * @param {{name?: string, description?: string, url?: string, telephone?: string, email?: string, address?: any, geo?: any, openingHours?: string[], priceRange?: string, paymentAccepted?: string[], currenciesAccepted?: string}} options - Local business options
  * @returns {Object} JSON-LD structured data
  */
 export function generateLocalBusinessStructuredData(options = {}) {
@@ -254,7 +254,7 @@ export function generateLocalBusinessStructuredData(options = {}) {
 
 /**
  * Generate breadcrumb structured data
- * @param {Array} breadcrumbs - Breadcrumb items
+ * @param {Array<any>} breadcrumbs - Breadcrumb items
  * @returns {Object} JSON-LD structured data
  */
 export function generateBreadcrumbStructuredData(breadcrumbs) {
@@ -272,7 +272,7 @@ export function generateBreadcrumbStructuredData(breadcrumbs) {
 
 /**
  * Generate FAQ structured data
- * @param {Array} faqs - FAQ items
+ * @param {Array<any>} faqs - FAQ items
  * @returns {Object} JSON-LD structured data
  */
 export function generateFAQStructuredData(faqs) {
@@ -292,7 +292,7 @@ export function generateFAQStructuredData(faqs) {
 
 /**
  * Generate review structured data
- * @param {Object} review - Review data
+ * @param {{author?: string, rating?: number, reviewBody?: string, datePublished?: string, itemReviewed?: string}} review - Review data
  * @returns {Object} JSON-LD structured data
  */
 export function generateReviewStructuredData(review) {
@@ -368,16 +368,16 @@ export const SEO_CONFIGS = {
 /**
  * Generate page-specific SEO data
  * @param {string} pageType - Type of page
- * @param {Object} customData - Custom SEO data
+ * @param {{path?: string, image?: string, title?: string, description?: string, keywords?: string, url?: string, type?: string, noindex?: boolean, nofollow?: boolean, breadcrumbs?: Array<any>, faqs?: Array<any>, property?: any}} customData - Custom SEO data
  * @returns {Object} Complete SEO data
  */
 export function generatePageSEO(pageType, customData = {}) {
-  const baseConfig = SEO_CONFIGS[pageType] || SEO_CONFIGS.HOMEPAGE;
+  const baseConfig = SEO_CONFIGS[/** @type {keyof typeof SEO_CONFIGS} */ (pageType)] || SEO_CONFIGS.HOMEPAGE;
 
   return {
     ...baseConfig,
     ...customData,
-    url: `https://manzanohomes.com${customData.path || ''}`,
+    url: customData.url || `https://manzanohomes.com${customData.path || ''}`,
     image: customData.image || 'https://manzanohomes.com/og-image.jpg',
     canonical: `https://manzanohomes.com${customData.path || ''}`,
   };

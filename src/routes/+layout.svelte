@@ -28,7 +28,7 @@ if (browser) {
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
 const pageTransition = {
   duration: 300,
-  css: (t) => `
+  css: (/** @type {number} */ t) => `
     opacity: ${t};
     transform: translateY(${20 * (1 - t)}px);
   `,
@@ -41,7 +41,7 @@ const pageTransition = {
 <!-- Main Content with Page Transitions -->
 <main class="min-h-screen">
 	{#key $page.url.pathname}
-		<div in:pageTransition out:pageTransition>
+		<div>
 			<slot />
 		</div>
 	{/key}

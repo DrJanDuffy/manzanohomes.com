@@ -5,7 +5,8 @@
   },
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "npm run sitemap:generate && vite build",
+    "postbuild": "npm run sitemap:validate",
     "package": "svelte-kit package",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./jsconfig.json",
@@ -18,6 +19,11 @@
     "check-all:fix": "biome check --write .",
     "test": "vitest",
     "test:ui": "vitest --ui",
+    "test:seo": "node scripts/test-structured-data.js",
+    "validate:schemas": "tsc --noEmit src/lib/seo/*.ts",
+    "sitemap:generate": "node scripts/generate-sitemap.cjs",
+    "sitemap:validate": "node scripts/validate-sitemap.js",
+    "sitemap:submit": "node scripts/submit-sitemap.js",
     "test:coverage": "vitest --coverage",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
@@ -57,6 +63,7 @@
     "rollup-plugin-visualizer": "^5.9.2",
     "svelte": "^5.0.0",
     "svelte-check": "^3.6.0",
+    "svelte-sitemap": "^2.7.1",
     "tailwindcss": "^3.3.6",
     "typescript": "^5.3.3",
     "vite": "^6.0.0",
@@ -70,10 +77,15 @@
     "cookie": "^0.6.0",
     "date-fns": "^3.0.0",
     "geolib": "^3.3.4",
+    "schema-dts": "^1.1.5",
     "sharp": "^0.33.0",
-    "web-vitals": "^3.5.0"
+    "web-vitals": "^3.5.0",
+    "zod": "^4.1.8"
   },
   "lint-staged": {
-    "*.{js,ts,svelte}": ["biome check --write", "biome format --write"]
+    "*.{js,ts,svelte}": [
+      "biome check --write",
+      "biome format --write"
+    ]
   }
 }

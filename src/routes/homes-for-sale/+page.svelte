@@ -1,5 +1,7 @@
 <script>
 import { onMount } from 'svelte';
+import SEO from '$lib/components/SEO.svelte';
+import { ManzanoSchemas } from '$lib/seo/schemas';
 
 // Fixed: All form variables now use 'let' instead of 'const' for proper binding
 // This ensures Svelte bind:value works correctly and prevents deployment failures
@@ -238,7 +240,7 @@ function handleShowingRequest() {
 
 // Format price for display
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-function formatPrice(price) {
+function formatPrice(/** @type {number} */ price) {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -257,13 +259,24 @@ onMount(() => {
 $: {
   filterProperties();
 }
+
+// Generate schemas for this page
+const schemas = new ManzanoSchemas();
+const pageSchemas = [
+  schemas.website(),
+  schemas.breadcrumbs([
+    { name: 'Home', url: '/' },
+    { name: 'Homes for Sale', url: '/homes-for-sale' }
+  ])
+];
 </script>
 
-<svelte:head>
-  <title>Homes for Sale in Manzano, Las Vegas | 89121 Real Estate</title>
-  <meta name="description" content="Browse homes for sale in the Manzano neighborhood of Las Vegas (89121). Find your perfect home with our comprehensive search and RealScout integration.">
-  <meta name="keywords" content="homes for sale Manzano, Las Vegas real estate 89121, Manzano Peak Ave homes, Southeast Las Vegas homes, real estate listings">
-</svelte:head>
+<SEO
+  title="Homes for Sale in Manzano, Las Vegas | 89121 Real Estate"
+  description="Browse homes for sale in the Manzano neighborhood of Las Vegas (89121). Find your perfect home with our comprehensive search and RealScout integration."
+  canonical="https://www.manzanohomes.com/homes-for-sale"
+  schemas={pageSchemas}
+/>
 
 <main class="min-h-screen bg-gray-50" id="main-content">
   <!-- Page Header -->

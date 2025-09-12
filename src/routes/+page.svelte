@@ -15,11 +15,9 @@ onMount(() => {
 </script>
 
 <SEO 
-	pageType="HOMEPAGE"
 	title="Manzano Homes - Las Vegas Real Estate | 3693 Manzano Peak Ave"
 	description="Discover your dream home in the Manzano neighborhood of Las Vegas. Prime location near 3693 Manzano Peak Ave with excellent schools, walkability, and modern amenities."
-	keywords="Manzano Las Vegas, Las Vegas real estate, homes for sale Las Vegas, Manzano Peak Ave, Las Vegas neighborhoods, real estate agent Las Vegas"
-	url="https://manzanohomes.com"
+	canonical="https://manzanohomes.com"
 	image="https://manzanohomes.com/og-image.jpg"
 />
 

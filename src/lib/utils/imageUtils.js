@@ -5,7 +5,7 @@
 
 /**
  * Generate optimized image sizes for different breakpoints
- * @param {string} baseWidth - Base width of the image
+ * @param {number} baseWidth - Base width of the image
  * @returns {string} Sizes attribute for responsive images
  */
 export function generateImageSizes(baseWidth = 1280) {
@@ -74,7 +74,7 @@ export const IMAGE_OPTIMIZATION = {
 
 /**
  * Generate query string for enhanced image optimization
- * @param {Object} options - Optimization options
+ * @param {{quality?: number, format?: string, blur?: number, w?: number}} options - Optimization options
  * @returns {string} Query string for enhanced images
  */
 export function generateImageQuery(options = {}) {

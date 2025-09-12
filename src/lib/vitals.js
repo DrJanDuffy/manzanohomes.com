@@ -5,6 +5,7 @@ const vitalsUrl = 'https://vitals.vercel-analytics.com/v1/vitals';
 function getConnectionSpeed() {
   return 'connection' in navigator &&
     navigator.connection &&
+    typeof navigator.connection === 'object' &&
     'effectiveType' in navigator.connection
     ? // @ts-ignore
       navigator.connection.effectiveType
@@ -21,14 +22,17 @@ function sendToAnalytics(metric, options) {
     options.path
   );
 
+  // Ensure metric.value is properly typed
+  const metricValue = typeof metric.value === 'number' ? metric.value : 0;
+
   const body = {
-    dsn: options.analyticsId,
-    id: metric.id,
-    page,
-    href: location.href,
-    event_name: metric.name,
-    value: metric.value.toString(),
-    speed: getConnectionSpeed(),
+    dsn: String(options.analyticsId),
+    id: String(metric.id),
+    page: String(page),
+    href: String(location.href),
+    event_name: String(metric.name),
+    value: String(metricValue),
+    speed: String(getConnectionSpeed()),
   };
 
   if (options.debug) {

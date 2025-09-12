@@ -15,7 +15,7 @@ import { ICON_CONFIGS, getIconClasses } from '$lib/utils/icons.js';
 
 /** @type {IconProps} */
 const {
-  name: _name,
+  name,
   size = 'MD',
   color = 'GRAY',
   className = '',
@@ -23,13 +23,14 @@ const {
   ariaLabel,
   spin = false,
   pulse = false,
+  ...restProps
 } = $props();
 
 // Get icon classes
 const iconClasses = getIconClasses(size, color);
 
 // Combine all classes
-const _allClasses = [
+const allClasses = [
   iconClasses,
   className,
   spin ? 'animate-spin' : '',
@@ -39,7 +40,7 @@ const _allClasses = [
   .join(' ');
 
 // Accessibility attributes
-const _accessibilityProps = {
+const accessibilityProps = {
   ...(title && { title }),
   ...(ariaLabel && { 'aria-label': ariaLabel }),
   ...(title && !ariaLabel && { 'aria-label': title }),

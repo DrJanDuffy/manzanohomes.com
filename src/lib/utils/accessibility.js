@@ -7,6 +7,12 @@
  * Focus management utilities
  */
 export class FocusManager {
+  /** @type {HTMLElement[]} */
+  focusHistory;
+  
+  /** @type {Array<{container: HTMLElement, handleKeyDown: (e: KeyboardEvent) => void}>} */
+  trapStack;
+
   constructor() {
     this.focusHistory = [];
     this.trapStack = [];
@@ -17,7 +23,7 @@ export class FocusManager {
    */
   saveFocus() {
     const activeElement = document.activeElement;
-    if (activeElement && activeElement !== document.body) {
+    if (activeElement && activeElement !== document.body && activeElement instanceof HTMLElement) {
       this.focusHistory.push(activeElement);
     }
   }
@@ -90,7 +96,7 @@ export class FocusManager {
     const firstElement = focusable[0];
     const lastElement = focusable[focusable.length - 1];
 
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (/** @type {KeyboardEvent} */ e) => {
       if (e.key === 'Tab') {
         if (e.shiftKey) {
           if (document.activeElement === firstElement) {
@@ -163,7 +169,9 @@ export const ARIA = {
     descElement.id = id;
     descElement.className = 'sr-only';
     descElement.textContent = description;
-    element.parentNode.insertBefore(descElement, element.nextSibling);
+    if (element.parentNode) {
+      element.parentNode.insertBefore(descElement, element.nextSibling);
+    }
     element.setAttribute('aria-describedby', id);
   },
 
@@ -266,7 +274,7 @@ export const Keyboard = {
   /**
    * Handle arrow keys
    * @param {KeyboardEvent} event - Keyboard event
-   * @param {Object} callbacks - Callbacks for each direction
+   * @param {{up?: () => void, down?: () => void, left?: () => void, right?: () => void}} callbacks - Callbacks for each direction
    */
   handleArrows(event, callbacks) {
     switch (event.key) {
@@ -307,7 +315,9 @@ export const FormAccessibility = {
     errorElement.textContent = message;
     errorElement.setAttribute('role', 'alert');
 
-    field.parentNode.insertBefore(errorElement, field.nextSibling);
+    if (field.parentNode) {
+      field.parentNode.insertBefore(errorElement, field.nextSibling);
+    }
     field.setAttribute('aria-invalid', 'true');
     field.setAttribute('aria-describedby', errorId);
   },
@@ -330,7 +340,7 @@ export const FormAccessibility = {
 
   /**
    * Validate form field
-   * @param {HTMLElement} field - Form field element
+   * @param {HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement} field - Form field element
    * @param {Function} validator - Validation function
    * @returns {boolean} Whether field is valid
    */
@@ -412,7 +422,7 @@ export function initAccessibility() {
     // Handle skip links
     if (event.key === 'Tab' && event.shiftKey === false) {
       const skipLink = document.querySelector('a[href="#main-content"]');
-      if (skipLink && document.activeElement === skipLink) {
+      if (skipLink && document.activeElement === skipLink && skipLink instanceof HTMLAnchorElement) {
         skipLink.click();
       }
     }

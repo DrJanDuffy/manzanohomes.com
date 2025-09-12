@@ -15,9 +15,9 @@ let formData = {
   budget: '',
 };
 
-let errors = {};
-let _isSubmitting = false;
-let _submitted = false;
+let errors = /** @type {Record<string, string>} */ ({});
+let isSubmitting = false;
+let submitted = false;
 
 // Form validation
 function validateForm() {
@@ -57,7 +57,7 @@ async function handleSubmit() {
     return;
   }
 
-  _isSubmitting = true;
+  isSubmitting = true;
 
   try {
     // Simulate API call
@@ -78,25 +78,27 @@ async function handleSubmit() {
       budget: '',
     };
 
-    _submitted = true;
+    submitted = true;
 
     // Hide success message after 5 seconds
     setTimeout(() => {
-      _submitted = false;
+      submitted = false;
     }, 5000);
   } catch (error) {
     console.error('Form submission error:', error);
     errors.submit = 'There was an error submitting your message. Please try again.';
   } finally {
-    _isSubmitting = false;
+    isSubmitting = false;
   }
 }
 
 // Clear error when user starts typing
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-function clearError(field) {
+function clearError(/** @type {string} */ field) {
   if (errors[field]) {
-    errors = { ...errors, [field]: undefined };
+    const newErrors = { ...errors };
+    delete newErrors[field];
+    errors = newErrors;
   }
 }
 </script>
