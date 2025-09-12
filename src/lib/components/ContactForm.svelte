@@ -13,6 +13,7 @@ let formData = {
   propertyInterest: '',
   timeframe: '',
   budget: '',
+  preferredContact: 'email', // email, phone, sms
 };
 
 let errors = /** @type {Record<string, string>} */ ({});
@@ -76,6 +77,7 @@ async function handleSubmit() {
       propertyInterest: '',
       timeframe: '',
       budget: '',
+      preferredContact: 'email',
     };
 
     _submitted = true;
@@ -258,6 +260,69 @@ function clearError(/** @type {string} */ field) {
           <option value="not-sure">Not sure yet</option>
         </select>
       </div>
+
+      <!-- Preferred Contact Method -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-3">
+          How would you like us to contact you? *
+        </label>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 {formData.preferredContact === 'email' ? 'border-primary-500 bg-primary-50' : ''}">
+            <input
+              type="radio"
+              bind:group={formData.preferredContact}
+              value="email"
+              class="mr-3 text-primary-600 focus:ring-primary-500"
+            />
+            <div>
+              <div class="font-medium text-gray-900">Email</div>
+              <div class="text-sm text-gray-500">Detailed responses</div>
+            </div>
+          </label>
+          
+          <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 {formData.preferredContact === 'phone' ? 'border-primary-500 bg-primary-50' : ''}">
+            <input
+              type="radio"
+              bind:group={formData.preferredContact}
+              value="phone"
+              class="mr-3 text-primary-600 focus:ring-primary-500"
+            />
+            <div>
+              <div class="font-medium text-gray-900">Phone Call</div>
+              <div class="text-sm text-gray-500">Personal consultation</div>
+            </div>
+          </label>
+          
+          <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 {formData.preferredContact === 'sms' ? 'border-primary-500 bg-primary-50' : ''}">
+            <input
+              type="radio"
+              bind:group={formData.preferredContact}
+              value="sms"
+              class="mr-3 text-primary-600 focus:ring-primary-500"
+            />
+            <div>
+              <div class="font-medium text-gray-900">Text Message</div>
+              <div class="text-sm text-gray-500">Quick updates</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- SMS Quick Contact -->
+      {#if formData.preferredContact === 'sms'}
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+          <div class="flex items-center">
+            <svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+            </svg>
+            <div>
+              <p class="text-sm font-medium text-blue-900">Prefer texting?</p>
+              <p class="text-sm text-blue-700">You can also text us directly at <a href="sms:+17025001942" class="font-medium underline">(702) 500-1942</a></p>
+            </div>
+          </div>
+        </div>
+      {/if}
 
       <!-- Message -->
       <div>
