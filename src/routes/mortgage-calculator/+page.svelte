@@ -1,109 +1,19 @@
 <script>
-import { onMount } from 'svelte';
+let homePrice = $state(500000);
+let downPayment = $state(100000);
+let interestRate = $state(6.5);
+let loanTerm = $state(30);
 
-let homePrice = 500000;
-let downPayment = 100000;
-let interestRate = 6.5;
-let loanTerm = 30;
-let propertyTax = 0.8; // Annual property tax rate
-let insurance = 1500; // Annual homeowners insurance
-let pmi = 0; // PMI rate
-let hoa = 0; // Monthly HOA fees
-let showAdvanced = false;
-let showResults = false;
-
-// Reactive calculations
-$: loanAmount = homePrice - downPayment;
-$: monthlyRate = interestRate / 100 / 12;
-$: numPayments = loanTerm * 12;
-$: monthlyPayment =
+let loanAmount = $derived(homePrice - downPayment);
+let monthlyRate = $derived(interestRate / 100 / 12);
+let numPayments = $derived(loanTerm * 12);
+let monthlyPayment = $derived(
   (loanAmount * (monthlyRate * (1 + monthlyRate) ** numPayments)) /
-  ((1 + monthlyRate) ** numPayments - 1);
-$: totalPaid = monthlyPayment * numPayments;
-$: totalInterest = totalPaid - loanAmount;
-$: downPaymentPercent = ((downPayment / homePrice) * 100).toFixed(1);
-
-// Advanced calculations
-$: monthlyPropertyTax = (homePrice * propertyTax / 100) / 12;
-$: monthlyInsurance = insurance / 12;
-$: monthlyPMI = (pmi > 0 && downPaymentPercent < 20) ? (loanAmount * pmi / 100) / 12 : 0;
-$: totalMonthlyPayment = monthlyPayment + monthlyPropertyTax + monthlyInsurance + monthlyPMI + hoa;
-
-// Affordability calculations
-$: recommendedIncome = totalMonthlyPayment * 12 / 0.28; // 28% rule
-$: maxAffordableHome = recommendedIncome * 0.28 * 12 / ((monthlyRate * (1 + monthlyRate) ** numPayments) / ((1 + monthlyRate) ** numPayments - 1) + monthlyPropertyTax + monthlyInsurance + hoa);
-
-// Interactive features
-let animatedValues = {
-  monthlyPayment: 0,
-  totalInterest: 0,
-  totalPaid: 0
-};
-
-onMount(() => {
-  // Animate initial values
-  setTimeout(() => {
-    animateValue('monthlyPayment', monthlyPayment);
-    animateValue('totalInterest', totalInterest);
-    animateValue('totalPaid', totalPaid);
-  }, 500);
-});
-
-function animateValue(key, targetValue) {
-  const startValue = 0;
-  const duration = 2000;
-  const startTime = Date.now();
-  
-  function updateValue() {
-    const elapsed = Date.now() - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const currentValue = startValue + (targetValue - startValue) * progress;
-    
-    animatedValues[key] = Math.round(currentValue);
-    
-    if (progress < 1) {
-      requestAnimationFrame(updateValue);
-    }
-  }
-  
-  updateValue();
-}
-
-// Preset scenarios
-const scenarios = [
-  { name: 'Conservative', price: 400000, down: 80000, rate: 6.0, term: 30 },
-  { name: 'Moderate', price: 500000, down: 100000, rate: 6.5, term: 30 },
-  { name: 'Aggressive', price: 600000, down: 120000, rate: 7.0, term: 30 },
-  { name: 'First-Time Buyer', price: 350000, down: 35000, rate: 6.8, term: 30 }
-];
-
-function applyScenario(scenario) {
-  homePrice = scenario.price;
-  downPayment = scenario.down;
-  interestRate = scenario.rate;
-  loanTerm = scenario.term;
-  showResults = true;
-  
-  // Re-animate values
-  setTimeout(() => {
-    animateValue('monthlyPayment', monthlyPayment);
-    animateValue('totalInterest', totalInterest);
-    animateValue('totalPaid', totalPaid);
-  }, 100);
-}
-
-function toggleAdvanced() {
-  showAdvanced = !showAdvanced;
-}
-
-function formatCurrency(amount) {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0
-  }).format(amount);
-}
+  ((1 + monthlyRate) ** numPayments - 1)
+);
+let totalPaid = $derived(monthlyPayment * numPayments);
+let totalInterest = $derived(totalPaid - loanAmount);
+let downPaymentPercent = $derived(((downPayment / homePrice) * 100).toFixed(1));
 </script>
 
 <svelte:head>

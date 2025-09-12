@@ -1,31 +1,31 @@
 <script>
 import { onMount } from 'svelte';
 
-let _testResults = null;
-let _isLoading = false;
-const testPhone = '+17025001942';
+let testResults = $state(null);
+let isLoading = $state(false);
+let testPhone = $state('+17025001942');
 
 async function runAPITest() {
-  _isLoading = true;
-  _testResults = null;
+  isLoading = true;
+  testResults = null;
 
   try {
     const response = await fetch('/api/test/follow-up-boss');
     const data = await response.json();
-    _testResults = data;
+    testResults = data;
   } catch (error) {
-    _testResults = {
+    testResults = {
       success: false,
       error: error.message,
       message: 'Failed to connect to test endpoint',
     };
   } finally {
-    _isLoading = false;
+    isLoading = false;
   }
 }
 
 async function runCustomTest(testType) {
-  _isLoading = true;
+  isLoading = true;
 
   try {
     const response = await fetch('/api/test/follow-up-boss', {
@@ -40,15 +40,15 @@ async function runCustomTest(testType) {
     });
 
     const data = await response.json();
-    _testResults = data;
+    testResults = data;
   } catch (error) {
-    _testResults = {
+    testResults = {
       success: false,
       error: error.message,
       message: `Failed to run ${testType} test`,
     };
   } finally {
-    _isLoading = false;
+    isLoading = false;
   }
 }
 
