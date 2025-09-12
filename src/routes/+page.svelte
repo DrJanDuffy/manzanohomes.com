@@ -59,13 +59,14 @@ onMount(() => {
 			<source media="(min-width: 768px)" srcset="/hero-manzano.jpg" type="image/jpeg">
 			<img
 				src="/hero-manzano.jpg"
-				alt="Beautiful Manzano neighborhood in Las Vegas with modern homes and palm trees - Premier real estate community in Southeast Las Vegas"
+				alt="Manzano neighborhood Las Vegas real estate"
 				class="w-full h-full object-cover"
 				fetchpriority="high"
 				loading="eager"
 				width="1920"
 				height="1080"
 				decoding="async"
+				onerror="this.style.display='none'"
 			/>
 		</picture>
 	</div>
@@ -289,6 +290,20 @@ onMount(() => {
 		display: block;
 		width: 100%;
 		height: 100%;
+		overflow: hidden;
+	}
+	
+	.hero-gradient picture img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	
+	/* Hide alt text overflow */
+	.hero-gradient picture img[alt] {
+		text-indent: -9999px;
+		overflow: hidden;
 	}
 	
 	/* Responsive Image Handling */
