@@ -80,16 +80,31 @@
     <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZ9hiJ-Ek-_EeA.woff2" as="font" type="font/woff2" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
     
-    <!-- RealScout Widget Scripts -->
-    <script>
-      // RealScout configuration
-      window.RealScoutConfig = {
-        apiKey: '%VITE_REALSCOUT_API_KEY%',
-        environment: 'production',
-        debug: false
-      };
-    </script>
-    <script src="https://widgets.realscout.com/v3/widget.js" async defer crossorigin="anonymous"></script>
+  <!-- RealScout Widget Scripts -->
+  <script>
+    // RealScout configuration
+    window.RealScoutConfig = {
+      apiKey: '%VITE_REALSCOUT_API_KEY%',
+      environment: 'production',
+      debug: false
+    };
+  </script>
+  <script src="https://widgets.realscout.com/v3/widget.js" async defer crossorigin="anonymous"></script>
+  
+  <!-- RealScout Home Value Widget -->
+  <script src="https://em.realscout.com/widgets/realscout-web-components.umd.js" type="module"></script>
+  <style>
+    realscout-home-value {
+      --rs-hvw-background-color: #ffffff;
+      --rs-hvw-title-color: #000000;
+      --rs-hvw-subtitle-color: rgba(28, 30, 38, 0.5);
+      --rs-hvw-primary-button-text-color: #ffffff;
+      --rs-hvw-primary-button-color: rgb(35, 93, 137);
+      --rs-hvw-secondary-button-text-color: rgb(35, 93, 137);
+      --rs-hvw-secondary-button-color: #ffffff;
+      --rs-hvw-widget-width: auto;
+    }
+  </style>
     
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA_TRACKING_ID%"></script>
