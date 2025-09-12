@@ -35,8 +35,6 @@ const config = {
     },
     // Optimize build output
     outDir: 'build',
-    // Enable source maps for debugging in production
-    sourcemap: true,
   },
 };
 
