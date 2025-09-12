@@ -1,8 +1,8 @@
 <script>
-const homePrice = $state(500000);
-const downPayment = $state(100000);
-const interestRate = $state(6.5);
-const loanTerm = $state(30);
+let homePrice = $state(500000);
+let downPayment = $state(100000);
+let interestRate = $state(6.5);
+let loanTerm = $state(30);
 
 const loanAmount = $derived(homePrice - downPayment);
 const monthlyRate = $derived(interestRate / 100 / 12);
