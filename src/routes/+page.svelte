@@ -157,7 +157,7 @@ onMount(() => {
 />
 
 <!-- Hero Section -->
-	<section id="main-content" class="hero-gradient relative overflow-hidden" role="banner" aria-label="Welcome to Manzano Homes">
+	<section id="main-content" class="hero-gradient relative overflow-hidden pt-24 md:pt-32" role="banner" aria-label="Welcome to Manzano Homes">
 	<!-- Background Image Overlay -->
 	<div class="absolute inset-0 bg-black bg-opacity-30"></div>
 		<div class="absolute inset-0 bg-gradient-to-r from-manzano-dark/40 to-transparent"></div>
@@ -181,7 +181,7 @@ onMount(() => {
 	</div>
 	
 	<!-- Hero Content -->
-	<div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+	<div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto py-16 md:py-20">
 		<h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
 			🏡 Find Your <span class="text-secondary-400 drop-shadow-md">Dream Home</span> in Manzano Today!
 		</h1>
