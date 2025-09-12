@@ -395,6 +395,57 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
+}
+
+/* Fix form input contrast - CRITICAL */
+.form-input, .form-select, .form-textarea {
+  background-color: white !important;
+  color: #1f2937 !important;
+  border: 2px solid #d1d5db !important;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1) !important;
+}
+
+.form-input::placeholder, .form-textarea::placeholder {
+  color: #6b7280 !important;
+}
+
+/* Fix contact form contrast - CRITICAL */
+.contact-form input, .contact-form textarea, .contact-form select {
+  background-color: white !important;
+  color: #1f2937 !important;
+  border: 2px solid #d1d5db !important;
+}
+
+.contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1) !important;
+}
+
+.contact-form input::placeholder, .contact-form textarea::placeholder {
+  color: #6b7280 !important;
+}
+
+/* Fix all input elements globally */
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"], 
+textarea, select {
+  background-color: white !important;
+  color: #1f2937 !important;
+  border: 2px solid #d1d5db !important;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, 
+input[type="number"]:focus, textarea:focus, select:focus {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1) !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #6b7280 !important;
 }
 
 /* ===== RESPONSIVE UTILITIES ===== */

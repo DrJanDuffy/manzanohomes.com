@@ -353,7 +353,7 @@ onMount(() => {
 		</div>
 		
 		<div class="bg-white rounded-lg shadow-lg p-8">
-			<form class="space-y-6" aria-label="Contact form">
+			<form class="space-y-6 contact-form" aria-label="Contact form">
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 					<div>
 						<label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
