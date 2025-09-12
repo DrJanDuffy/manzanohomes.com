@@ -85,6 +85,7 @@
     "zod": "^4.1.8"
   },
   "lint-staged": {
-    "*.{js,ts,svelte}": ["biome check --write", "biome format --write"]
+    "*.{js,ts}": ["biome check --write", "biome format --write"],
+    "*.svelte": ["biome format --write"]
   }
 }

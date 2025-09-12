@@ -19,10 +19,10 @@ onMount(() => {
 // CRITICAL: These MUST be 'let', not 'const', for Svelte bind:value to work
 // biome-ignore lint/style/useConst: These variables need to be let for bind:value directives
 let priceRange = $state([300000, 800000]);
-const bedrooms = $state('any');
-const bathrooms = $state('any');
+let bedrooms = $state('any');
+let bathrooms = $state('any');
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-const propertyType = $state('any');
+let propertyType = $state('any');
 const minSqft = $state('');
 const maxSqft = $state('');
 const sortBy = $state('price-low');
