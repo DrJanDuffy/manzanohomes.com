@@ -7,7 +7,7 @@ export async function GET() {
     const followUpBoss = new FollowUpBossAPI();
     
     // Test 1: Check API connection and authentication
-    console.log('Testing Follow Up Boss API connection...');
+    console.log('Testing Follow Up Boss API connection... (Redeploy Test)');
     
     // Test 2: Search for existing test lead
     const testPhone = '+17025001942';
