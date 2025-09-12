@@ -72,7 +72,7 @@ const teamMembers = [
 
 <div id="main-content" class="min-h-screen bg-gradient-to-b from-white to-gray-50">
   <!-- Hero Section -->
-  <section class="relative bg-primary-900 text-white py-20">
+  <section class="relative bg-primary-900 text-white pt-24 md:pt-32 pb-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <h1 class="text-4xl md:text-5xl font-bold mb-4">Meet Our Team</h1>

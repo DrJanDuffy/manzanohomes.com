@@ -78,6 +78,7 @@ const _pageSchemas = [
   },
 ];
 
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 function handleFormSubmit() {
   _formSubmitted = true;
 }
@@ -93,7 +94,7 @@ function handleFormSubmit() {
 
 <main class="min-h-screen" id="main-content">
   <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-primary-500 to-primary-700 text-white py-20 relative overflow-hidden">
+  <section class="bg-gradient-to-br from-primary-500 to-primary-700 text-white pt-24 md:pt-32 pb-20 relative overflow-hidden">
     <!-- Background overlay for better text contrast -->
     <div class="absolute inset-0 bg-black bg-opacity-20"></div>
     

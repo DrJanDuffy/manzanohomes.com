@@ -41,12 +41,21 @@ const _downPaymentPercent = $derived(((downPayment / homePrice) * 100).toFixed(1
   </script>
 </svelte:head>
 
-<div id="main-content" class="min-h-screen bg-gray-50 py-12">
-  <div class="max-w-4xl mx-auto px-4">
-    <div class="text-center mb-8">
-      <h1 class="text-4xl font-bold text-gray-900 mb-4">Mortgage Calculator</h1>
-      <p class="text-lg text-gray-600">Estimate your monthly mortgage payments and explore different financing options</p>
+<div id="main-content" class="min-h-screen bg-gray-50">
+  <!-- Hero Section -->
+  <section class="bg-gradient-primary text-white pt-24 md:pt-32 pb-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Mortgage Calculator</h1>
+        <p class="text-xl text-primary-100 mb-6">Estimate your monthly mortgage payments and explore different financing options</p>
+        <p class="text-lg text-primary-200">Make informed decisions about your home financing with our comprehensive calculator</p>
+      </div>
     </div>
+  </section>
+
+  <!-- Calculator Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4">
     
     <div class="bg-white rounded-lg shadow-lg p-8">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

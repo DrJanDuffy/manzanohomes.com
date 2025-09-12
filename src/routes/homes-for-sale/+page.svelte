@@ -289,7 +289,7 @@ const _pageSchemas = [
 
 <main class="min-h-screen bg-gray-50" id="main-content">
   <!-- Page Header -->
-  <section class="bg-primary-600 text-white py-16">
+  <section class="bg-primary-600 text-white pt-24 md:pt-32 pb-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <h1 class="text-4xl md:text-5xl font-bold mb-4">Homes for Sale in Manzano, Las Vegas</h1>

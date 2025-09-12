@@ -181,7 +181,7 @@ const firstTimeBuyerTips = [
 
 <div id="main-content" class="min-h-screen bg-gray-50">
   <!-- Hero Section -->
-  <section class="bg-gradient-primary text-white py-16">
+  <section class="bg-gradient-primary text-white pt-24 md:pt-32 pb-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h1 class="text-4xl md:text-5xl font-bold mb-4">Complete Home Buying Guide</h1>
       <p class="text-xl text-primary-100 mb-8">Your step-by-step roadmap to purchasing a home in Las Vegas and the Manzano neighborhood</p>
