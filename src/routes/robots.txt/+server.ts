@@ -26,9 +26,10 @@ Sitemap: ${DOMAIN}/sitemap.xml
 Sitemap: ${DOMAIN}/sitemap-properties.xml
 Sitemap: ${DOMAIN}/sitemap-index.xml
 
-# Allow all legitimate crawlers
+# Allow all legitimate crawlers - AGGRESSIVE INDEXING
 User-agent: *
 Allow: /
+Crawl-delay: 0
 Disallow: /api/
 Disallow: /admin/
 Disallow: /_app/
@@ -39,6 +40,16 @@ Disallow: /*?page=
 Disallow: /property/*/print
 Disallow: /tmp/
 Disallow: /private/
+
+# PRIORITY PAGES for immediate indexing
+Allow: /homes-for-sale
+Allow: /home-valuation
+Allow: /neighborhood
+Allow: /contact
+Allow: /blog
+Allow: /market-reports
+Allow: /buying-guide
+Allow: /mortgage-calculator
 
 # Google - Priority crawler
 User-agent: Googlebot
