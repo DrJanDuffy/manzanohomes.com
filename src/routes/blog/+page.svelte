@@ -20,7 +20,13 @@ const categories = [
   'Economy',
   'First-Time Buyers',
 ];
-const selectedCategory = 'All';
+let selectedCategory = 'All';
+
+// Function to handle category selection
+// biome-ignore lint/correctness/noUnusedVariables: Used in template onclick handler
+function selectCategory(category) {
+  selectedCategory = category;
+}
 
 // Fetch blog posts from RSS feed
 async function fetchBlogPosts() {
@@ -124,7 +130,7 @@ onMount(() => {
             role="tab"
             aria-selected={selectedCategory === category}
             aria-controls="blog-posts"
-            onclick={() => selectedCategory = category}
+            onclick={() => selectCategory(category)}
             class="px-4 py-2 rounded-full transition-colors focus:ring-4 focus:ring-primary-200 {selectedCategory === category ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}"
           >
             {category}
