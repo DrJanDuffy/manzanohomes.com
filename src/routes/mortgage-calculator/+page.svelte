@@ -1,5 +1,4 @@
 <script>
-// biome-ignore lint/style/useConst: These variables need to be let for bind:value directives
 let homePrice = $state(500000);
 let downPayment = $state(100000);
 let interestRate = $state(6.5);

@@ -17,7 +17,6 @@ onMount(() => {
 
 // Search and filter state
 // CRITICAL: These MUST be 'let', not 'const', for Svelte bind:value to work
-// biome-ignore lint/style/useConst: These variables need to be let for bind:value directives
 let priceRange = $state([300000, 800000]);
 let bedrooms = $state('any');
 let bathrooms = $state('any');
@@ -29,7 +28,6 @@ const sortBy = $state('price-low');
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
 const viewMode = $state('grid'); // 'grid' or 'map'
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
-// biome-ignore lint/style/useConst: This variable needs to be let for onclick assignment
 let currentPage = $state(1);
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
 const totalPages = $state(5);
