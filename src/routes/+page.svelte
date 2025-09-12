@@ -48,10 +48,10 @@ onMount(() => {
 />
 
 <!-- Hero Section -->
-<section id="main-content" class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800" role="banner" aria-label="Welcome to Manzano Homes">
+	<section id="main-content" class="hero-gradient" role="banner" aria-label="Welcome to Manzano Homes">
 	<!-- Background Image Overlay -->
 	<div class="absolute inset-0 bg-black bg-opacity-40"></div>
-	<div class="absolute inset-0 bg-gradient-to-r from-primary-900/50 to-transparent"></div>
+		<div class="absolute inset-0 bg-gradient-to-r from-manzano-dark/50 to-transparent"></div>
 	
 	<!-- Background Image -->
 	<div class="absolute inset-0">

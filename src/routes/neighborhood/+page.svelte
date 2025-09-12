@@ -132,7 +132,7 @@ const marketStats = {
 
 <main class="min-h-screen" id="main-content">
   <!-- Hero Section -->
-  <section class="relative bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
+  <section class="relative bg-gradient-primary text-white py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <h1 class="text-4xl md:text-6xl font-bold mb-6">Discover the Manzano Neighborhood</h1>
