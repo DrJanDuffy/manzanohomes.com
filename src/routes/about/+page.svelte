@@ -1,58 +1,58 @@
 <script>
-  import SEO from '$lib/components/SEO.svelte';
-  import { ManzanoSchemas } from '$lib/seo/schemas.js';
-  import { onMount } from 'svelte';
+import SEO from '$lib/components/SEO.svelte';
+import { ManzanoSchemas } from '$lib/seo/schemas.js';
+import { onMount } from 'svelte';
 
-  // RealScout Widget Script Loading
-  onMount(() => {
-    // Load RealScout Web Components
-    const script = document.createElement('script');
-    script.src = 'https://em.realscout.com/widgets/realscout-web-components.umd.js';
-    script.type = 'module';
-    document.head.appendChild(script);
-  });
+// RealScout Widget Script Loading
+onMount(() => {
+  // Load RealScout Web Components
+  const script = document.createElement('script');
+  script.src = 'https://em.realscout.com/widgets/realscout-web-components.umd.js';
+  script.type = 'module';
+  document.head.appendChild(script);
+});
 
-  // Generate schemas
-  const schemas = new ManzanoSchemas();
-  const pageSchemas = [
-    schemas.website(),
-    schemas.breadcrumbs([
-      { name: 'Home', url: '/' },
-      { name: 'About Us', url: '/about' }
-    ])
-  ];
+// Generate schemas
+const schemas = new ManzanoSchemas();
+const _pageSchemas = [
+  schemas.website(),
+  schemas.breadcrumbs([
+    { name: 'Home', url: '/' },
+    { name: 'About Us', url: '/about' },
+  ]),
+];
 
-  // Company values and mission
-  const values = [
-    {
-      title: 'Local Expertise',
-      description: 'Deep knowledge of the Manzano neighborhood and Las Vegas market',
-      icon: 'location'
-    },
-    {
-      title: 'Client-First Approach',
-      description: 'Every decision is made with our clients\' best interests in mind',
-      icon: 'heart'
-    },
-    {
-      title: 'Technology Integration',
-      description: 'Cutting-edge tools and platforms for seamless real estate transactions',
-      icon: 'tech'
-    },
-    {
-      title: 'Proven Results',
-      description: 'Track record of successful transactions and satisfied clients',
-      icon: 'success'
-    }
-  ];
+// Company values and mission
+const _values = [
+  {
+    title: 'Local Expertise',
+    description: 'Deep knowledge of the Manzano neighborhood and Las Vegas market',
+    icon: 'location',
+  },
+  {
+    title: 'Client-First Approach',
+    description: "Every decision is made with our clients' best interests in mind",
+    icon: 'heart',
+  },
+  {
+    title: 'Technology Integration',
+    description: 'Cutting-edge tools and platforms for seamless real estate transactions',
+    icon: 'tech',
+  },
+  {
+    title: 'Proven Results',
+    description: 'Track record of successful transactions and satisfied clients',
+    icon: 'success',
+  },
+];
 
-  // Team statistics
-  const stats = [
-    { number: '500+', label: 'Homes Sold' },
-    { number: '15+', label: 'Years Experience' },
-    { number: '98%', label: 'Client Satisfaction' },
-    { number: '24/7', label: 'Support Available' }
-  ];
+// Team statistics
+const _stats = [
+  { number: '500+', label: 'Homes Sold' },
+  { number: '15+', label: 'Years Experience' },
+  { number: '98%', label: 'Client Satisfaction' },
+  { number: '24/7', label: 'Support Available' },
+];
 </script>
 
 <SEO 

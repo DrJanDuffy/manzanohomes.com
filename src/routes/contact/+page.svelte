@@ -1,86 +1,86 @@
 <script>
-  import ContactForm from '$lib/components/ContactForm.svelte';
-  import SEO from '$lib/components/SEO.svelte';
-  import { ManzanoSchemas } from '$lib/seo/schemas.js';
-  import { onMount } from 'svelte';
+import ContactForm from '$lib/components/ContactForm.svelte';
+import SEO from '$lib/components/SEO.svelte';
+import { ManzanoSchemas } from '$lib/seo/schemas.js';
+import { onMount } from 'svelte';
 
-  // RealScout Widget Script Loading
-  onMount(() => {
-    // Load RealScout Web Components
-    const script = document.createElement('script');
-    script.src = 'https://em.realscout.com/widgets/realscout-web-components.umd.js';
-    script.type = 'module';
-    document.head.appendChild(script);
-  });
+// RealScout Widget Script Loading
+onMount(() => {
+  // Load RealScout Web Components
+  const script = document.createElement('script');
+  script.src = 'https://em.realscout.com/widgets/realscout-web-components.umd.js';
+  script.type = 'module';
+  document.head.appendChild(script);
+});
 
-  // Contact form state
-  let formSubmitted = false;
-  let isSubmitting = false;
+// Contact form state
+let _formSubmitted = false;
+const _isSubmitting = false;
 
-  // Contact information
-  const contactInfo = {
-    address: '3693 Manzano Peak Ave, Las Vegas, NV 89121',
-    phone: '(702) 500-1942',
-    email: 'info@manzanohomes.com',
-    hours: 'Monday - Friday: 8:00 AM - 6:00 PM\nSaturday: 9:00 AM - 4:00 PM\nSunday: By Appointment'
-  };
+// Contact information
+const _contactInfo = {
+  address: '3693 Manzano Peak Ave, Las Vegas, NV 89121',
+  phone: '(702) 500-1942',
+  email: 'info@manzanohomes.com',
+  hours: 'Monday - Friday: 8:00 AM - 6:00 PM\nSaturday: 9:00 AM - 4:00 PM\nSunday: By Appointment',
+};
 
-  // Team members
-  const teamMembers = [
-    {
-      name: 'Sarah Johnson',
-      title: 'Senior Real Estate Agent',
-      phone: '(702) 555-0124',
-      email: 'sarah@manzanohomes.com',
-      specialties: ['First-time Buyers', 'Luxury Homes', 'Investment Properties']
+// Team members
+const _teamMembers = [
+  {
+    name: 'Sarah Johnson',
+    title: 'Senior Real Estate Agent',
+    phone: '(702) 555-0124',
+    email: 'sarah@manzanohomes.com',
+    specialties: ['First-time Buyers', 'Luxury Homes', 'Investment Properties'],
+  },
+  {
+    name: 'Michael Chen',
+    title: 'Neighborhood Specialist',
+    phone: '(702) 555-0125',
+    email: 'michael@manzanohomes.com',
+    specialties: ['Manzano Area Expert', 'Market Analysis', 'Home Valuation'],
+  },
+];
+
+// Generate schemas
+const schemas = new ManzanoSchemas();
+const _pageSchemas = [
+  schemas.website(),
+  schemas.breadcrumbs([
+    { name: 'Home', url: '/' },
+    { name: 'Contact', url: '/contact' },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'RealEstateAgent',
+    '@id': 'https://www.manzanohomes.com/#organization',
+    name: 'Manzano Homes',
+    url: 'https://www.manzanohomes.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '3693 Manzano Peak Ave',
+      addressLocality: 'Las Vegas',
+      addressRegion: 'NV',
+      postalCode: '89121',
     },
-    {
-      name: 'Michael Chen',
-      title: 'Neighborhood Specialist',
-      phone: '(702) 555-0125',
-      email: 'michael@manzanohomes.com',
-      specialties: ['Manzano Area Expert', 'Market Analysis', 'Home Valuation']
-    }
-  ];
-
-  // Generate schemas
-  const schemas = new ManzanoSchemas();
-  const pageSchemas = [
-    schemas.website(),
-    schemas.breadcrumbs([
-      { name: 'Home', url: '/' },
-      { name: 'Contact', url: '/contact' }
-    ]),
-    {
-      "@context": "https://schema.org",
-      "@type": "RealEstateAgent",
-      "@id": "https://www.manzanohomes.com/#organization",
-      "name": "Manzano Homes",
-      "url": "https://www.manzanohomes.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "3693 Manzano Peak Ave",
-        "addressLocality": "Las Vegas",
-        "addressRegion": "NV",
-        "postalCode": "89121"
+    telephone: '(702) 500-1942',
+    email: 'info@manzanohomes.com',
+    areaServed: {
+      '@type': 'GeoCircle',
+      geoMidpoint: {
+        '@type': 'GeoCoordinates',
+        latitude: 36.0839,
+        longitude: -115.0891,
       },
-      "telephone": "(702) 500-1942",
-      "email": "info@manzanohomes.com",
-      "areaServed": {
-        "@type": "GeoCircle",
-        "geoMidpoint": {
-          "@type": "GeoCoordinates",
-          "latitude": 36.0839,
-          "longitude": -115.0891
-        },
-        "geoRadius": "5000"
-      }
-    }
-  ];
+      geoRadius: '5000',
+    },
+  },
+];
 
-  function handleFormSubmit() {
-    formSubmitted = true;
-  }
+function handleFormSubmit() {
+  _formSubmitted = true;
+}
 </script>
 
 <SEO 

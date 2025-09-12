@@ -59,7 +59,7 @@ export default {
   plugins: [addDynamicIconSelectors()],
   safelist: [
     'gradient-primary',
-    'gradient-manzano', 
+    'gradient-manzano',
     'gradient-hero',
     'gradient-card',
     'gradient-cta',

@@ -1,6 +1,6 @@
 <script>
 // Get current date for last updated
-let lastUpdated = new Date().toLocaleDateString('en-US', {
+const _lastUpdated = new Date().toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',

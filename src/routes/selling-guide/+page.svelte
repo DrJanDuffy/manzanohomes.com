@@ -1,5 +1,7 @@
 <script>
+import GuideCard from '$lib/components/GuideCard.svelte';
 import SEO from '$lib/components/SEO.svelte';
+import { getGuidesForPage } from '$lib/data/guides.js';
 import { ManzanoSchemas } from '$lib/seo/schemas.js';
 
 // Generate schemas
@@ -12,6 +14,10 @@ const pageSchemas = [
     { name: 'Selling Guide', url: '/selling-guide' },
   ]),
 ];
+
+// Get guides for selling guide page
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+const sellingGuides = getGuidesForPage('selling-guide');
 
 // Selling process steps
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
@@ -153,28 +159,14 @@ const pricingStrategies = [
         <p class="text-lg text-primary-200 mb-8">Get the most from your Las Vegas real estate investment with our proven selling strategies</p>
         
         <!-- Featured Seller Guide Resource -->
-        <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 max-w-2xl mx-auto">
-          <div class="flex items-center justify-center mb-3">
-            <svg class="w-5 h-5 text-primary-200 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-            </svg>
-            <span class="text-sm font-medium text-primary-200 uppercase tracking-wide">Featured Guide</span>
-          </div>
-          <h3 class="text-lg font-semibold text-white mb-2">Complete Home Selling Guide</h3>
-          <p class="text-primary-100 mb-4 text-sm">Comprehensive market insights and expert strategies for maximizing your home's value</p>
-          <a 
-            href="https://www.simplifyingthemarket.com/en/sellers/?a=956758-ef2edda2f940e018328655620ea05f18" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="inline-flex items-center px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-colors focus:ring-4 focus:ring-primary-200"
-            aria-label="Access comprehensive seller guide from Simplifying the Market (opens in new tab)"
-          >
-            View Seller Guide
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-            </svg>
-          </a>
-        </div>
+        {#each sellingGuides as guide}
+          <GuideCard 
+            guide={{
+              ...guide,
+              variant: 'featured'
+            }} 
+          />
+        {/each}
       </div>
     </div>
   </section>

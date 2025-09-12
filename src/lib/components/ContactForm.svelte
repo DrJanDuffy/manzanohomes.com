@@ -17,8 +17,8 @@ let formData = {
 };
 
 let errors = /** @type {Record<string, string>} */ ({});
-let isSubmitting = false;
-let submitted = false;
+let _isSubmitting = false;
+let _submitted = false;
 
 // Form validation
 function validateForm() {
@@ -67,7 +67,7 @@ async function handleSubmit() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
     });
 
     if (!response.ok) {

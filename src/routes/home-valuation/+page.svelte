@@ -1,16 +1,16 @@
 <script>
-  import SEO from '$lib/components/SEO.svelte';
-  import { ManzanoSchemas } from '$lib/seo/schemas.js';
+import SEO from '$lib/components/SEO.svelte';
+import { ManzanoSchemas } from '$lib/seo/schemas.js';
 
-  // Generate schemas
-  const schemas = new ManzanoSchemas();
-  const pageSchemas = [
-    schemas.website(),
-    schemas.breadcrumbs([
-      { name: 'Home', url: '/' },
-      { name: 'Home Valuation', url: '/home-valuation' }
-    ])
-  ];
+// Generate schemas
+const schemas = new ManzanoSchemas();
+const _pageSchemas = [
+  schemas.website(),
+  schemas.breadcrumbs([
+    { name: 'Home', url: '/' },
+    { name: 'Home Valuation', url: '/home-valuation' },
+  ]),
+];
 </script>
 
 <SEO 

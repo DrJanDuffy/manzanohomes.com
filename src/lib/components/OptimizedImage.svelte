@@ -41,7 +41,7 @@ const optimization =
   IMAGE_OPTIMIZATION.PROPERTY;
 
 // Generate query string for enhanced images
-let query = generateImageQuery({
+const _query = generateImageQuery({
   quality: quality || optimization.quality,
   format: format || optimization.format,
   blur,
@@ -49,7 +49,7 @@ let query = generateImageQuery({
 });
 
 // Use provided sizes or default from optimization settings
-let imageSizes = sizes || optimization.sizes;
+const _imageSizes = sizes || optimization.sizes;
 
 // Ensure alt text is provided for accessibility
 if (!alt) {

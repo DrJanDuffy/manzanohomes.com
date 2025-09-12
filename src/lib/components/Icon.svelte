@@ -31,7 +31,7 @@ const {
 const iconClasses = getIconClasses(size, color);
 
 // Combine all classes
-let allClasses = [
+const _allClasses = [
   iconClasses,
   className,
   spin ? 'animate-spin' : '',
@@ -41,7 +41,7 @@ let allClasses = [
   .join(' ');
 
 // Accessibility attributes
-let accessibilityProps = {
+const _accessibilityProps = {
   ...(title && { title }),
   ...(ariaLabel && { 'aria-label': ariaLabel }),
   ...(title && !ariaLabel && { 'aria-label': title }),

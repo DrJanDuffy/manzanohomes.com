@@ -1,22 +1,22 @@
 <script>
-  import SEO from '$lib/components/SEO.svelte';
-  import { ManzanoSchemas } from '$lib/seo/schemas.js';
+import SEO from '$lib/components/SEO.svelte';
+import { ManzanoSchemas } from '$lib/seo/schemas.js';
 
-  // Generate schemas
-  const schemas = new ManzanoSchemas();
-  const pageSchemas = [
-    schemas.website(),
-    schemas.breadcrumbs([
-      { name: 'Home', url: '/' },
-      { name: 'Terms of Service', url: '/terms-of-service' }
-    ])
-  ];
+// Generate schemas
+const schemas = new ManzanoSchemas();
+const _pageSchemas = [
+  schemas.website(),
+  schemas.breadcrumbs([
+    { name: 'Home', url: '/' },
+    { name: 'Terms of Service', url: '/terms-of-service' },
+  ]),
+];
 
-  const lastUpdated = new Date().toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+const _lastUpdated = new Date().toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
 </script>
 
 <SEO 

@@ -1,61 +1,61 @@
 <script>
-  import { onMount } from 'svelte';
-  
-  let testResults = null;
-  let isLoading = false;
-  let testPhone = '+17025001942';
-  
-  async function runAPITest() {
-    isLoading = true;
-    testResults = null;
-    
-    try {
-      const response = await fetch('/api/test/follow-up-boss');
-      const data = await response.json();
-      testResults = data;
-    } catch (error) {
-      testResults = {
-        success: false,
-        error: error.message,
-        message: 'Failed to connect to test endpoint'
-      };
-    } finally {
-      isLoading = false;
-    }
+import { onMount } from 'svelte';
+
+let _testResults = null;
+let _isLoading = false;
+const testPhone = '+17025001942';
+
+async function runAPITest() {
+  _isLoading = true;
+  _testResults = null;
+
+  try {
+    const response = await fetch('/api/test/follow-up-boss');
+    const data = await response.json();
+    _testResults = data;
+  } catch (error) {
+    _testResults = {
+      success: false,
+      error: error.message,
+      message: 'Failed to connect to test endpoint',
+    };
+  } finally {
+    _isLoading = false;
   }
-  
-  async function runCustomTest(testType) {
-    isLoading = true;
-    
-    try {
-      const response = await fetch('/api/test/follow-up-boss', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          testType,
-          phoneNumber: testPhone
-        })
-      });
-      
-      const data = await response.json();
-      testResults = data;
-    } catch (error) {
-      testResults = {
-        success: false,
-        error: error.message,
-        message: `Failed to run ${testType} test`
-      };
-    } finally {
-      isLoading = false;
-    }
+}
+
+async function runCustomTest(testType) {
+  _isLoading = true;
+
+  try {
+    const response = await fetch('/api/test/follow-up-boss', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        testType,
+        phoneNumber: testPhone,
+      }),
+    });
+
+    const data = await response.json();
+    _testResults = data;
+  } catch (error) {
+    _testResults = {
+      success: false,
+      error: error.message,
+      message: `Failed to run ${testType} test`,
+    };
+  } finally {
+    _isLoading = false;
   }
-  
-  onMount(() => {
-    // Auto-run test on page load
-    runAPITest();
-  });
+}
+
+onMount(() => {
+  // Auto-run test on page load
+  runAPITest();
+});
 </script>
 
 <svelte:head>

@@ -1,5 +1,11 @@
 <script>
+import GuideCard from '$lib/components/GuideCard.svelte';
+import { getGuidesForPage } from '$lib/data/guides.js';
 import { onMount } from 'svelte';
+
+// Get guides for buying guide page
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+const buyingGuides = getGuidesForPage('buying-guide');
 
 // RealScout Widget Script Loading
 onMount(() => {
@@ -181,27 +187,14 @@ const firstTimeBuyerTips = [
       <p class="text-xl text-primary-100 mb-8">Your step-by-step roadmap to purchasing a home in Las Vegas and the Manzano neighborhood</p>
       
       <!-- Featured External Resource -->
-      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-        <div class="flex items-center mb-4">
-          <svg class="w-6 h-6 text-primary-200 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-          </svg>
-          <h3 class="text-lg font-semibold text-white">Featured Resource</h3>
-        </div>
-        <p class="text-primary-100 mb-4">Get comprehensive market insights and expert guidance from our trusted partner</p>
-        <a 
-          href="https://www.simplifyingthemarket.com/en/buyers/?a=956758-ef2edda2f940e018328655620ea05f18" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          class="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors focus:ring-4 focus:ring-primary-200"
-          aria-label="Access comprehensive buyer guide from Simplifying the Market (opens in new tab)"
-        >
-          View Complete Buyer Guide
-          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-          </svg>
-        </a>
-      </div>
+      {#each buyingGuides as guide}
+        <GuideCard 
+          guide={{
+            ...guide,
+            variant: 'featured'
+          }} 
+        />
+      {/each}
     </div>
   </section>
 

@@ -20,9 +20,9 @@ export class FollowUpBossAPI {
       const response = await fetch(`${this.baseUrl}/people`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${this.apiKey}`,
+          Authorization: `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          Accept: 'application/json',
         },
         body: JSON.stringify({
           person: {
@@ -38,10 +38,10 @@ export class FollowUpBossAPI {
             customFields: {
               smsMessage: leadData.message,
               smsTimestamp: leadData.timestamp,
-              smsNumber: leadData.sms_number
-            }
-          }
-        })
+              smsNumber: leadData.sms_number,
+            },
+          },
+        }),
       });
 
       if (!response.ok) {
@@ -51,7 +51,6 @@ export class FollowUpBossAPI {
       const result = await response.json();
       console.log('Lead created in Follow Up Boss:', result);
       return result;
-
     } catch (error) {
       console.error('Error creating lead in Follow Up Boss:', error);
       throw error;
@@ -69,18 +68,18 @@ export class FollowUpBossAPI {
       const response = await fetch(`${this.baseUrl}/messages`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${this.apiKey}`,
+          Authorization: `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          Accept: 'application/json',
         },
         body: JSON.stringify({
           message: {
             type: 'sms',
             to: phoneNumber,
             body: message,
-            agentId: this.agentId
-          }
-        })
+            agentId: this.agentId,
+          },
+        }),
       });
 
       if (!response.ok) {
@@ -90,7 +89,6 @@ export class FollowUpBossAPI {
       const result = await response.json();
       console.log('SMS sent via Follow Up Boss:', result);
       return result;
-
     } catch (error) {
       console.error('Error sending SMS:', error);
       throw error;
@@ -108,13 +106,13 @@ export class FollowUpBossAPI {
       const response = await fetch(`${this.baseUrl}/people/${leadId}`, {
         method: 'PATCH',
         headers: {
-          'Authorization': `Bearer ${this.apiKey}`,
+          Authorization: `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          Accept: 'application/json',
         },
         body: JSON.stringify({
-          person: updateData
-        })
+          person: updateData,
+        }),
       });
 
       if (!response.ok) {
@@ -124,7 +122,6 @@ export class FollowUpBossAPI {
       const result = await response.json();
       console.log('Lead updated in Follow Up Boss:', result);
       return result;
-
     } catch (error) {
       console.error('Error updating lead:', error);
       throw error;
@@ -138,13 +135,16 @@ export class FollowUpBossAPI {
    */
   async getLeadByPhone(phoneNumber) {
     try {
-      const response = await fetch(`${this.baseUrl}/people?phone=${encodeURIComponent(phoneNumber)}`, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${this.apiKey}`,
-          'Accept': 'application/json'
+      const response = await fetch(
+        `${this.baseUrl}/people?phone=${encodeURIComponent(phoneNumber)}`,
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${this.apiKey}`,
+            Accept: 'application/json',
+          },
         }
-      });
+      );
 
       if (!response.ok) {
         throw new Error(`Lead search error: ${response.status} ${response.statusText}`);
@@ -152,7 +152,6 @@ export class FollowUpBossAPI {
 
       const result = await response.json();
       return result.people && result.people.length > 0 ? result.people[0] : null;
-
     } catch (error) {
       console.error('Error searching lead:', error);
       return null;
@@ -170,16 +169,16 @@ export class FollowUpBossAPI {
       const response = await fetch(`${this.baseUrl}/people/${leadId}/notes`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${this.apiKey}`,
+          Authorization: `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          Accept: 'application/json',
         },
         body: JSON.stringify({
           note: {
             body: note,
-            type: 'note'
-          }
-        })
+            type: 'note',
+          },
+        }),
       });
 
       if (!response.ok) {
@@ -189,7 +188,6 @@ export class FollowUpBossAPI {
       const result = await response.json();
       console.log('Note added to lead:', result);
       return result;
-
     } catch (error) {
       console.error('Error adding note:', error);
       throw error;
