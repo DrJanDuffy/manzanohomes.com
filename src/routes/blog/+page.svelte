@@ -2,12 +2,16 @@
 import { onMount } from 'svelte';
 
 let blogPosts = [];
-let _isLoading = true;
-let _error = null;
-let _lastUpdated = null;
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+let isLoading = true;
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+let error = null;
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+let lastUpdated = null;
 
 // Categories based on Simplifying the Market content
-const _categories = [
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+const categories = [
   'All',
   'Market Analysis',
   'Buying Guide',
@@ -21,25 +25,25 @@ const selectedCategory = 'All';
 // Fetch blog posts from RSS feed
 async function fetchBlogPosts() {
   try {
-    _isLoading = true;
+    isLoading = true;
     const response = await fetch('/api/blog/feed');
     const data = await response.json();
 
     if (data.success) {
       blogPosts = data.posts;
-      _lastUpdated = data.lastUpdated;
-      _error = null;
+      lastUpdated = data.lastUpdated;
+      error = null;
     } else {
       blogPosts = data.posts || []; // Use fallback posts
-      _error = data.error;
-      _lastUpdated = data.lastUpdated;
+      error = data.error;
+      lastUpdated = data.lastUpdated;
     }
   } catch (err) {
     console.error('Failed to fetch blog posts:', err);
-    _error = 'Failed to load blog posts';
+    error = 'Failed to load blog posts';
     blogPosts = [];
   } finally {
-    _isLoading = false;
+    isLoading = false;
   }
 }
 
@@ -167,10 +171,10 @@ onMount(() => {
             </svg>
             <h3 class="text-lg font-medium text-red-800 mb-2">Unable to Load Blog Posts</h3>
             <p class="text-red-600 mb-4">{error}</p>
-            <button 
-              on:click={fetchBlogPosts}
-              class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors"
-            >
+              <button 
+                onclick={fetchBlogPosts}
+                class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors"
+              >
               Try Again
             </button>
           </div>
