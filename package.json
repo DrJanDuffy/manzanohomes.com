@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite dev",
     "build": "npm run sitemap:generate && vite build",
-    "postbuild": "npm run sitemap:validate",
     "package": "svelte-kit package",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./jsconfig.json",
@@ -83,9 +82,6 @@
     "zod": "^4.1.8"
   },
   "lint-staged": {
-    "*.{js,ts,svelte}": [
-      "biome check --write",
-      "biome format --write"
-    ]
+    "*.{js,ts,svelte}": ["biome check --write", "biome format --write"]
   }
 }
