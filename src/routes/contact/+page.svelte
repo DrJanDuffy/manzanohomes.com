@@ -2,6 +2,16 @@
   import ContactForm from '$lib/components/ContactForm.svelte';
   import SEO from '$lib/components/SEO.svelte';
   import { ManzanoSchemas } from '$lib/seo/schemas.js';
+  import { onMount } from 'svelte';
+
+  // RealScout Widget Script Loading
+  onMount(() => {
+    // Load RealScout Web Components
+    const script = document.createElement('script');
+    script.src = 'https://em.realscout.com/widgets/realscout-web-components.umd.js';
+    script.type = 'module';
+    document.head.appendChild(script);
+  });
 
   // Contact form state
   let formSubmitted = false;
@@ -215,6 +225,27 @@
     </div>
   </section>
 
+  <!-- Featured Properties Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Current Manzano Listings</h2>
+        <p class="text-lg text-gray-600">Browse available homes while you're here</p>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <realscout-office-listings 
+          agent-encoded-id="QWdlbnQtMjI1MDUw" 
+          sort-order="STATUS_AND_SIGNIFICANT_CHANGE" 
+          listing-status="For Sale" 
+          property-types="SFR" 
+          price-min="400000" 
+          price-max="500000">
+        </realscout-office-listings>
+      </div>
+    </div>
+  </section>
+
   <!-- Map Section -->
   <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -262,3 +293,10 @@
   </div>
   </section>
 </main>
+
+<style>
+  realscout-office-listings {
+    --rs-listing-divider-color: rgb(101, 141, 172);
+    width: 100%;
+  }
+</style>

@@ -1,4 +1,15 @@
 <script>
+import { onMount } from 'svelte';
+
+// RealScout Widget Script Loading
+onMount(() => {
+  // Load RealScout Web Components
+  const script = document.createElement('script');
+  script.src = 'https://em.realscout.com/widgets/realscout-web-components.umd.js';
+  script.type = 'module';
+  document.head.appendChild(script);
+});
+
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
 const buyingSteps = [
   {
@@ -289,6 +300,27 @@ const firstTimeBuyerTips = [
     </div>
   </section>
 
+  <!-- First-Time Buyer Properties Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Perfect Homes for First-Time Buyers</h2>
+        <p class="text-lg text-gray-600">Affordable starter homes in the Manzano neighborhood</p>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <realscout-office-listings 
+          agent-encoded-id="QWdlbnQtMjI1MDUw" 
+          sort-order="STATUS_AND_SIGNIFICANT_CHANGE" 
+          listing-status="For Sale" 
+          property-types="SFR" 
+          price-min="350000" 
+          price-max="500000">
+        </realscout-office-listings>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA Section -->
   <section class="py-16 bg-primary-900 text-white" aria-labelledby="cta-heading">
     <div class="max-w-4xl mx-auto px-4 text-center">
@@ -308,3 +340,10 @@ const firstTimeBuyerTips = [
     </div>
   </section>
 </div>
+
+<style>
+  realscout-office-listings {
+    --rs-listing-divider-color: rgb(101, 141, 172);
+    width: 100%;
+  }
+</style>
