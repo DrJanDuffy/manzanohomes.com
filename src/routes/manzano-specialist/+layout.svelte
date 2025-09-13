@@ -642,6 +642,9 @@ const faqSchema = {
       </div>
     </div>
   </section>
+  
+  <!-- Page Content Slot -->
+  <slot />
 </main>
 
 <style>
