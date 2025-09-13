@@ -14,7 +14,7 @@ const teamMembers = [
     role: 'Senior Real Estate Agent',
     image: '/api/placeholder/300/300',
     bio: 'Specializing in luxury homes and first-time buyers, Michael brings deep market knowledge and a commitment to finding the perfect home for every client.',
-    email: 'DrDuffySells@ManzanoHomes.com',
+    email: 'HomeSales@ManzanoHomes.com',
     phone: '(702) 555-0002',
   },
   {
@@ -22,7 +22,7 @@ const teamMembers = [
     role: 'Client Relations Manager',
     image: '/api/placeholder/300/300',
     bio: 'Ensuring smooth transactions and excellent customer service, Sarah coordinates all aspects of the buying and selling process to exceed client expectations.',
-    email: 'DrDuffySells@ManzanoHomes.com',
+    email: 'Info@ManzanoHomes.com',
     phone: '(702) 555-0003',
   },
 ];
