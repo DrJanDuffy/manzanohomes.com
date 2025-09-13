@@ -4,7 +4,8 @@ import { ManzanoSchemas } from '$lib/seo/schemas.js';
 
 // Generate schemas
 const schemas = new ManzanoSchemas();
-const _pageSchemas = [
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+const pageSchemas = [
   schemas.website(),
   schemas.breadcrumbs([
     { name: 'Home', url: '/' },

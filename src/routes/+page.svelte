@@ -1,6 +1,7 @@
 <script>
 import { browser } from '$app/environment';
 import GuideCard from '$lib/components/GuideCard.svelte';
+import ResponsiveImage from '$lib/components/ResponsiveImage.svelte';
 import SEO from '$lib/components/SEO.svelte';
 import { getGuidesForPage } from '$lib/data/guides.js';
 import { initAccessibility } from '$lib/utils/accessibility.js';
@@ -133,7 +134,7 @@ onMount(() => {
 			"description": "Expert real estate services in Las Vegas 89121 Manzano neighborhood",
 			"publisher": {
 				"@type": "Organization",
-				"name": "Manzano Homes"
+				"name": "Manzano Homes by Dr. Jan Duffy"
 			},
 			"potentialAction": {
 				"@type": "SearchAction",
@@ -156,6 +157,80 @@ onMount(() => {
 	]}
 />
 
+<!-- FAQ Schema for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the average home price in Manzano Peak?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The average home price in Manzano Peak ranges from $450,000 to $650,000, with a median price of $485,000. This includes both new construction and resale homes with modern amenities and energy-efficient features."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What schools serve the Manzano neighborhood?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Manzano Peak Elementary School (9/10 rating, 0.3 miles), Southeast Career Technical Academy (8/10 rating, 1.2 miles), and Green Valley High School (8/10 rating, 2.1 miles) serve the Manzano neighborhood with excellent educational programs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How far is Manzano Peak from the Las Vegas Strip?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Manzano Peak is located 12 miles from the Las Vegas Strip, approximately a 15-minute drive via I-515 and I-215. This provides easy access to entertainment while maintaining a quiet residential atmosphere."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What amenities are available in Manzano Peak?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Manzano Peak offers parks, walking trails, playgrounds, basketball courts, and community events. Nearby amenities include Vons (0.8 miles), Target (1.5 miles), Green Valley Ranch Resort (3.2 miles), and The District shopping center (3.5 miles)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the HOA fee in Manzano Peak?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HOA fees in Manzano Peak range from $45 to $85 per month, covering landscaping, common area maintenance, and trash collection. The HOA helps maintain property values and community standards."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Manzano Peak a safe neighborhood?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, Manzano Peak has a safety score of 8.5/10 with crime rates below the national average. The neighborhood features well-lit streets, active neighborhood watch programs, and regular police patrols."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What types of homes are available in Manzano Peak?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Manzano Peak offers single-family homes, townhomes, and new construction properties ranging from 1,500 to 3,500 square feet. Homes feature modern amenities, energy-efficient designs, and contemporary architecture."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I schedule a home showing in Manzano Peak?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can schedule a home showing by calling (702) 500-1942, texting the same number, or filling out our contact form. We offer flexible scheduling including evenings and weekends to accommodate your needs."
+      }
+    }
+  ]
+}
+</script>
+
 <!-- Hero Section -->
 	<section id="main-content" class="hero-gradient relative overflow-hidden pt-24 md:pt-32" role="banner" aria-label="Welcome to Manzano Homes">
 	<!-- Background Image Overlay -->
@@ -164,20 +239,16 @@ onMount(() => {
 	
 	<!-- Background Image -->
 	<div class="absolute inset-0">
-		<picture>
-			<source media="(min-width: 768px)" srcset="/hero-manzano.jpg" type="image/jpeg">
-			<img
-				src="/hero-manzano.jpg"
-				alt="Manzano neighborhood Las Vegas real estate"
-				class="w-full h-full object-cover"
-				fetchpriority="high"
-				loading="eager"
-				width="1920"
-				height="1080"
-				decoding="async"
-				onerror={(e) => e.target.style.display = 'none'}
-			/>
-		</picture>
+		<ResponsiveImage
+			src="/hero-manzano.jpg"
+			alt="Beautiful Manzano Peak neighborhood homes in Las Vegas with modern architecture and green landscaping"
+			width="1920"
+			height="1080"
+			loading="eager"
+			fetchpriority="high"
+			formats={['avif', 'webp', 'jpeg']}
+			class="w-full h-full"
+		/>
 	</div>
 	
 	<!-- Hero Content -->

@@ -1,12 +1,12 @@
 import type { LayoutServerLoad } from './$types';
 
 export const load: LayoutServerLoad = async ({ url, setHeaders }) => {
-  // Aggressive caching for static assets
-  setHeaders({
-    'cache-control': url.pathname.startsWith('/api')
-      ? 'no-cache'
-      : 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800',
-  });
+  // Aggressive caching for static assets (only set if not already set)
+  if (!url.pathname.startsWith('/api')) {
+    setHeaders({
+      'cache-control': 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800',
+    });
+  }
 
   // Preload critical data
   return {

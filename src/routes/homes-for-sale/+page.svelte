@@ -1,16 +1,6 @@
 <script>
 import SEO from '$lib/components/SEO.svelte';
 import { ManzanoSchemas } from '$lib/seo/schemas';
-import { onMount } from 'svelte';
-
-// RealScout Widget Script Loading
-onMount(() => {
-  // Load RealScout Web Components
-  const script = document.createElement('script');
-  script.src = 'https://em.realscout.com/widgets/realscout-web-components.umd.js';
-  script.type = 'module';
-  document.head.appendChild(script);
-});
 
 // Fixed: All form variables now use 'let' instead of 'const' for proper binding
 // This ensures Svelte bind:value works correctly and prevents deployment failures
@@ -124,11 +114,6 @@ const sampleProperties = [
 // Filtered properties based on search criteria
 let filteredProperties = $state(sampleProperties);
 
-// RealScout integration state
-let realscoutLoaded = $state(false);
-// biome-ignore lint/correctness/noUnusedVariables: Used in template
-let realscoutError = $state(false);
-
 // Form state
 let saveSearchName = $state('');
 let emailAlerts = $state('');
@@ -189,25 +174,11 @@ function filterProperties() {
   });
 }
 
-// Initialize RealScout widget
-function initializeRealScout() {
-  if (typeof window !== 'undefined' && !realscoutLoaded) {
-    // RealScout widget initialization placeholder
-    const script = document.createElement('script');
-    script.src = 'https://widgets.realscout.com/v3/widget.js';
-    script.async = true;
-    script.onload = () => {
-      realscoutLoaded = true;
-      // Initialize RealScout widget here
-      console.log('RealScout widget loaded');
-    };
-    script.onerror = () => {
-      realscoutError = true;
-      console.log('RealScout widget failed to load');
-    };
-    document.head.appendChild(script);
-  }
-}
+// RealScout widget state (managed globally)
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+let realscoutLoaded = $state(false);
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+let realscoutError = $state(false);
 
 // Handle form submissions
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
@@ -258,11 +229,8 @@ function formatPrice(/** @type {number} */ price) {
   }).format(price);
 }
 
-// Initialize filters and RealScout on mount
-onMount(() => {
-  filterProperties();
-  initializeRealScout();
-});
+// Initialize filters on mount
+filterProperties();
 
 // Watch for filter changes
 $effect(() => {
@@ -271,7 +239,8 @@ $effect(() => {
 
 // Generate schemas for this page
 const schemas = new ManzanoSchemas();
-const _pageSchemas = [
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+const pageSchemas = [
   schemas.website(),
   schemas.breadcrumbs([
     { name: 'Home', url: '/' },
@@ -335,7 +304,7 @@ const _pageSchemas = [
               Live MLS Search
             </a>
             <button
-              onclick={handleSaveSearch}
+              onclick={() => handleSaveSearch()}
               class="bg-gray-100 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-200 transition-colors"
             >
               Save Search
@@ -447,7 +416,7 @@ const _pageSchemas = [
         <!-- Schedule a Showing Form -->
         <div class="bg-white rounded-lg shadow-lg p-6">
           <h3 class="text-xl font-semibold text-gray-900 mb-4">Schedule a Showing</h3>
-          <form onsubmit={(e) => { e.preventDefault(); handleShowingRequest(e); }} class="space-y-4">
+          <form onsubmit={(e) => { e.preventDefault(); handleShowingRequest(); }} class="space-y-4">
             <div>
               <label for="showingName" class="block text-sm font-medium text-gray-700 mb-1">Name *</label>
               <input
@@ -544,7 +513,7 @@ const _pageSchemas = [
         <div class="bg-white rounded-lg shadow-lg p-6">
           <h3 class="text-xl font-semibold text-gray-900 mb-4">Get Email Alerts</h3>
           <p class="text-gray-600 text-sm mb-4">Be the first to know about new listings</p>
-          <form onsubmit={(e) => { e.preventDefault(); handleEmailAlerts(e); }} class="space-y-3">
+          <form onsubmit={(e) => { e.preventDefault(); handleEmailAlerts(); }} class="space-y-3">
             <input
               type="email"
               bind:value={emailAlerts}

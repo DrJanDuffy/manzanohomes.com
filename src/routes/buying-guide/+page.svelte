@@ -7,15 +7,6 @@ import { onMount } from 'svelte';
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
 const buyingGuides = getGuidesForPage('buying-guide');
 
-// RealScout Widget Script Loading
-onMount(() => {
-  // Load RealScout Web Components
-  const script = document.createElement('script');
-  script.src = 'https://em.realscout.com/widgets/realscout-web-components.umd.js';
-  script.type = 'module';
-  document.head.appendChild(script);
-});
-
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
 const buyingSteps = [
   {

@@ -4,7 +4,8 @@ import { ManzanoSchemas } from '$lib/seo/schemas.js';
 
 // Generate schemas
 const schemas = new ManzanoSchemas();
-const _pageSchemas = [
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+const pageSchemas = [
   schemas.website(),
   schemas.breadcrumbs([
     { name: 'Home', url: '/' },
@@ -17,7 +18,7 @@ const _pageSchemas = [
   title="Free Home Valuation | Manzano Homes | Las Vegas Real Estate Experts"
   description="Get an instant, accurate home valuation for your Manzano area property. Free professional market analysis from Las Vegas real estate experts at Manzano Homes."
   canonical="https://www.manzanohomes.com/home-valuation"
-  image="/og-home-valuation.jpg"
+  image="/og-default.jpg"
   schemas={pageSchemas}
 />
 

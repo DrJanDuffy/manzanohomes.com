@@ -1,15 +1,4 @@
 <script>
-import { onMount } from 'svelte';
-
-// RealScout Widget Script Loading
-onMount(() => {
-  // Load RealScout Web Components
-  const script = document.createElement('script');
-  script.src = 'https://em.realscout.com/widgets/realscout-web-components.umd.js';
-  script.type = 'module';
-  document.head.appendChild(script);
-});
-
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
 const marketData = {
   manzano: {

@@ -1,20 +1,11 @@
 <script>
 import SEO from '$lib/components/SEO.svelte';
 import { ManzanoSchemas } from '$lib/seo/schemas.js';
-import { onMount } from 'svelte';
-
-// RealScout Widget Script Loading
-onMount(() => {
-  // Load RealScout Web Components
-  const script = document.createElement('script');
-  script.src = 'https://em.realscout.com/widgets/realscout-web-components.umd.js';
-  script.type = 'module';
-  document.head.appendChild(script);
-});
 
 // Generate schemas
 const schemas = new ManzanoSchemas();
-const _pageSchemas = [
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+const pageSchemas = [
   schemas.website(),
   schemas.breadcrumbs([
     { name: 'Home', url: '/' },

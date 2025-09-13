@@ -2,23 +2,16 @@
 import ContactForm from '$lib/components/ContactForm.svelte';
 import SEO from '$lib/components/SEO.svelte';
 import { ManzanoSchemas } from '$lib/seo/schemas.js';
-import { onMount } from 'svelte';
-
-// RealScout Widget Script Loading
-onMount(() => {
-  // Load RealScout Web Components
-  const script = document.createElement('script');
-  script.src = 'https://em.realscout.com/widgets/realscout-web-components.umd.js';
-  script.type = 'module';
-  document.head.appendChild(script);
-});
 
 // Contact form state
-let _formSubmitted = false;
-const _isSubmitting = false;
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+let formSubmitted = false;
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+const isSubmitting = false;
 
 // Contact information
-const _contactInfo = {
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+const contactInfo = {
   address: '3693 Manzano Peak Ave, Las Vegas, NV 89121',
   phone: '(702) 500-1942',
   email: 'info@manzanohomes.com',
@@ -26,7 +19,8 @@ const _contactInfo = {
 };
 
 // Team members
-const _teamMembers = [
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+const teamMembers = [
   {
     name: 'Sarah Johnson',
     title: 'Senior Real Estate Agent',
@@ -45,7 +39,8 @@ const _teamMembers = [
 
 // Generate schemas
 const schemas = new ManzanoSchemas();
-const _pageSchemas = [
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
+const pageSchemas = [
   schemas.website(),
   schemas.breadcrumbs([
     { name: 'Home', url: '/' },
@@ -80,7 +75,7 @@ const _pageSchemas = [
 
 // biome-ignore lint/correctness/noUnusedVariables: Used in template
 function handleFormSubmit() {
-  _formSubmitted = true;
+  formSubmitted = true;
 }
 </script>
 
