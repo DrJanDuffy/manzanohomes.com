@@ -343,14 +343,8 @@ const faqSchema = {
   </script>
 </svelte:head>
 <main class="min-h-screen" id="main-content">
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The median home price in 89121 Las Vegas is $475,000, with homes ranging from $350,000 to $850,000. This Southeast Las Vegas area offers established communities with mature trees and excellent amenities."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What makes 89121 a great place to live?",
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-r from-primary-600 to-primary-800 text-white pt-24 md:pt-32 pb-20">
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "89121 offers established communities with mature trees, excellent schools (8.5/10 rating), convenient access to major highways, family-friendly atmosphere with parks and playgrounds, and modern amenities with smart technology."
