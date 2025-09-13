@@ -6,7 +6,7 @@ const teamMembers = [
     role: 'Founder & Principal Broker',
     image: '/api/placeholder/300/300',
     bio: 'With over 20 years of experience in Las Vegas real estate, Dr. Jan Duffy founded Manzano Homes to provide exceptional service to families in the Manzano neighborhood and surrounding areas.',
-    email: 'jan@manzanohomes.com',
+    email: 'DrDuffySells@ManzanoHomes.com',
     phone: '(702) 555-0001',
   },
   {
@@ -14,7 +14,7 @@ const teamMembers = [
     role: 'Senior Real Estate Agent',
     image: '/api/placeholder/300/300',
     bio: 'Specializing in luxury homes and first-time buyers, Michael brings deep market knowledge and a commitment to finding the perfect home for every client.',
-    email: 'michael@manzanohomes.com',
+    email: 'DrDuffySells@ManzanoHomes.com',
     phone: '(702) 555-0002',
   },
   {
@@ -22,7 +22,7 @@ const teamMembers = [
     role: 'Client Relations Manager',
     image: '/api/placeholder/300/300',
     bio: 'Ensuring smooth transactions and excellent customer service, Sarah coordinates all aspects of the buying and selling process to exceed client expectations.',
-    email: 'sarah@manzanohomes.com',
+    email: 'DrDuffySells@ManzanoHomes.com',
     phone: '(702) 555-0003',
   },
 ];
