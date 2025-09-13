@@ -206,7 +206,69 @@ onMount(() => {
     if (testimonialInterval) clearInterval(testimonialInterval);
   };
 });
+
+// FAQ Schema for SEO
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is the median home price in 89138 Las Vegas?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The median home price in 89138 Las Vegas is $455,000, with homes ranging from $350,000 to $900,000. This Southwest Las Vegas area offers diverse neighborhoods with both established communities and new developments.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What makes 89138 a great place to live?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '89138 offers excellent schools, low crime rates, convenient access to major employment centers, diverse neighborhoods with various home styles, and a perfect balance of suburban tranquility and urban convenience.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What schools serve the 89138 area?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The 89138 area is served by Southwest Career Technical Academy (8/10 rating), Desert Oasis High School (8/10 rating), and Spring Valley High School (7/10 rating), providing excellent educational opportunities.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How far is 89138 from the Las Vegas Strip?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '89138 is located 12 miles from the Las Vegas Strip, approximately a 12-minute drive via I-15, providing easy access to entertainment while maintaining a quiet residential atmosphere.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What shopping and amenities are near 89138?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Residents enjoy convenient access to Target (1.2 miles), Walmart (1.5 miles), Smith's Food and Drug (1.8 miles), and The Shops at Summerlin (3.5 miles) for shopping and dining.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I find homes for sale in 89138?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'You can find homes in 89138 by calling (702) 500-1942 or using our RealScout integration for live MLS listings. We specialize in the 89138 area and can help you find your perfect home in this diverse community.',
+      },
+    },
+  ],
+};
 </script>
+
+<svelte:head>
+  <script type="application/ld+json">
+    {JSON.stringify(faqSchema)}
+  </script>
+</svelte:head>
 
 <SEO
   title="89138 Real Estate | Southwest Las Vegas Homes for Sale | $455K Median Price"
@@ -273,79 +335,6 @@ onMount(() => {
 	]}
 />
 
-<!-- FAQ Schema for SEO -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the median home price in 89138 Las Vegas?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The median home price in 89138 Las Vegas is $455,000, with homes ranging from $350,000 to $900,000. This Southwest Las Vegas area offers diverse neighborhoods with established communities and new developments."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What makes 89138 a good place to live?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "89138 offers diverse neighborhoods, excellent schools (8.3/10 rating), convenient access to major employment centers, family-friendly community with parks and playgrounds, and modern amenities with smart technology."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What schools serve the 89138 zip code?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The 89138 area is served by Southwest Career and Technical Academy Elementary (9/10 rating, 0.8 miles), Southwest Career and Technical Academy High School (8/10 rating, 1.2 miles), Desert Pines High School (7/10 rating, 2.1 miles), and Canyon Springs High School (8/10 rating, 2.8 miles)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How far is 89138 from the Las Vegas Strip?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "89138 is located 12 minutes from the Las Vegas Strip via I-15 and I-215. This provides excellent access to entertainment and employment while maintaining a quiet residential atmosphere in Southwest Las Vegas."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What shopping and entertainment is available in 89138?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "89138 offers Centennial Hills Town Center (1.5 miles), Aliante Casino + Hotel (3.8 miles), Mountain's Edge (4.2 miles), and Red Rock Casino Resort & Spa (5.2 miles) for shopping, dining, and entertainment."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is 89138 a safe area with low crime?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, 89138 has low crime rates with a walk score of 70. The area features well-maintained neighborhoods, active community involvement, and regular police patrols, making it a safe choice for families."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What parks and recreation are near 89138?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Nearby recreation includes Southwest Career and Technical Academy Park (1.1 miles), Aliante Nature Discovery Park (3.2 miles), Mountain's Edge Regional Park (4.8 miles), and Red Rock Canyon National Conservation Area (8.5 miles) for outdoor activities."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I find homes for sale in 89138?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You can find homes in 89138 by calling (702) 500-1942 or using our RealScout integration for live MLS listings. We offer personalized assistance to find your perfect home in this diverse and growing area."
-      }
-    }
-  ]
-}
-</script>
 
 <main class="min-h-screen" id="main-content">
   <!-- Hero Section -->
