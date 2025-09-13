@@ -229,7 +229,7 @@ const faqSchema = {
           <a href="sms:+17025001942" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
             💬 Text Us
           </a>
-          <button onclick={() => window.open('mailto:info@manzanohomes.com?subject=Interest in 3693 Manzano Peak Ave')" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+          <button onclick={() => window.open('mailto:info@manzanohomes.com?subject=Interest in 3693 Manzano Peak Ave')} class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
             ✉️ Email Us
           </button>
         </div>
