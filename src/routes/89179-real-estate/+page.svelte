@@ -206,7 +206,69 @@ onMount(() => {
     if (testimonialInterval) clearInterval(testimonialInterval);
   };
 });
+
+// FAQ Schema for SEO
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is the median home price in 89179 Las Vegas?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The median home price in 89179 Las Vegas is $435,000, with homes ranging from $320,000 to $850,000. This Northwest Las Vegas area offers growing communities with both established neighborhoods and new developments.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What makes 89179 a great place to live?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '89179 offers excellent schools, low crime rates, convenient access to major employment centers, growing community with modern amenities, and a perfect balance of suburban tranquility and urban convenience.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What schools serve the 89179 area?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The 89179 area is served by Northwest Career Technical Academy (8/10 rating), Arbor View High School (8/10 rating), and Shadow Ridge High School (7/10 rating), providing excellent educational opportunities.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How far is 89179 from the Las Vegas Strip?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '89179 is located 16 miles from the Las Vegas Strip, approximately a 20-minute drive via I-15, providing easy access to entertainment while maintaining a quiet residential atmosphere.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What shopping and amenities are near 89179?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Residents enjoy convenient access to Target (1.8 miles), Walmart (2.2 miles), Smith's Food and Drug (2.5 miles), and The Shops at Summerlin (5.0 miles) for shopping and dining.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I find homes for sale in 89179?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'You can find homes in 89179 by calling (702) 500-1942 or using our RealScout integration for live MLS listings. We specialize in the 89179 area and can help you find your perfect home in this growing community.',
+      },
+    },
+  ],
+};
 </script>
+
+<svelte:head>
+  <script type="application/ld+json">
+    {JSON.stringify(faqSchema)}
+  </script>
+</svelte:head>
 
 <SEO
   title="89179 Real Estate | Northwest Las Vegas Homes for Sale | $435K Median Price"
@@ -273,79 +335,6 @@ onMount(() => {
 	]}
 />
 
-<!-- FAQ Schema for SEO -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the median home price in 89179 Las Vegas?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The median home price in 89179 Las Vegas is $435,000, with homes ranging from $320,000 to $850,000. This Northwest Las Vegas area offers new construction and modern amenities for growing families."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What makes 89179 a good place to live?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "89179 offers new construction homes, excellent schools (8.4/10 rating), convenient access to major highways, family-friendly community with parks and playgrounds, and modern amenities with smart technology."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What schools serve the 89179 zip code?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The 89179 area is served by Northwest Career and Technical Academy Elementary (9/10 rating, 1.2 miles), Northwest Career and Technical Academy High School (8/10 rating, 1.8 miles), Desert Pines High School (7/10 rating, 2.8 miles), and Canyon Springs High School (8/10 rating, 3.5 miles)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How far is 89179 from the Las Vegas Strip?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "89179 is located 18 minutes from the Las Vegas Strip via I-95 and I-215. This provides convenient access to entertainment while maintaining a peaceful residential atmosphere in Northwest Las Vegas."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What shopping and entertainment is available in 89179?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "89179 offers Centennial Hills Town Center (2.5 miles), Aliante Casino + Hotel (4.1 miles), Mountain's Edge (5.2 miles), and Red Rock Casino Resort & Spa (6.8 miles) for shopping, dining, and entertainment."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is 89179 a safe area with low crime?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, 89179 has low crime rates with a walk score of 68. The area features well-maintained neighborhoods, active community involvement, and regular police patrols, making it a safe choice for families."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What parks and recreation are near 89179?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Nearby recreation includes Centennial Hills Park (1.8 miles), Aliante Nature Discovery Park (3.8 miles), Mountain's Edge Regional Park (5.2 miles), and Red Rock Canyon National Conservation Area (9.1 miles) for outdoor activities."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I find new construction homes in 89179?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You can find new construction homes in 89179 by calling (702) 500-1942 or using our RealScout integration for live MLS listings. We specialize in new construction and can help you find the perfect modern home."
-      }
-    }
-  ]
-}
-</script>
 
 <main class="min-h-screen" id="main-content">
   <!-- Hero Section -->
