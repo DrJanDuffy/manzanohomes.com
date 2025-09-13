@@ -91,6 +91,7 @@ const faqSchema = {
       }
     ]
   }
+</script>
 </svelte:head>
 
 <div id="main-content" class="min-h-screen bg-gradient-to-b from-white to-gray-50">

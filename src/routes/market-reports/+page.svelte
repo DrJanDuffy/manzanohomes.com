@@ -85,6 +85,7 @@ const faqSchema = {
       "name": "Las Vegas, Nevada"
     }
   }
+</script>
 </svelte:head>
 
 <div id="main-content" class="min-h-screen bg-gray-50">

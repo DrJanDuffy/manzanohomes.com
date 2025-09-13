@@ -125,6 +125,7 @@ const faqSchema = {
     {JSON.stringify(faqSchema)}
   <script type="application/ld+json">
     {JSON.stringify(blogSchema)}
+</script>
 </svelte:head>
 
 <div id="main-content" class="min-h-screen bg-gray-50">

@@ -50,6 +50,7 @@ const faqSchema = {
 <svelte:head>
   <script type="application/ld+json">
     {JSON.stringify(faqSchema)}
+</script>
 </svelte:head>
 
 <SEO
@@ -192,6 +193,7 @@ const faqSchema = {
 <svelte:head>
   <script type="application/ld+json">
     {JSON.stringify(faqSchema)}
+</script>
 </svelte:head>
 
 <!-- Hero Section -->
