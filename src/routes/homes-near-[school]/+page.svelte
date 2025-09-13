@@ -167,7 +167,69 @@ onMount(() => {
     if (testimonialInterval) clearInterval(testimonialInterval);
   };
 });
+
+// FAQ Schema for SEO
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What schools are near Manzano Peak homes?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Homes near Manzano Peak are served by Manzano Peak Elementary School (9/10 rating, 0.3 miles), Southeast Career Technical Academy (8/10 rating, 1.2 miles), Green Valley High School (8/10 rating, 2.1 miles), and Coronado High School (7/10 rating, 2.8 miles).',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I find homes near good schools in Las Vegas?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'You can find homes near excellent schools by calling (702) 500-1942 or using our RealScout integration. We specialize in helping families find homes in the best school districts with top-rated schools.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What makes a school district good for families?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Good school districts have high ratings (8+/10), strong academic programs, low student-to-teacher ratios, modern facilities, extracurricular activities, and safe environments that support student success.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: "How far should I live from my child's school?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Most families prefer to live within 1-2 miles of their child's school for convenience. This allows for easy walking, biking, or short drives while maintaining a good work-life balance.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What are the top-rated schools in Las Vegas?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Top-rated schools in Las Vegas include Manzano Peak Elementary (9/10), Southeast Career Technical Academy (8/10), Green Valley High School (8/10), and Coronado High School (7/10), among others.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I check school ratings and reviews?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'You can check school ratings on GreatSchools.org, Niche.com, and the Clark County School District website. We also provide detailed school information and can help you research the best options for your family.',
+      },
+    },
+  ],
+};
 </script>
+
+<svelte:head>
+  <script type="application/ld+json">
+    {JSON.stringify(faqSchema)}
+  </script>
+</svelte:head>
 
 <SEO
   title="Homes Near {currentSchool.name} | Las Vegas Real Estate | School District {currentSchool.type}"
@@ -239,79 +301,6 @@ onMount(() => {
 	]}
 />
 
-<!-- FAQ Schema for SEO -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What schools are near Manzano Peak homes?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Homes near Manzano Peak are served by Manzano Peak Elementary School (9/10 rating, 0.3 miles), Southeast Career Technical Academy (8/10 rating, 1.2 miles), Green Valley High School (8/10 rating, 2.1 miles), and Coronado High School (7/10 rating, 2.8 miles)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I find homes near good schools in Las Vegas?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Our Manzano Peak area offers excellent schools within walking distance. Use our school-specific search to find homes near top-rated elementary and high schools, with detailed school ratings and program information."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the student-teacher ratio at Manzano Peak Elementary?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Manzano Peak Elementary School has an 18:1 student-teacher ratio, which is excellent for personalized attention and academic success. The school serves 485 students with above-average test scores."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What programs are available at schools near Manzano Peak?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Schools near Manzano Peak offer STEM programs, arts classes, music programs, sports teams, after school care, technical programs, college preparation, honors classes, and student government opportunities."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How far are homes from schools in the Manzano area?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Most homes in the Manzano area are within 0.3 to 2.8 miles of excellent schools. Manzano Peak Elementary is just 0.3 miles away, making it easily walkable for families with young children."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the average home price near good schools in Manzano Peak?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Homes near excellent schools in Manzano Peak range from $350,000 to $750,000, with a median price of $475,000. These homes offer great value for families seeking quality education."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I schedule a school tour near Manzano Peak?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You can schedule a school tour by calling (702) 500-1942 or filling out our contact form. We can arrange tours of Manzano Peak Elementary and other nearby schools to help you make an informed decision."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What makes the school district near Manzano Peak special?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The school district near Manzano Peak features highly-rated schools with excellent academic programs, dedicated teachers, modern facilities, and strong community support. Schools consistently score above average on standardized tests."
-      }
-    }
-  ]
-}
-</script>
 
 <main class="min-h-screen bg-gray-50" id="main-content">
   <!-- Hero Section -->
