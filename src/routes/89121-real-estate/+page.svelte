@@ -345,14 +345,8 @@ const faqSchema = {
 <main class="min-h-screen" id="main-content">
   <!-- Hero Section -->
   <section class="relative bg-gradient-to-r from-primary-600 to-primary-800 text-white pt-24 md:pt-32 pb-20">
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "89121 offers established communities with mature trees, excellent schools (8.5/10 rating), convenient access to major highways, family-friendly atmosphere with parks and playgrounds, and modern amenities with smart technology."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What schools serve the 89121 zip code?",
+    <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-manzano-dark/40 to-transparent"></div>
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "The 89121 area is served by Manzano Peak Elementary School (9/10 rating, 0.3 miles), Southeast Career Technical Academy (8/10 rating, 1.2 miles), Green Valley High School (8/10 rating, 2.1 miles), and Coronado High School (7/10 rating, 2.8 miles)."
