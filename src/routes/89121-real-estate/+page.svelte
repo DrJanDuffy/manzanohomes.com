@@ -213,6 +213,62 @@ onMount(() => {
     if (testimonialInterval) clearInterval(testimonialInterval);
   };
 });
+
+// FAQ Schema for SEO
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is the median home price in 89121 Las Vegas?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The median home price in 89121 Las Vegas is $475,000, with homes ranging from $350,000 to $850,000. This Southeast Las Vegas area offers established communities with mature trees and excellent amenities.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What makes 89121 a great place to live?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '89121 offers excellent schools, low crime rates, convenient access to major highways, established neighborhoods with mature trees, and a perfect balance of suburban tranquility and urban convenience.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What schools serve the 89121 area?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The 89121 area is served by Manzano Peak Elementary School (9/10 rating), Southeast Career Technical Academy (8/10 rating), and Green Valley High School (8/10 rating), providing excellent educational opportunities.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How far is 89121 from the Las Vegas Strip?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '89121 is located 12 miles from the Las Vegas Strip, approximately a 15-minute drive via I-515 and I-215, providing easy access to entertainment while maintaining a quiet residential atmosphere.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What shopping and amenities are near 89121?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Residents enjoy convenient access to Vons grocery store (0.8 miles), Target (1.5 miles), Smith's Food and Drug (1.2 miles), Green Valley Ranch Resort (3.2 miles), and The District at Green Valley Ranch shopping center (3.5 miles).",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I find homes for sale in 89121?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'You can find homes in 89121 by calling (702) 500-1942 or using our RealScout integration for live MLS listings. We specialize in the 89121 area and can help you find your perfect home in this established community.',
+      },
+    },
+  ],
+};
 </script>
 
 <SEO
@@ -281,14 +337,12 @@ onMount(() => {
 />
 
 <!-- FAQ Schema for SEO -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the median home price in 89121 Las Vegas?",
+<svelte:head>
+  <script type="application/ld+json">
+    {JSON.stringify(faqSchema)}
+  </script>
+</svelte:head>
+<main class="min-h-screen" id="main-content">
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "The median home price in 89121 Las Vegas is $475,000, with homes ranging from $350,000 to $850,000. This Southeast Las Vegas area offers established communities with mature trees and excellent amenities."
