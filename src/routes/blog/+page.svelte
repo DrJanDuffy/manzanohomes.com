@@ -123,10 +123,8 @@ const faqSchema = {
   
   <script type="application/ld+json">
     {JSON.stringify(faqSchema)}
-  </script>
   <script type="application/ld+json">
     {JSON.stringify(blogSchema)}
-  </script>
 </svelte:head>
 
 <div id="main-content" class="min-h-screen bg-gray-50">

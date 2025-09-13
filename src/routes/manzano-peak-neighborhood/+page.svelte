@@ -243,7 +243,6 @@ const faqSchema = {
 <svelte:head>
   <script type="application/ld+json">
     {JSON.stringify(faqSchema)}
-  </script>
 </svelte:head>
 
 <SEO
@@ -389,7 +388,6 @@ const faqSchema = {
     }
   ]
 }
-</script>
 
 <main class="min-h-screen" id="main-content">
   <!-- Hero Section -->

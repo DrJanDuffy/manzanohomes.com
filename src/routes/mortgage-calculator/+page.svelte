@@ -62,7 +62,6 @@ const faqSchema = {
       "priceCurrency": "USD"
     }
   }
-  </script>
 </svelte:head>
 
 <div id="main-content" class="min-h-screen bg-gray-50">

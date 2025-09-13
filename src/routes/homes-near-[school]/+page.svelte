@@ -196,7 +196,6 @@ const faqSchema = {
 <svelte:head>
   <script type="application/ld+json">
     {JSON.stringify(faqSchema)}
-  </script>
 </svelte:head>
 
 
@@ -204,7 +203,6 @@ const faqSchema = {
 <svelte:head>
   <script type="application/ld+json">
     {JSON.stringify(faqSchema)}
-  </script>
 </svelte:head>
 
 <SEO
