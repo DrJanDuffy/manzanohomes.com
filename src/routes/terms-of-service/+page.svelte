@@ -168,7 +168,7 @@ const _lastUpdated = new Date().toLocaleDateString('en-US', {
               <p class="text-gray-700"><strong>Manzano Homes</strong></p>
               <p class="text-gray-700">3693 Manzano Peak Ave, Las Vegas, NV 89121</p>
               <p class="text-gray-700">Phone: (702) 500-1942</p>
-              <p class="text-gray-700">Email: info@manzanohomes.com</p>
+              <p class="text-gray-700">Email: DrDuffySells@ManzanoHomes.com</p>
             </div>
           </div>
 

@@ -98,7 +98,7 @@ const faqSchema = {
       name: 'How can I contact Manzano Homes?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'You can contact us by calling (702) 500-1942, texting us, or emailing info@manzanohomes.com. We are here to help with all your real estate needs.',
+        text: 'You can contact us by calling (702) 500-1942, texting us, or emailing DrDuffySells@ManzanoHomes.com. We are here to help with all your real estate needs.',
       },
     },
     {
@@ -146,7 +146,7 @@ const faqSchema = {
         <a href="sms:+17025001942" class="bg-secondary-500 hover:bg-secondary-600 text-white font-semibold py-3 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
           💬 Text Us
         </a>
-        <button onclick={() => window.open('mailto:info@manzanohomes.com?subject=Blog Question')} class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+        <button onclick={() => window.open('mailto:DrDuffySells@ManzanoHomes.com?subject=Blog Question')} class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
           ✉️ Email Us
         </button>
       </div>
@@ -262,7 +262,7 @@ const faqSchema = {
         <a href="sms:+17025001942" class="bg-secondary-500 hover:bg-secondary-600 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
           💬 Text Us
         </a>
-        <button onclick={() => window.open('mailto:info@manzanohomes.com?subject=Real Estate Consultation')} class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+        <button onclick={() => window.open('mailto:DrDuffySells@ManzanoHomes.com?subject=Real Estate Consultation')} class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
           ✉️ Email Us
         </button>
       </div>

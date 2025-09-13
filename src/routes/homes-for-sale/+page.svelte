@@ -502,8 +502,8 @@ const pageSchemas = [
               <a href="tel:+17025550123" class="block text-primary-600 hover:text-primary-700">
                 (702) 500-1942
               </a>
-              <a href="mailto:info@manzanohomes.com" class="block text-primary-600 hover:text-primary-700">
-                info@manzanohomes.com
+              <a href="mailto:DrDuffySells@ManzanoHomes.com" class="block text-primary-600 hover:text-primary-700">
+                DrDuffySells@ManzanoHomes.com
               </a>
             </div>
           </div>
