@@ -1,74 +1,149 @@
 <script>
-import GuideCard from '$lib/components/GuideCard.svelte';
-import { getGuidesForPage } from '$lib/data/guides.js';
-import { onMount } from 'svelte';
+import SEO from '$lib/components/SEO.svelte';
 
-let blogPosts = [];
-// biome-ignore lint/correctness/noUnusedVariables: Used in template
-let isLoading = true;
-// biome-ignore lint/correctness/noUnusedVariables: Used in template
-let error = null;
-// biome-ignore lint/correctness/noUnusedVariables: Used in template
-let lastUpdated = null;
+// Blog posts data
+const blogPosts = [
+  {
+    id: 1,
+    title: 'Top 10 Home Staging Tips for Quick Sales',
+    excerpt:
+      'Learn professional staging techniques that can help your home sell faster and for more money in the competitive Las Vegas market.',
+    author: 'Dr. Jan Duffy',
+    date: '2024-01-15',
+    category: 'Selling',
+    readTime: '5 min read',
+    image: '/blog/staging-tips.jpg',
+    slug: 'home-staging-tips',
+  },
+  {
+    id: 2,
+    title: 'Las Vegas Market Update - Q1 2024',
+    excerpt:
+      'Comprehensive analysis of the Las Vegas real estate market including price trends, inventory levels, and future predictions.',
+    author: 'Dr. Jan Duffy',
+    date: '2024-01-12',
+    category: 'Market Report',
+    readTime: '8 min read',
+    image: '/blog/market-update.jpg',
+    slug: 'market-update-q1-2024',
+  },
+  {
+    id: 3,
+    title: "First-Time Home Buyer's Guide to Las Vegas",
+    excerpt:
+      'Everything you need to know about buying your first home in Las Vegas, from pre-approval to closing day.',
+    author: 'Michael Rodriguez',
+    date: '2024-01-10',
+    category: 'Buying',
+    readTime: '12 min read',
+    image: '/blog/first-time-buyer.jpg',
+    slug: 'first-time-buyer-guide',
+  },
+  {
+    id: 4,
+    title: 'Neighborhood Spotlight: Manzano Peak',
+    excerpt:
+      'Discover what makes Manzano Peak one of the most desirable neighborhoods in Las Vegas for families.',
+    author: 'Dr. Jan Duffy',
+    date: '2024-01-08',
+    category: 'Neighborhood',
+    readTime: '6 min read',
+    image: '/blog/manzano-spotlight.jpg',
+    slug: 'manzano-peak-spotlight',
+  },
+  {
+    id: 5,
+    title: 'Mortgage Rates and Your Home Buying Power',
+    excerpt:
+      'Understanding how current mortgage rates affect your purchasing power and what to expect in 2024.',
+    author: 'Michael Rodriguez',
+    date: '2024-01-05',
+    category: 'Financing',
+    readTime: '7 min read',
+    image: '/blog/mortgage-rates.jpg',
+    slug: 'mortgage-rates-2024',
+  },
+  {
+    id: 6,
+    title: 'Investment Properties in Las Vegas: A Complete Guide',
+    excerpt:
+      'Everything you need to know about investing in Las Vegas real estate, from market analysis to property management.',
+    author: 'Dr. Jan Duffy',
+    date: '2024-01-03',
+    category: 'Investing',
+    readTime: '10 min read',
+    image: '/blog/investment-guide.jpg',
+    slug: 'investment-properties-guide',
+  },
+];
 
-// Get guides for blog page
-// biome-ignore lint/correctness/noUnusedVariables: Used in template
-const blogGuides = getGuidesForPage('blog');
-
-// Categories based on Simplifying the Market content
-// biome-ignore lint/correctness/noUnusedVariables: Used in template
+// Categories
 const categories = [
   'All',
-  'Market Analysis',
-  'Buying Guide',
-  'Selling Tips',
-  'Mortgage Rates',
-  'Economy',
-  'First-Time Buyers',
+  'Market Report',
+  'Buying',
+  'Selling',
+  'Neighborhood',
+  'Financing',
+  'Investing',
 ];
-let selectedCategory = 'All';
 
-// Function to handle category selection
-// biome-ignore lint/correctness/noUnusedVariables: Used in template onclick handler
-function selectCategory(category) {
-  selectedCategory = category;
-}
+// FAQ Schema for SEO
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What real estate topics does the Manzano Homes blog cover?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Our blog covers market updates, buying guides, selling tips, neighborhood insights, mortgage information, and expert advice for Las Vegas real estate buyers and sellers.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How often is the Manzano Homes blog updated?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We update our blog regularly with fresh content including market reports, neighborhood spotlights, and expert insights to keep you informed about Las Vegas real estate trends.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I subscribe to get blog updates?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes! You can subscribe to our newsletter to receive the latest blog posts, market updates, and exclusive real estate insights directly to your inbox.',
+      },
+    },
+  ],
+};
 
-// Fetch blog posts from RSS feed
-async function fetchBlogPosts() {
-  try {
-    isLoading = true;
-    const response = await fetch('/api/blog/feed');
-    const data = await response.json();
-
-    if (data.success) {
-      blogPosts = data.posts;
-      lastUpdated = data.lastUpdated;
-      error = null;
-    } else {
-      blogPosts = data.posts || []; // Use fallback posts
-      error = data.error;
-      lastUpdated = data.lastUpdated;
-    }
-  } catch (err) {
-    console.error('Failed to fetch blog posts:', err);
-    error = 'Failed to load blog posts';
-    blogPosts = [];
-  } finally {
-    isLoading = false;
-  }
-}
-
-// Filter posts based on selected category
-$: filteredPosts =
-  selectedCategory === 'All'
-    ? blogPosts
-    : blogPosts.filter((post) => post.category === selectedCategory);
-
-// Load posts on mount
-onMount(() => {
-  fetchBlogPosts();
-});
+// Blog Schema for SEO
+const blogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'Manzano Homes Real Estate Blog',
+  description: 'Expert real estate insights, market updates, and tips for buyers and sellers',
+  url: 'https://manzanohomes.com/blog',
+  publisher: {
+    '@type': 'Organization',
+    name: 'Manzano Homes',
+    url: 'https://manzanohomes.com',
+  },
+  blogPost: blogPosts.map((post) => ({
+    '@type': 'BlogPosting',
+    headline: post.title,
+    author: {
+      '@type': 'Person',
+      name: post.author,
+    },
+    datePublished: post.date,
+    description: post.excerpt,
+    url: `https://manzanohomes.com/blog/${post.slug}`,
+  })),
+};
 </script>
 
 <svelte:head>
@@ -80,40 +155,10 @@ onMount(() => {
   <link rel="canonical" href="https://manzanohomes.com/blog">
   
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "Manzano Homes Real Estate Blog",
-    "description": "Expert real estate insights, market updates, and tips for buyers and sellers",
-    "url": "https://manzanohomes.com/blog",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Manzano Homes",
-      "url": "https://manzanohomes.com"
-    },
-    "blogPost": [
-      {
-        "@type": "BlogPosting",
-        "headline": "Top 10 Home Staging Tips for Quick Sales",
-        "author": {
-          "@type": "Person",
-          "name": "Dr. Jan Duffy"
-        },
-        "datePublished": "2024-01-15",
-        "description": "Learn professional staging techniques that can help your home sell faster and for more money in the competitive Las Vegas market."
-      },
-      {
-        "@type": "BlogPosting",
-        "headline": "Las Vegas Market Update - Q1 2024",
-        "author": {
-          "@type": "Person",
-          "name": "Michael Rodriguez"
-        },
-        "datePublished": "2024-01-10",
-        "description": "Get the latest insights on local real estate trends, pricing, and inventory levels in the Las Vegas and Manzano neighborhood areas."
-      }
-    ]
-  }
+    {JSON.stringify(faqSchema)}
+  </script>
+  <script type="application/ld+json">
+    {JSON.stringify(blogSchema)}
   </script>
 </svelte:head>
 
@@ -122,162 +167,154 @@ onMount(() => {
   <section class="bg-gradient-primary text-white pt-24 md:pt-32 pb-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h1 class="text-4xl md:text-5xl font-bold mb-4">Real Estate Insights Blog</h1>
-      <p class="text-xl text-primary-100 mb-8">Market updates, tips, and expert advice for Las Vegas home buyers and sellers</p>
+      <p class="text-xl md:text-2xl mb-8 text-primary-100">
+        Expert insights, market updates, and tips for Las Vegas real estate
+      </p>
       
-      <!-- Featured Buyer Guide Resource -->
-      {#each blogGuides as guide}
-        <GuideCard 
-          guide={{
-            ...guide,
-            variant: 'compact'
-          }} 
-        />
-      {/each}
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="tel:+17025001942" class="bg-white text-primary-600 font-semibold py-3 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+          📞 Call (702) 500-1942
+        </a>
+        <a href="sms:+17025001942" class="bg-secondary-500 hover:bg-secondary-600 text-white font-semibold py-3 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+          💬 Text Us
+        </a>
+        <button onclick={() => window.open('mailto:info@manzanohomes.com?subject=Blog Question')} class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+          ✉️ Email Us
+        </button>
+      </div>
     </div>
   </section>
 
-  <!-- Category Filter -->
-  <section class="sticky top-0 bg-white shadow-sm z-10 py-4" aria-labelledby="filter-heading">
+  <!-- Blog Posts Section -->
+  <section class="py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 id="filter-heading" class="sr-only">Filter blog posts by category</h2>
-      <div class="flex flex-wrap gap-2" role="tablist" aria-label="Blog categories">
-        {#each categories as category}
-          <button
-            role="tab"
-            aria-selected={selectedCategory === category}
-            aria-controls="blog-posts"
-            onclick={() => selectCategory(category)}
-            class="px-4 py-2 rounded-full transition-colors focus:ring-4 focus:ring-primary-200 {selectedCategory === category ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}"
-          >
-            {category}
-          </button>
+      <!-- Category Filter -->
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Latest Articles</h2>
+        <div class="flex flex-wrap gap-2">
+          {#each categories as category}
+            <button class="px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200
+              {category === 'All' ? 'bg-primary-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}">
+              {category}
+            </button>
+          {/each}
+        </div>
+      </div>
+
+      <!-- Blog Posts Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {#each blogPosts as post}
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div class="aspect-w-16 aspect-h-9">
+              <img 
+                src={post.image} 
+                alt={post.title}
+                class="w-full h-48 object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-sm font-medium text-primary-600 bg-primary-100 px-2 py-1 rounded">
+                  {post.category}
+                </span>
+                <span class="text-sm text-gray-500">{post.readTime}</span>
+              </div>
+              
+              <h3 class="text-xl font-semibold text-gray-900 mb-2 line-clamp-2">
+                {post.title}
+              </h3>
+              
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                {post.excerpt}
+              </p>
+              
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <div class="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
+                    <span class="text-primary-600 font-semibold text-sm">
+                      {post.author.split(' ').map(n => n[0]).join('')}
+                    </span>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-gray-900">{post.author}</p>
+                    <p class="text-xs text-gray-500">{post.date}</p>
+                  </div>
+                </div>
+                
+                <a href="/blog/{post.slug}" class="text-primary-600 hover:text-primary-700 font-medium text-sm">
+                  Read More →
+                </a>
+              </div>
+            </div>
+          </article>
         {/each}
       </div>
     </div>
   </section>
 
-  <!-- Blog Posts Grid -->
-  <section class="py-12" id="blog-posts">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Loading State -->
-      {#if isLoading}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {#each Array(6) as _}
-            <div class="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
-              <div class="h-48 bg-gray-200"></div>
-              <div class="p-6">
-                <div class="h-4 bg-gray-200 rounded mb-3"></div>
-                <div class="h-6 bg-gray-200 rounded mb-3"></div>
-                <div class="h-4 bg-gray-200 rounded mb-2"></div>
-                <div class="h-4 bg-gray-200 rounded mb-4"></div>
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center space-x-3">
-                    <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
-                    <div>
-                      <div class="h-3 bg-gray-200 rounded mb-1"></div>
-                      <div class="h-3 bg-gray-200 rounded w-20"></div>
-                    </div>
-                  </div>
-                  <div class="h-4 bg-gray-200 rounded w-20"></div>
-                </div>
-              </div>
-            </div>
-          {/each}
+  <!-- Newsletter Signup -->
+  <section class="bg-primary-600 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-4">Stay Updated</h2>
+      <p class="text-xl mb-8 text-primary-100">
+        Get the latest market updates and new listings delivered to your inbox
+      </p>
+      
+      <div class="max-w-md mx-auto">
+        <div class="flex">
+          <input 
+            type="email" 
+            placeholder="Enter your email address"
+            class="flex-1 px-4 py-3 rounded-l-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+          />
+          <button class="bg-secondary-500 hover:bg-secondary-600 text-white font-semibold px-6 py-3 rounded-r-lg transition-colors duration-200">
+            Subscribe
+          </button>
         </div>
-      {:else if error}
-        <!-- Error State -->
-        <div class="text-center py-12">
-          <div class="bg-red-50 border border-red-200 rounded-lg p-6 max-w-md mx-auto">
-            <svg class="w-12 h-12 text-red-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
-            </svg>
-            <h3 class="text-lg font-medium text-red-800 mb-2">Unable to Load Blog Posts</h3>
-            <p class="text-red-600 mb-4">{error}</p>
-              <button 
-                onclick={fetchBlogPosts}
-                class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors"
-              >
-              Try Again
-            </button>
-          </div>
-        </div>
-      {:else if filteredPosts.length === 0}
-        <!-- No Posts State -->
-        <div class="text-center py-12">
-          <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 max-w-md mx-auto">
-            <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-            </svg>
-            <h3 class="text-lg font-medium text-gray-800 mb-2">No Posts Found</h3>
-            <p class="text-gray-600">No blog posts match your selected category.</p>
-          </div>
-        </div>
-      {:else}
-        <!-- Blog Posts Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {#each filteredPosts as post}
-            <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" itemscope itemtype="https://schema.org/BlogPosting">
-              <img 
-                src={post.image} 
-                alt={post.title} 
-                class="w-full h-48 object-cover" 
-                itemprop="image"
-                loading="lazy"
-                onerror={(e) => e.target.src = '/api/placeholder/400/250'}
-              >
-              <div class="p-6">
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-xs font-semibold text-primary-600 uppercase" itemprop="articleSection">{post.category}</span>
-                  <span class="text-xs text-gray-500" itemprop="timeRequired">{post.readTime}</span>
-                </div>
-                <h2 class="text-xl font-bold text-gray-900 mb-2 hover:text-primary-600" itemprop="headline">
-                  <a href={post.link} target="_blank" rel="noopener noreferrer" class="focus:ring-4 focus:ring-primary-200 rounded">{post.title}</a>
-                </h2>
-                <p class="text-gray-600 mb-4" itemprop="description">{post.excerpt}</p>
-                <div class="flex items-center justify-between">
-                  <div class="text-sm text-gray-500">
-                    By <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">{post.author}</span></span> • 
-                    <time datetime={post.date} itemprop="datePublished">{post.date}</time>
-                  </div>
-                  <a href={post.link} target="_blank" rel="noopener noreferrer" class="text-primary-600 hover:text-primary-700 font-medium focus:ring-4 focus:ring-primary-200 rounded" aria-label="Read more about {post.title}">
-                    Read More →
-                  </a>
-                </div>
-              </div>
-            </article>
-          {/each}
-        </div>
-        
-        <!-- Last Updated Info -->
-        {#if lastUpdated}
-          <div class="text-center mt-8 text-sm text-gray-500">
-            Last updated: {new Date(lastUpdated).toLocaleString()}
-          </div>
-        {/if}
-      {/if}
+        <p class="text-sm text-primary-200 mt-2">
+          We respect your privacy. Unsubscribe at any time.
+        </p>
+      </div>
     </div>
   </section>
 
-  <!-- Newsletter Signup -->
-  <section class="bg-primary-900 text-white py-16" aria-labelledby="newsletter-heading">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 id="newsletter-heading" class="text-3xl font-bold mb-4">Stay Updated</h2>
-      <p class="text-xl text-primary-100 mb-8">Get the latest market insights and real estate tips delivered to your inbox</p>
-      <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto" onsubmit={(e) => e.preventDefault()}>
-        <label for="newsletter-email" class="sr-only">Email address</label>
-        <input
-          id="newsletter-email"
-          type="email"
-          placeholder="Your email address"
-          class="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:ring-4 focus:ring-primary-200"
-          required
-          aria-describedby="newsletter-description"
-        >
-        <button type="submit" class="px-6 py-3 bg-white text-primary-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors focus:ring-4 focus:ring-primary-200">
-          Subscribe
+  <!-- CTA Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Ready to Work With Us?</h2>
+      <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+        Whether you're buying or selling, our expert team is here to help you navigate the Las Vegas real estate market with confidence.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="tel:+17025001942" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+          📞 Call (702) 500-1942
+        </a>
+        <a href="sms:+17025001942" class="bg-secondary-500 hover:bg-secondary-600 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+          💬 Text Us
+        </a>
+        <button onclick={() => window.open('mailto:info@manzanohomes.com?subject=Real Estate Consultation')} class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+          ✉️ Email Us
         </button>
-      </form>
-      <p id="newsletter-description" class="text-sm text-primary-200 mt-2">We respect your privacy. Unsubscribe at any time.</p>
+      </div>
     </div>
   </section>
 </div>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

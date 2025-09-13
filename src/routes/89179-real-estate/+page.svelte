@@ -262,7 +262,22 @@ const faqSchema = {
     },
   ],
 };
+
+// FAQ Schema for SEO
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [JSON.stringify(faqSchema)],
+};
 </script>
+
+<svelte:head>
+  <script type="application/ld+json">
+    {JSON.stringify(faqSchema)}
+  </script>
+</svelte:head>
+
+
 
 <svelte:head>
   <script type="application/ld+json">

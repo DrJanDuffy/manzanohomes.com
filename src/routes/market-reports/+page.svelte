@@ -35,6 +35,36 @@ const monthlyTrends = [
   { month: 'Apr 2024', manzano: 490000, lasVegas: 430000 },
   { month: 'May 2024', manzano: 485000, lasVegas: 425000 },
 ];
+
+// FAQ Schema for SEO
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [],
+};
+// FAQ Schema for SEO
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How can I contact Manzano Homes?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'You can contact us by calling (702) 500-1942, texting us, or emailing info@manzanohomes.com. We are here to help with all your real estate needs.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What services does Manzano Homes provide?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We provide comprehensive real estate services including buying, selling, home valuations, market reports, and expert guidance for the Las Vegas area.',
+      },
+    },
+  ],
+};
 </script>
 
 <svelte:head>

@@ -112,7 +112,22 @@ const faqSchema = {
     },
   ],
 };
+
+// FAQ Schema for SEO
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [JSON.stringify(faqSchema)],
+};
 </script>
+
+
+
+<svelte:head>
+  <script type="application/ld+json">
+    {JSON.stringify(faqSchema)}
+  </script>
+</svelte:head>
 
 <SEO
   title="3693 Manzano Peak Ave, Las Vegas NV 89121 | $485,000 | 4 Bed 3 Bath Home"

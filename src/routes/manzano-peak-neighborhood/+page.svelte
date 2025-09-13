@@ -214,7 +214,125 @@ onMount(() => {
     if (testimonialInterval) clearInterval(testimonialInterval);
   };
 });
+
+// FAQ Schema for SEO
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What makes Manzano Peak neighborhood special?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Manzano Peak is a family-friendly neighborhood with excellent schools, beautiful parks, modern homes, and a strong sense of community. The area offers a perfect balance of suburban tranquility and urban convenience.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the median home price in Manzano Peak?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The median home price in Manzano Peak is $485,000, with homes ranging from $350,000 to $750,000. This represents excellent value for a family-friendly neighborhood with top-rated schools.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What schools serve the Manzano Peak area?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Manzano Peak is served by Manzano Peak Elementary School (9/10 rating, 0.3 miles), Southeast Career Technical Academy (8/10 rating, 1.2 miles), Green Valley High School (8/10 rating, 2.1 miles), and Coronado High School (7/10 rating, 2.8 miles).',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What amenities are available in Manzano Peak?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Residents enjoy walking distance to Vons (0.5 miles), Smith's Food and Drug (0.8 miles), Target (1.2 miles), and easy access to The Shops at Summerlin (3.5 miles) for shopping and dining.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How far is Manzano Peak from the Las Vegas Strip?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Manzano Peak is located 12 miles from the Las Vegas Strip, approximately a 12-minute drive via I-15, providing easy access to entertainment while maintaining a quiet residential atmosphere.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the crime rate in Manzano Peak?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Manzano Peak has a very low crime rate with a walk score of 75. The area features well-maintained neighborhoods, active community involvement, and regular police patrols, making it a safe choice for families.',
+      },
+    },
+  ],
+};
+
+// FAQ Schema for SEO
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What makes Manzano Peak neighborhood special?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Manzano Peak is a family-friendly neighborhood with excellent schools, beautiful parks, modern homes, and a strong sense of community. The area offers a perfect balance of suburban tranquility and urban convenience.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the median home price in Manzano Peak?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The median home price in Manzano Peak is $485,000, with homes ranging from $350,000 to $750,000. This represents excellent value for a family-friendly neighborhood with top-rated schools.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What schools serve the Manzano Peak area?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Manzano Peak is served by Manzano Peak Elementary School (9/10 rating, 0.3 miles), Southeast Career Technical Academy (8/10 rating, 1.2 miles), Green Valley High School (8/10 rating, 2.1 miles), and Coronado High School (7/10 rating, 2.8 miles).',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What amenities are available in Manzano Peak?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Residents enjoy walking distance to Vons (0.5 miles), Smith's Food and Drug (0.8 miles), Target (1.2 miles), and easy access to The Shops at Summerlin (3.5 miles) for shopping and dining.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How far is Manzano Peak from the Las Vegas Strip?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Manzano Peak is located 12 miles from the Las Vegas Strip, approximately a 12-minute drive via I-15, providing easy access to entertainment while maintaining a quiet residential atmosphere.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the crime rate in Manzano Peak?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Manzano Peak has a very low crime rate with a walk score of 75. The area features well-maintained neighborhoods, active community involvement, and regular police patrols, making it a safe choice for families.',
+      },
+    },
+  ],
+};
 </script>
+
+<svelte:head>
+  <script type="application/ld+json">
+    {JSON.stringify(faqSchema)}
+  </script>
+</svelte:head>
 
 <SEO
   title="Manzano Peak Neighborhood Las Vegas | 89121 Real Estate | Family Community"
@@ -293,12 +411,6 @@ onMount(() => {
 	]}
 />
 
-<!-- FAQ Schema for SEO -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
     {
       "@type": "Question",
       "name": "What makes Manzano Peak neighborhood special?",
