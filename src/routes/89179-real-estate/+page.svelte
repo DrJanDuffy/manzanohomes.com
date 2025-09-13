@@ -214,60 +214,21 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'What is the median home price in 89179 Las Vegas?',
+      name: 'How can I contact Manzano Homes?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'The median home price in 89179 Las Vegas is $435,000, with homes ranging from $320,000 to $850,000. This Northwest Las Vegas area offers growing communities with both established neighborhoods and new developments.',
+        text: 'You can contact us by calling (702) 500-1942, texting us, or emailing info@manzanohomes.com. We are here to help with all your real estate needs.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What makes 89179 a great place to live?',
+      name: 'What services does Manzano Homes provide?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: '89179 offers excellent schools, low crime rates, convenient access to major employment centers, growing community with modern amenities, and a perfect balance of suburban tranquility and urban convenience.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What schools serve the 89179 area?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'The 89179 area is served by Northwest Career Technical Academy (8/10 rating), Arbor View High School (8/10 rating), and Shadow Ridge High School (7/10 rating), providing excellent educational opportunities.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How far is 89179 from the Las Vegas Strip?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '89179 is located 16 miles from the Las Vegas Strip, approximately a 20-minute drive via I-15, providing easy access to entertainment while maintaining a quiet residential atmosphere.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What shopping and amenities are near 89179?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "Residents enjoy convenient access to Target (1.8 miles), Walmart (2.2 miles), Smith's Food and Drug (2.5 miles), and The Shops at Summerlin (5.0 miles) for shopping and dining.",
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How do I find homes for sale in 89179?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'You can find homes in 89179 by calling (702) 500-1942 or using our RealScout integration for live MLS listings. We specialize in the 89179 area and can help you find your perfect home in this growing community.',
+        text: 'We provide comprehensive real estate services including buying, selling, home valuations, market reports, and expert guidance for the Las Vegas area.',
       },
     },
   ],
-};
-
-// FAQ Schema for SEO
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [JSON.stringify(faqSchema)],
 };
 </script>
 

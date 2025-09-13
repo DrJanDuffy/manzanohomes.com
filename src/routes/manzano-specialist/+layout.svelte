@@ -117,76 +117,21 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'What is the Manzano Peak HOA fee?',
+      name: 'How can I contact Manzano Homes?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Manzano Peak HOA fees range from $45 to $85 per month, covering landscaping, common area maintenance, and trash collection. The HOA helps maintain property values and community standards throughout the neighborhood.',
+        text: 'You can contact us by calling (702) 500-1942, texting us, or emailing info@manzanohomes.com. We are here to help with all your real estate needs.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What is the rating of Manzano Peak Elementary School?',
+      name: 'What services does Manzano Homes provide?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Manzano Peak Elementary School has an excellent 9/10 rating with 485 students and an 18:1 student-teacher ratio. The school offers STEM programs, arts classes, and after school care, making it one of the top elementary schools in the area.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: "How far is Manzano Peak from Vons, Smith's, and Target?",
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "Manzano Peak is conveniently located near major shopping: Vons grocery store (0.8 miles), Smith's Food and Drug (1.2 miles), and Target (1.5 miles). This provides easy access to daily shopping needs within walking or short driving distance.",
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How far is Manzano Peak from the Las Vegas Strip?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Manzano Peak is located 12 miles from the Las Vegas Strip, approximately a 15-minute drive via I-515 and I-215. This provides easy access to entertainment while maintaining a quiet residential atmosphere.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What are the average commute times from Manzano Peak?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'From Manzano Peak: McCarran Airport (10 minutes), Las Vegas Strip (15 minutes), Downtown Las Vegas (20 minutes), Henderson (25 minutes), and Summerlin (30 minutes). The location provides excellent access to major employment centers.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What are the crime statistics for 89178 zip code?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'The 89178 zip code has a safety score of 8.5/10 with crime rates below the national average. Violent crime is 15% below average and property crime is 20% below average, making it one of the safest areas in Las Vegas.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What makes Manzano Peak a great investment?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Manzano Peak offers excellent investment potential with 8% annual appreciation, strong rental demand, excellent schools, low crime rates, and convenient location. The area has seen consistent growth and is popular with families and professionals.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How do I contact the Manzano Peak HOA?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'You can contact the Manzano Peak HOA at (702) 555-0123 or email info@manzanopeakhoa.com. The HOA office is located at 123 Manzano Peak Drive and is open Monday-Friday 9 AM to 5 PM for resident assistance.',
+        text: 'We provide comprehensive real estate services including buying, selling, home valuations, market reports, and expert guidance for the Las Vegas area.',
       },
     },
   ],
-};
-
-// FAQ Schema for SEO
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [JSON.stringify(faqSchema)],
 };
 </script>
 

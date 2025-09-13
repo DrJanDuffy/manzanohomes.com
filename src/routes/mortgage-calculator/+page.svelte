@@ -19,12 +19,6 @@ const _downPaymentPercent = $derived(((downPayment / homePrice) * 100).toFixed(1
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: [],
-};
-// FAQ Schema for SEO
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
   mainEntity: [
     {
       '@type': 'Question',

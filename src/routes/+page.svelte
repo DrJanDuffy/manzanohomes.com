@@ -27,60 +27,21 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'What is the average home price in Manzano Peak?',
+      name: 'How can I contact Manzano Homes?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'The average home price in Manzano Peak ranges from $450,000 to $650,000, with a median price of $485,000. This includes both new construction and resale homes with modern amenities and energy-efficient features.',
+        text: 'You can contact us by calling (702) 500-1942, texting us, or emailing info@manzanohomes.com. We are here to help with all your real estate needs.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What schools serve the Manzano neighborhood?',
+      name: 'What services does Manzano Homes provide?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Manzano Peak Elementary School (9/10 rating, 0.3 miles), Southeast Career Technical Academy (8/10 rating, 1.2 miles), and Green Valley High School (8/10 rating, 2.1 miles) serve the Manzano neighborhood with excellent educational programs.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How far is Manzano Peak from the Las Vegas Strip?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Manzano Peak is located 12 miles from the Las Vegas Strip, approximately a 15-minute drive via I-515 and I-215. This provides easy access to entertainment while maintaining a quiet residential atmosphere.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What amenities are near Manzano Peak?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "Residents enjoy convenient access to Vons grocery store (0.8 miles), Smith's Food and Drug (1.2 miles), Target (1.5 miles), Green Valley Ranch Resort (3.2 miles), and The District at Green Valley Ranch shopping center (3.5 miles).",
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What is the HOA fee for Manzano Peak?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Manzano Peak HOA fees range from $45 to $85 per month, covering landscaping, common area maintenance, and trash collection. The HOA helps maintain property values and community standards throughout the neighborhood.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Is Manzano Peak a good investment?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes, Manzano Peak offers excellent investment potential with 8% annual appreciation, strong rental demand, excellent schools, low crime rates, and convenient location. The area has seen consistent growth and is popular with families and professionals.',
+        text: 'We provide comprehensive real estate services including buying, selling, home valuations, market reports, and expert guidance for the Las Vegas area.',
       },
     },
   ],
-};
-
-// FAQ Schema for SEO
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [JSON.stringify(faqSchema)],
 };
 </script>
 

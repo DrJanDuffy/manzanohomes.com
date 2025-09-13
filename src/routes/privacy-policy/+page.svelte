@@ -10,12 +10,6 @@ const _lastUpdated = new Date().toLocaleDateString('en-US', {
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: [],
-};
-// FAQ Schema for SEO
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
   mainEntity: [
     {
       '@type': 'Question',

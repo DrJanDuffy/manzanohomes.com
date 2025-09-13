@@ -214,60 +214,21 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'What is the median home price in 89138 Las Vegas?',
+      name: 'How can I contact Manzano Homes?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'The median home price in 89138 Las Vegas is $455,000, with homes ranging from $350,000 to $900,000. This Southwest Las Vegas area offers diverse neighborhoods with both established communities and new developments.',
+        text: 'You can contact us by calling (702) 500-1942, texting us, or emailing info@manzanohomes.com. We are here to help with all your real estate needs.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What makes 89138 a great place to live?',
+      name: 'What services does Manzano Homes provide?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: '89138 offers excellent schools, low crime rates, convenient access to major employment centers, diverse neighborhoods with various home styles, and a perfect balance of suburban tranquility and urban convenience.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What schools serve the 89138 area?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'The 89138 area is served by Southwest Career Technical Academy (8/10 rating), Desert Oasis High School (8/10 rating), and Spring Valley High School (7/10 rating), providing excellent educational opportunities.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How far is 89138 from the Las Vegas Strip?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '89138 is located 12 miles from the Las Vegas Strip, approximately a 12-minute drive via I-15, providing easy access to entertainment while maintaining a quiet residential atmosphere.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What shopping and amenities are near 89138?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "Residents enjoy convenient access to Target (1.2 miles), Walmart (1.5 miles), Smith's Food and Drug (1.8 miles), and The Shops at Summerlin (3.5 miles) for shopping and dining.",
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How do I find homes for sale in 89138?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'You can find homes in 89138 by calling (702) 500-1942 or using our RealScout integration for live MLS listings. We specialize in the 89138 area and can help you find your perfect home in this diverse community.',
+        text: 'We provide comprehensive real estate services including buying, selling, home valuations, market reports, and expert guidance for the Las Vegas area.',
       },
     },
   ],
-};
-
-// FAQ Schema for SEO
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [JSON.stringify(faqSchema)],
 };
 </script>
 

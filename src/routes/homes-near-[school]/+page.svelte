@@ -175,60 +175,21 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'What schools are near Manzano Peak homes?',
+      name: 'How can I contact Manzano Homes?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Homes near Manzano Peak are served by Manzano Peak Elementary School (9/10 rating, 0.3 miles), Southeast Career Technical Academy (8/10 rating, 1.2 miles), Green Valley High School (8/10 rating, 2.1 miles), and Coronado High School (7/10 rating, 2.8 miles).',
+        text: 'You can contact us by calling (702) 500-1942, texting us, or emailing info@manzanohomes.com. We are here to help with all your real estate needs.',
       },
     },
     {
       '@type': 'Question',
-      name: 'How do I find homes near good schools in Las Vegas?',
+      name: 'What services does Manzano Homes provide?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'You can find homes near excellent schools by calling (702) 500-1942 or using our RealScout integration. We specialize in helping families find homes in the best school districts with top-rated schools.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What makes a school district good for families?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Good school districts have high ratings (8+/10), strong academic programs, low student-to-teacher ratios, modern facilities, extracurricular activities, and safe environments that support student success.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: "How far should I live from my child's school?",
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "Most families prefer to live within 1-2 miles of their child's school for convenience. This allows for easy walking, biking, or short drives while maintaining a good work-life balance.",
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What are the top-rated schools in Las Vegas?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Top-rated schools in Las Vegas include Manzano Peak Elementary (9/10), Southeast Career Technical Academy (8/10), Green Valley High School (8/10), and Coronado High School (7/10), among others.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How do I check school ratings and reviews?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'You can check school ratings on GreatSchools.org, Niche.com, and the Clark County School District website. We also provide detailed school information and can help you research the best options for your family.',
+        text: 'We provide comprehensive real estate services including buying, selling, home valuations, market reports, and expert guidance for the Las Vegas area.',
       },
     },
   ],
-};
-
-// FAQ Schema for SEO
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [JSON.stringify(faqSchema)],
 };
 </script>
 

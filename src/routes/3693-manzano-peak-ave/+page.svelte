@@ -80,44 +80,21 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'What is the price of 3693 Manzano Peak Ave?',
+      name: 'How can I contact Manzano Homes?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: '3693 Manzano Peak Ave is priced at $485,000. This 4-bedroom, 3-bathroom home offers 2,450 square feet of living space with modern amenities and a private backyard.',
+        text: 'You can contact us by calling (702) 500-1942, texting us, or emailing info@manzanohomes.com. We are here to help with all your real estate needs.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What are the key features of 3693 Manzano Peak Ave?',
+      name: 'What services does Manzano Homes provide?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'This home features an open floor plan, updated kitchen with granite countertops, master suite with walk-in closet, private backyard, two-car garage, energy-efficient windows, hardwood floors, and central air conditioning.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What schools are near 3693 Manzano Peak Ave?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'The home is served by Manzano Peak Elementary School (0.3 miles, 9/10 rating), Southeast Career Technical Academy (1.2 miles, 8/10 rating), and Green Valley High School (2.1 miles, 8/10 rating).',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What is the lot size of 3693 Manzano Peak Ave?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '3693 Manzano Peak Ave sits on a 0.25-acre lot, providing ample outdoor space for a private backyard, landscaping, and outdoor activities.',
+        text: 'We provide comprehensive real estate services including buying, selling, home valuations, market reports, and expert guidance for the Las Vegas area.',
       },
     },
   ],
-};
-
-// FAQ Schema for SEO
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [JSON.stringify(faqSchema)],
 };
 </script>
 

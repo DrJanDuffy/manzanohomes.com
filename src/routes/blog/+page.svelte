@@ -95,54 +95,21 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'What real estate topics does the Manzano Homes blog cover?',
+      name: 'How can I contact Manzano Homes?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Our blog covers market updates, buying guides, selling tips, neighborhood insights, mortgage information, and expert advice for Las Vegas real estate buyers and sellers.',
+        text: 'You can contact us by calling (702) 500-1942, texting us, or emailing info@manzanohomes.com. We are here to help with all your real estate needs.',
       },
     },
     {
       '@type': 'Question',
-      name: 'How often is the Manzano Homes blog updated?',
+      name: 'What services does Manzano Homes provide?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'We update our blog regularly with fresh content including market reports, neighborhood spotlights, and expert insights to keep you informed about Las Vegas real estate trends.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Can I subscribe to get blog updates?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes! You can subscribe to our newsletter to receive the latest blog posts, market updates, and exclusive real estate insights directly to your inbox.',
+        text: 'We provide comprehensive real estate services including buying, selling, home valuations, market reports, and expert guidance for the Las Vegas area.',
       },
     },
   ],
-};
-
-// Blog Schema for SEO
-const blogSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Blog',
-  name: 'Manzano Homes Real Estate Blog',
-  description: 'Expert real estate insights, market updates, and tips for buyers and sellers',
-  url: 'https://manzanohomes.com/blog',
-  publisher: {
-    '@type': 'Organization',
-    name: 'Manzano Homes',
-    url: 'https://manzanohomes.com',
-  },
-  blogPost: blogPosts.map((post) => ({
-    '@type': 'BlogPosting',
-    headline: post.title,
-    author: {
-      '@type': 'Person',
-      name: post.author,
-    },
-    datePublished: post.date,
-    description: post.excerpt,
-    url: `https://manzanohomes.com/blog/${post.slug}`,
-  })),
 };
 </script>
 
