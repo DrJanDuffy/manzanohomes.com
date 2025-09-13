@@ -1,6 +1,6 @@
 import type { RequestHandler } from './$types';
 
-export const GET: RequestHandler = async ({ url }) => {
+export const GET: RequestHandler = async ({ url: _url }) => {
   const sitemapUrl = 'https://www.manzanohomes.com/sitemap.xml';
 
   try {

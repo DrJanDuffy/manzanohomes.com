@@ -93,7 +93,7 @@ $: currentSchool = schoolData[schoolName.toLowerCase()] || {
 };
 
 // Nearby amenities
-const nearbyAmenities = [
+const _nearbyAmenities = [
   {
     name: 'Manzano Park',
     type: 'Park',
@@ -121,7 +121,7 @@ const nearbyAmenities = [
 ];
 
 // Market data
-const marketData = {
+const _marketData = {
   medianPrice: '$485,000',
   pricePerSqFt: '$185',
   daysOnMarket: '28',
@@ -142,13 +142,15 @@ const testimonials = [
   {
     name: 'David Chen',
     role: 'Parent of 1 student',
-    content: `The school district here is outstanding. The teachers are dedicated, the facilities are modern, and the community support for education is incredible.`,
+    content:
+      'The school district here is outstanding. The teachers are dedicated, the facilities are modern, and the community support for education is incredible.',
     rating: 5,
   },
   {
     name: 'Maria Rodriguez',
     role: 'Parent of 3 students',
-    content: `Living near great schools was our top priority when house hunting. This area exceeded our expectations with both the quality of education and the family-friendly community.`,
+    content:
+      'Living near great schools was our top priority when house hunting. This area exceeded our expectations with both the quality of education and the family-friendly community.',
     rating: 5,
   },
 ];

@@ -86,7 +86,7 @@ export const GET: RequestHandler = async ({ fetch: _fetch }) => {
           lastmod: property.updatedAt || new Date().toISOString().split('T')[0],
           changefreq: property.status === 'active' ? 'daily' : 'weekly',
           priority: property.featured ? 0.9 : 0.7,
-          images: property.images?.slice(0, 5).map((img: any) => ({
+          images: property.images?.slice(0, 5).map((img: { url: string; caption?: string }) => ({
             url: img.url.startsWith('http') ? img.url : `${DOMAIN}${img.url}`,
             title: `${property.address} - ${img.caption || 'Property Image'}`,
             caption: img.caption,

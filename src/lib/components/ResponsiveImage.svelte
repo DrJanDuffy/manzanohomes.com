@@ -23,10 +23,10 @@ export let placeholder = 'blur';
 export let blurDataURL = '';
 
 // State
-let isLoaded = false;
-let isInView = false;
+let _isLoaded = false;
+let _isInView = false;
 let currentFormat = 'jpeg';
-let error = false;
+let _error = false;
 
 // Generate optimized image URLs
 function generateImageUrls() {
@@ -35,7 +35,7 @@ function generateImageUrls() {
 
   formats.forEach((format) => {
     urls[format] = {};
-    Object.entries(breakpoints).forEach(([size, width]) => {
+    Object.entries(breakpoints).forEach(([size, _width]) => {
       urls[format][size] = `/optimized/${baseName}-${size}.${format}`;
     });
   });
@@ -48,7 +48,7 @@ function checkFormatSupport() {
   if (typeof window === 'undefined') return 'jpeg';
 
   const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
+  const _ctx = canvas.getContext('2d');
 
   // Check AVIF support
   if (formats.includes('avif')) {
@@ -77,7 +77,7 @@ function setupIntersectionObserver() {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          isInView = true;
+          _isInView = true;
           observer.disconnect();
         }
       });
@@ -97,7 +97,7 @@ function generateSrcSet(format) {
   const srcset = [];
 
   Object.entries(breakpoints).forEach(([size, width]) => {
-    if (imageUrls[format] && imageUrls[format][size]) {
+    if (imageUrls[format]?.[size]) {
       srcset.push(`${imageUrls[format][size]} ${width}w`);
     }
   });
@@ -111,14 +111,14 @@ function generateSizes() {
 }
 
 // Handle image load
-function handleLoad() {
-  isLoaded = true;
-  error = false;
+function _handleLoad() {
+  _isLoaded = true;
+  _error = false;
 }
 
 // Handle image error
-function handleError() {
-  error = true;
+function _handleError() {
+  _error = true;
   console.warn(`Failed to load image: ${src}`);
 }
 
@@ -138,7 +138,7 @@ onMount(() => {
       }
     }
   } else {
-    isInView = true;
+    _isInView = true;
   }
 });
 </script>
@@ -177,17 +177,17 @@ onMount(() => {
     sizes={sizesAttr}
     loading={loading}
     fetchpriority={fetchpriority}
-    class="w-full h-auto object-cover {isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300"
+    class="w-full h-auto object-cover {_isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300"
     style="aspect-ratio: {width}/{height};"
-    on:load={handleLoad}
-    on:error={handleError}
+    on:load={_handleLoad}
+    on:error={_handleError}
     decoding="async"
     role="img"
     aria-label={alt}
   />
   
   <!-- Loading placeholder -->
-  {#if !isLoaded && !error && placeholder === 'blur'}
+  {#if !_isLoaded && !_error && placeholder === 'blur'}
     <div 
       class="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center"
       style="aspect-ratio: {width}/{height};"
@@ -199,7 +199,7 @@ onMount(() => {
   {/if}
   
   <!-- Error state -->
-  {#if error}
+  {#if _error}
     <div 
       class="absolute inset-0 bg-gray-100 flex items-center justify-center"
       style="aspect-ratio: {width}/{height};"

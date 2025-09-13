@@ -56,7 +56,11 @@ export const GET: RequestHandler = async ({ fetch: _fetch }) => {
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${sampleProperties
   .map(
-    (property: any) => `
+    (property: {
+      id: string;
+      address: string;
+      images?: Array<{ url: string; caption?: string }>;
+    }) => `
   <url>
     <loc>${DOMAIN}/property/${property.id}</loc>
     <lastmod>${property.lastModified || new Date().toISOString().split('T')[0]}</lastmod>
@@ -65,7 +69,7 @@ ${sampleProperties
     ${property.images
       ?.slice(0, 5)
       .map(
-        (img: any) => `
+        (img: { url: string; caption?: string }) => `
     <image:image>
       <image:loc>${img.url.startsWith('http') ? img.url : `${DOMAIN}${img.url}`}</image:loc>
       <image:title>${property.address} - Manzano Homes</image:title>

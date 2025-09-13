@@ -2,7 +2,7 @@
 import SEO from '$lib/components/SEO.svelte';
 
 // Zip code data
-const zipData = {
+const _zipData = {
   zip: '89179',
   city: 'Las Vegas',
   state: 'NV',
@@ -22,7 +22,7 @@ const zipData = {
 };
 
 // Key features
-const keyFeatures = [
+const _keyFeatures = [
   {
     title: 'New Construction',
     description: 'Many new home developments with modern amenities and energy-efficient features',
@@ -56,7 +56,7 @@ const keyFeatures = [
 ];
 
 // Schools data
-const schools = [
+const _schools = [
   {
     name: 'Northwest Career and Technical Academy',
     type: 'High School',
@@ -88,7 +88,7 @@ const schools = [
 ];
 
 // Shopping & Dining
-const shopping = [
+const _shopping = [
   {
     name: 'Centennial Hills Town Center',
     type: 'Shopping Center',
@@ -116,7 +116,7 @@ const shopping = [
 ];
 
 // Parks & Recreation
-const parks = [
+const _parks = [
   {
     name: 'Centennial Hills Park',
     type: 'Community Park',
@@ -156,7 +156,7 @@ const parks = [
 ];
 
 // Market statistics
-const marketStats = {
+const _marketStats = {
   averagePrice: '$445,000',
   medianPrice: '$435,000',
   pricePerSqFt: '$180',

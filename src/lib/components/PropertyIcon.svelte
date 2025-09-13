@@ -13,19 +13,7 @@ import Icon from './Icon.svelte';
  */
 
 /** @type {PropertyIconProps} */
-const {
-  type = 'feature',
-  name,
-  // biome-ignore lint/correctness/noUnusedVariables: Used in template
-  size,
-  // biome-ignore lint/correctness/noUnusedVariables: Used in template
-  color,
-  className = '',
-  // biome-ignore lint/correctness/noUnusedVariables: Used in template
-  title,
-  // biome-ignore lint/correctness/noUnusedVariables: restProps are passed through
-  ...restProps
-} = $props();
+const { type = 'feature', name, size, color, className = '', title, ..._restProps } = $props();
 
 // Get icon name based on type
 const _iconName = type === 'feature' ? getPropertyFeatureIcon(name) : getPropertyTypeIcon(name);

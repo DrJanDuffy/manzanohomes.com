@@ -70,7 +70,7 @@ export class ManzanoSchemas {
     };
     images: Array<{ url: string; caption?: string }>;
     description?: string;
-  }): any {
+  }): Record<string, unknown> {
     return {
       '@context': 'https://schema.org',
       '@type': 'RealEstateListing',
@@ -91,7 +91,7 @@ export class ManzanoSchemas {
         addressRegion: data.address.state || 'NV',
         postalCode: data.address.zip || '89121',
         addressCountry: 'US',
-      } as any,
+      } as Record<string, unknown>,
       geo: {
         '@type': 'GeoCoordinates',
         latitude: data.address.lat,
@@ -146,7 +146,7 @@ export class ManzanoSchemas {
           urlTemplate: `${this.BASE_URL}/homes-for-sale?q={search_term_string}`,
         },
         'query-input': 'required name=search_term_string',
-      } as any,
+      } as Record<string, unknown>,
     };
   }
 

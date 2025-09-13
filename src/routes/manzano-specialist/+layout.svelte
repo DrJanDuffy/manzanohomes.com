@@ -2,7 +2,7 @@
 import SEO from '$lib/components/SEO.svelte';
 
 // Comprehensive Manzano data
-const manzanoData = {
+const _manzanoData = {
   overview: {
     established: '2015',
     totalHomes: '150+',
@@ -81,7 +81,7 @@ const manzanoData = {
 };
 
 // Everything Manzano Peak Guide
-const manzanoGuide = [
+const _manzanoGuide = [
   {
     title: 'Neighborhood Overview',
     content:
@@ -108,7 +108,7 @@ const manzanoGuide = [
   },
 ];
 
-let activeTab = 'overview';
+let _activeTab = 'overview';
 </script>
 
 <SEO

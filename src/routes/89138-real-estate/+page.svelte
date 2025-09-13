@@ -2,7 +2,7 @@
 import SEO from '$lib/components/SEO.svelte';
 
 // Zip code data
-const zipData = {
+const _zipData = {
   zip: '89138',
   city: 'Las Vegas',
   state: 'NV',
@@ -22,7 +22,7 @@ const zipData = {
 };
 
 // Key features
-const keyFeatures = [
+const _keyFeatures = [
   {
     title: 'Diverse Community',
     description: 'Mix of established neighborhoods and new developments with various home styles',
@@ -56,7 +56,7 @@ const keyFeatures = [
 ];
 
 // Schools data
-const schools = [
+const _schools = [
   {
     name: 'Southwest Career and Technical Academy',
     type: 'High School',
@@ -88,7 +88,7 @@ const schools = [
 ];
 
 // Shopping & Dining
-const shopping = [
+const _shopping = [
   {
     name: 'Southwest Career and Technical Academy',
     type: 'Shopping Center',
@@ -116,7 +116,7 @@ const shopping = [
 ];
 
 // Parks & Recreation
-const parks = [
+const _parks = [
   {
     name: 'Southwest Career and Technical Academy Park',
     type: 'Community Park',
@@ -156,7 +156,7 @@ const parks = [
 ];
 
 // Market statistics
-const marketStats = {
+const _marketStats = {
   averagePrice: '$465,000',
   medianPrice: '$455,000',
   pricePerSqFt: '$190',

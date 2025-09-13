@@ -2,7 +2,7 @@
 import SEO from '$lib/components/SEO.svelte';
 
 // Neighborhood data
-const neighborhoodData = {
+const _neighborhoodData = {
   name: 'Manzano Peak Neighborhood',
   location: 'Southeast Las Vegas, NV 89121',
   description:
@@ -18,7 +18,7 @@ const neighborhoodData = {
 };
 
 // Key features
-const keyFeatures = [
+const _keyFeatures = [
   {
     title: 'Prime Location',
     description:
@@ -55,7 +55,7 @@ const keyFeatures = [
 ];
 
 // Schools data
-const schools = [
+const _schools = [
   {
     name: 'Manzano Elementary School',
     type: 'Elementary',
@@ -89,7 +89,7 @@ const schools = [
 ];
 
 // Shopping & Dining
-const shopping = [
+const _shopping = [
   {
     name: 'Green Valley Ranch Resort & Casino',
     type: 'Entertainment & Shopping',
@@ -117,7 +117,7 @@ const shopping = [
 ];
 
 // Parks & Recreation
-const parks = [
+const _parks = [
   {
     name: 'Manzano Park',
     type: 'Neighborhood Park',
@@ -164,7 +164,7 @@ const parks = [
 ];
 
 // Market statistics
-const marketStats = {
+const _marketStats = {
   averagePrice: '$485,000',
   medianPrice: '$475,000',
   pricePerSqFt: '$185',

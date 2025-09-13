@@ -3,7 +3,7 @@ import ResponsiveImage from '$lib/components/ResponsiveImage.svelte';
 import SEO from '$lib/components/SEO.svelte';
 
 // Property-specific data
-const propertyData = {
+const _propertyData = {
   address: '3693 Manzano Peak Ave',
   city: 'Las Vegas',
   state: 'NV',
@@ -35,7 +35,7 @@ const propertyData = {
 };
 
 // Neighborhood amenities
-const amenities = [
+const _amenities = [
   {
     name: 'Manzano Elementary School',
     type: 'School',
@@ -63,7 +63,7 @@ const amenities = [
 ];
 
 // Market data
-const marketData = {
+const _marketData = {
   medianPrice: '$475,000',
   pricePerSqFt: '$185',
   daysOnMarket: '28',
