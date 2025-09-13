@@ -117,5 +117,25 @@ const _shopping = [
 
 // FAQ Schema for SEO
 const faqSchema = {
-
-// FAQ Schema for SEO
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How can I contact Manzano Homes?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'You can contact us by calling (702) 500-1942, texting us, or emailing DrDuffySells@ManzanoHomes.com. We are here to help with all your real estate needs.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What services does Manzano Homes provide?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We provide comprehensive real estate services including buying, selling, home valuations, market reports, and expert guidance for the Las Vegas area.',
+      },
+    },
+  ],
+};
+</script>
