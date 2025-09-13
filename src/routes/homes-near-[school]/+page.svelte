@@ -199,14 +199,6 @@ const faqSchema = {
 </script>
 </svelte:head>
 
-
-
-<svelte:head>
-  <script type="application/ld+json">
-    {JSON.stringify(faqSchema)}
-</script>
-</svelte:head>
-
 <SEO
   title="Homes Near {currentSchool.name} | Las Vegas Real Estate | School District {currentSchool.type}"
   description="🏫 Find homes near {currentSchool.name} in Las Vegas! {currentSchool.rating} rated {currentSchool.type.toLowerCase()} • {currentSchool.distance} away • Excellent school district • Family-friendly community • Schedule tour today!"
@@ -276,7 +268,6 @@ const faqSchema = {
     }
 	]}
 />
-
 
 <main class="min-h-screen bg-gray-50" id="main-content">
   <!-- Hero Section -->

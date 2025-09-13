@@ -238,14 +238,6 @@ const faqSchema = {
 </script>
 </svelte:head>
 
-
-
-<svelte:head>
-  <script type="application/ld+json">
-    {JSON.stringify(faqSchema)}
-</script>
-</svelte:head>
-
 <SEO
   title="89179 Real Estate | Northwest Las Vegas Homes for Sale | $435K Median Price"
   description="🏡 Find homes for sale in 89179 Las Vegas! Northwest area • $435K median price • Excellent schools • New construction • Growing community • Family-friendly • Schedule tour today!"
@@ -310,7 +302,6 @@ const faqSchema = {
     }
 	]}
 />
-
 
 <main class="min-h-screen" id="main-content">
   <!-- Hero Section -->

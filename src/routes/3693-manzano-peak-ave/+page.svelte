@@ -98,14 +98,6 @@ const faqSchema = {
 };
 </script>
 
-
-
-<svelte:head>
-  <script type="application/ld+json">
-    {JSON.stringify(faqSchema)}
-</script>
-</svelte:head>
-
 <SEO
   title="3693 Manzano Peak Ave, Las Vegas NV 89121 | $485,000 | 4 Bed 3 Bath Home"
   description="🏡 Beautiful 4 bed 3 bath home at 3693 Manzano Peak Ave, Las Vegas 89121. $485,000 • 2,450 sqft • Updated kitchen • Private backyard • Excellent schools • Schedule showing today!"

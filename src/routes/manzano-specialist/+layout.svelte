@@ -184,12 +184,6 @@ const faqSchema = {
 	]}
 />
 
-<!-- FAQ Schema for SEO -->
-<svelte:head>
-  <script type="application/ld+json">
-    {JSON.stringify(faqSchema)}
-</script>
-</svelte:head>
 
 <main class="min-h-screen bg-gray-50" id="main-content">
   <!-- Hero Section -->

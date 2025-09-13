@@ -45,14 +45,6 @@ const faqSchema = {
 };
 </script>
 
-
-
-<svelte:head>
-  <script type="application/ld+json">
-    {JSON.stringify(faqSchema)}
-</script>
-</svelte:head>
-
 <SEO
 	title="Manzano Homes | Las Vegas 89121 Real Estate | Expert Home Buying & Selling Services"
 	description="🏡 #1 Manzano Neighborhood Real Estate Experts! Find dream homes near 3693 Manzano Peak Ave. ⭐ 5-Star Service • Instant MLS Access • Free Market Analysis • Expert Guidance for Las Vegas Home Buyers & Sellers"

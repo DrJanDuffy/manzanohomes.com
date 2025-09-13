@@ -238,14 +238,6 @@ const faqSchema = {
 </script>
 </svelte:head>
 
-
-
-<svelte:head>
-  <script type="application/ld+json">
-    {JSON.stringify(faqSchema)}
-</script>
-</svelte:head>
-
 <SEO
   title="89138 Real Estate | Southwest Las Vegas Homes for Sale | $455K Median Price"
   description="🏡 Find homes for sale in 89138 Las Vegas! Southwest area • $455K median price • Excellent schools • Diverse community • Central location • Family-friendly • Schedule tour today!"
@@ -310,7 +302,6 @@ const faqSchema = {
     }
 	]}
 />
-
 
 <main class="min-h-screen" id="main-content">
   <!-- Hero Section -->
