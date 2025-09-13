@@ -356,11 +356,12 @@ const faqSchema = {
         loading="eager"
       />
     </div>
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "89121 is located 15 minutes from the Las Vegas Strip via I-515 and I-215. This provides excellent access to entertainment and employment while maintaining a quiet residential atmosphere in Southeast Las Vegas."
-      }
-    },
+    <!-- Content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">89121 Real Estate</h1>
+        <p class="text-xl md:text-2xl mb-2 text-primary-100">Southeast Las Vegas Homes for Sale</p>
+        <div class="text-3xl md:text-4xl font-bold text-secondary-400 mb-6">$475K Median Price</div>
     {
       "@type": "Question",
       "name": "What shopping and entertainment is available in 89121?",
