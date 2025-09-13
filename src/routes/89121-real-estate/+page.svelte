@@ -362,41 +362,38 @@ const faqSchema = {
         <h1 class="text-4xl md:text-6xl font-bold mb-4">89121 Real Estate</h1>
         <p class="text-xl md:text-2xl mb-2 text-primary-100">Southeast Las Vegas Homes for Sale</p>
         <div class="text-3xl md:text-4xl font-bold text-secondary-400 mb-6">$475K Median Price</div>
-    {
-      "@type": "Question",
-      "name": "What shopping and entertainment is available in 89121?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "89121 offers Green Valley Ranch Resort & Casino (3.2 miles), The District at Green Valley Ranch (3.5 miles), Henderson Pavilion (4.1 miles), and Galleria at Sunset (5.2 miles) for shopping, dining, and entertainment."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is 89121 a safe area with low crime?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, 89121 has low crime rates with a walk score of 72. The area features well-maintained neighborhoods, active community involvement, and regular police patrols, making it a safe choice for families."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What parks and recreation are near 89121?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Nearby recreation includes Manzano Park (0.1 miles), Sunset Park (2.8 miles), Coronado Park (1.5 miles), and Pecos Legacy Park (3.1 miles) for outdoor activities, sports, and family fun."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I find homes for sale in 89121?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You can find homes in 89121 by calling (702) 500-1942 or using our RealScout integration for live MLS listings. We specialize in the 89121 area and can help you find your perfect home in this established community."
-      }
-    }
-  ]
-}
-</script>
+        
+        <!-- Quick Stats -->
+        <div class="flex flex-wrap justify-center gap-6 mb-8">
+          <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
+            <span class="text-2xl font-bold">3,800+</span> homes
+          </div>
+          <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
+            <span class="text-2xl font-bold">8.5/10</span> school rating
+          </div>
+          <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
+            <span class="text-2xl font-bold">72</span> walk score
+          </div>
+          <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
+            <span class="text-2xl font-bold">15 min</span> to Strip
+          </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="tel:+17025001942" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+            📞 Call (702) 500-1942
+          </a>
+          <a href="sms:+17025001942" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+            💬 Text Us
+          </a>
+          <button onclick={() => window.open('mailto:info@manzanohomes.com?subject=Interest in 89121 Real Estate')} class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+            ✉️ Email Us
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 
 <main class="min-h-screen" id="main-content">
   <!-- Hero Section -->
