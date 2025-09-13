@@ -1,5 +1,3 @@
-</script>
-
 <SEO 
   title="Contact Manzano Homes | Las Vegas Real Estate Experts | 3693 Manzano Peak Ave"
   description="Get in touch with Manzano Homes for expert real estate services in Las Vegas. Contact our team at 3693 Manzano Peak Ave for buying, selling, or home valuation needs."
