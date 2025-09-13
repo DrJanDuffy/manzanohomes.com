@@ -462,7 +462,7 @@ const faqSchema = {
       <div class="bg-white rounded-lg shadow-lg p-8">
         <realscout-office-listings
           office-id="your-office-id"
-          search-params="{\"zip\": \"89121\"}"
+          search-params={JSON.stringify({zip: "89121"})}
         ></realscout-office-listings>
       </div>
     </div>
