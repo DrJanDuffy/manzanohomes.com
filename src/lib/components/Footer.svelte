@@ -194,7 +194,7 @@ const socialLinks = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
         <div class="text-sm text-gray-400">
-          © {currentYear} Manzano Homes. All rights reserved.
+          © {currentYear} Manzano Homes. All rights reserved. License# S.0197614.LLC
         </div>
         <div class="flex space-x-6 text-sm">
           {#each footerLinks.legal as link}
