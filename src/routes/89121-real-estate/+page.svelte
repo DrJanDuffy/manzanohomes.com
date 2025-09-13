@@ -347,14 +347,15 @@ const faqSchema = {
   <section class="relative bg-gradient-to-r from-primary-600 to-primary-800 text-white pt-24 md:pt-32 pb-20">
     <div class="absolute inset-0 bg-black bg-opacity-30"></div>
     <div class="absolute inset-0 bg-gradient-to-r from-manzano-dark/40 to-transparent"></div>
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The 89121 area is served by Manzano Peak Elementary School (9/10 rating, 0.3 miles), Southeast Career Technical Academy (8/10 rating, 1.2 miles), Green Valley High School (8/10 rating, 2.1 miles), and Coronado High School (7/10 rating, 2.8 miles)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How far is 89121 from the Las Vegas Strip?",
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img
+        src="/hero-89121.jpg"
+        alt="Southeast Las Vegas 89121 neighborhood with modern homes and mountain views"
+        class="w-full h-full object-cover"
+        loading="eager"
+      />
+    </div>
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "89121 is located 15 minutes from the Las Vegas Strip via I-515 and I-215. This provides excellent access to entertainment and employment while maintaining a quiet residential atmosphere in Southeast Las Vegas."
