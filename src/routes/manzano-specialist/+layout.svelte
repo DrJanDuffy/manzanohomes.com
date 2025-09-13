@@ -154,7 +154,7 @@ let activeTab = 'overview';
 
 <!-- FAQ Schema for SEO -->
 <script type="application/ld+json">
-{
+{JSON.stringify({
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
@@ -223,7 +223,7 @@ let activeTab = 'overview';
       }
     }
   ]
-}
+})}
 </script>
 
 <main class="min-h-screen bg-gray-50" id="main-content">
