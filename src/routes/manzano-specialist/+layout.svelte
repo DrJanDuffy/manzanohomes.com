@@ -109,6 +109,78 @@ const _manzanoGuide = [
 ];
 
 let _activeTab = 'overview';
+
+// FAQ Schema for SEO
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is the Manzano Peak HOA fee?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Manzano Peak HOA fees range from $45 to $85 per month, covering landscaping, common area maintenance, and trash collection. The HOA helps maintain property values and community standards throughout the neighborhood.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the rating of Manzano Peak Elementary School?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Manzano Peak Elementary School has an excellent 9/10 rating with 485 students and an 18:1 student-teacher ratio. The school offers STEM programs, arts classes, and after school care, making it one of the top elementary schools in the area.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: "How far is Manzano Peak from Vons, Smith's, and Target?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Manzano Peak is conveniently located near major shopping: Vons grocery store (0.8 miles), Smith's Food and Drug (1.2 miles), and Target (1.5 miles). This provides easy access to daily shopping needs within walking or short driving distance.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How far is Manzano Peak from the Las Vegas Strip?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Manzano Peak is located 12 miles from the Las Vegas Strip, approximately a 15-minute drive via I-515 and I-215. This provides easy access to entertainment while maintaining a quiet residential atmosphere.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What are the average commute times from Manzano Peak?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'From Manzano Peak: McCarran Airport (10 minutes), Las Vegas Strip (15 minutes), Downtown Las Vegas (20 minutes), Henderson (25 minutes), and Summerlin (30 minutes). The location provides excellent access to major employment centers.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What are the crime statistics for 89178 zip code?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The 89178 zip code has a safety score of 8.5/10 with crime rates below the national average. Violent crime is 15% below average and property crime is 20% below average, making it one of the safest areas in Las Vegas.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What makes Manzano Peak a great investment?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Manzano Peak offers excellent investment potential with 8% annual appreciation, strong rental demand, excellent schools, low crime rates, and convenient location. The area has seen consistent growth and is popular with families and professionals.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I contact the Manzano Peak HOA?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'You can contact the Manzano Peak HOA at (702) 555-0123 or email info@manzanopeakhoa.com. The HOA office is located at 123 Manzano Peak Drive and is open Monday-Friday 9 AM to 5 PM for resident assistance.',
+      },
+    },
+  ],
+};
 </script>
 
 <SEO
@@ -153,78 +225,11 @@ let _activeTab = 'overview';
 />
 
 <!-- FAQ Schema for SEO -->
-<script type="application/ld+json">
-{JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the Manzano Peak HOA fee?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Manzano Peak HOA fees range from $45 to $85 per month, covering landscaping, common area maintenance, and trash collection. The HOA helps maintain property values and community standards throughout the neighborhood."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the rating of Manzano Peak Elementary School?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Manzano Peak Elementary School has an excellent 9/10 rating with 485 students and an 18:1 student-teacher ratio. The school offers STEM programs, arts classes, and after school care, making it one of the top elementary schools in the area."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How far is Manzano Peak from Vons, Smith's, and Target?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Manzano Peak is conveniently located near major shopping: Vons grocery store (0.8 miles), Smith's Food and Drug (1.2 miles), and Target (1.5 miles). This provides easy access to daily shopping needs within walking or short driving distance."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How far is Manzano Peak from the Las Vegas Strip?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Manzano Peak is located 12 miles from the Las Vegas Strip, approximately a 15-minute drive via I-515 and I-215. This provides easy access to entertainment while maintaining a quiet residential atmosphere."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What are the average commute times from Manzano Peak?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "From Manzano Peak: McCarran Airport (10 minutes), Las Vegas Strip (15 minutes), Downtown Las Vegas (20 minutes), Henderson (25 minutes), and Summerlin (30 minutes). The location provides excellent access to major employment centers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What are the crime statistics for 89178 zip code?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The 89178 zip code has a safety score of 8.5/10 with crime rates below the national average. Violent crime is 15% below average and property crime is 20% below average, making it one of the safest areas in Las Vegas."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What makes Manzano Peak a great investment?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Manzano Peak offers excellent investment potential with 8% annual appreciation, strong rental demand, excellent schools, low crime rates, and convenient location. The area has seen consistent growth and is popular with families and professionals."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I contact the Manzano Peak HOA?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You can contact the Manzano Peak HOA at (702) 555-0123 or email info@manzanopeakhoa.com. The HOA office is located at 123 Manzano Peak Drive and is open Monday-Friday 9 AM to 5 PM for resident assistance."
-      }
-    }
-  ]
-})}
-</script>
+<svelte:head>
+  <script type="application/ld+json">
+    {JSON.stringify(faqSchema)}
+  </script>
+</svelte:head>
 
 <main class="min-h-screen bg-gray-50" id="main-content">
   <!-- Hero Section -->
@@ -273,8 +278,8 @@ let _activeTab = 'overview';
           { id: 'safety', label: 'Safety', icon: 'mdi:shield' }
         ] as tab}
           <button
-            class="flex items-center space-x-2 py-4 px-2 border-b-2 font-medium text-sm whitespace-nowrap {activeTab === tab.id ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'}"
-            onclick={() => activeTab = tab.id}
+            class="flex items-center space-x-2 py-4 px-2 border-b-2 font-medium text-sm whitespace-nowrap {_activeTab === tab.id ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'}"
+            onclick={() => _activeTab = tab.id}
           >
             <span class="iconify" data-icon={tab.icon}></span>
             <span>{tab.label}</span>
@@ -289,7 +294,7 @@ let _activeTab = 'overview';
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Overview Tab -->
-      {#if activeTab === 'overview'}
+      {#if _activeTab === 'overview'}
         <div class="space-y-12">
           <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Everything Manzano Peak Guide</h2>
@@ -334,7 +339,7 @@ let _activeTab = 'overview';
       {/if}
 
       <!-- HOA Tab -->
-      {#if activeTab === 'hoa'}
+      {#if _activeTab === 'hoa'}
         <div class="max-w-4xl mx-auto">
           <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">HOA Information & Fees</h2>
@@ -392,7 +397,7 @@ let _activeTab = 'overview';
       {/if}
 
       <!-- Schools Tab -->
-      {#if activeTab === 'schools'}
+      {#if _activeTab === 'schools'}
         <div class="max-w-6xl mx-auto">
           <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">School Ratings & Information</h2>
@@ -459,7 +464,7 @@ let _activeTab = 'overview';
       {/if}
 
       <!-- Shopping Tab -->
-      {#if activeTab === 'shopping'}
+      {#if _activeTab === 'shopping'}
         <div class="max-w-6xl mx-auto">
           <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Shopping & Amenities</h2>
@@ -513,7 +518,7 @@ let _activeTab = 'overview';
       {/if}
 
       <!-- Commute Tab -->
-      {#if activeTab === 'commute'}
+      {#if _activeTab === 'commute'}
         <div class="max-w-6xl mx-auto">
           <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Commute Times & Distances</h2>
@@ -557,7 +562,7 @@ let _activeTab = 'overview';
       {/if}
 
       <!-- Safety Tab -->
-      {#if activeTab === 'safety'}
+      {#if _activeTab === 'safety'}
         <div class="max-w-4xl mx-auto">
           <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Crime Statistics & Safety</h2>
