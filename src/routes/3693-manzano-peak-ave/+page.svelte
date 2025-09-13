@@ -72,6 +72,46 @@ const _marketData = {
   walkScore: '72',
   schoolRating: '8.5/10',
 };
+
+// FAQ Schema for SEO
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is the price of 3693 Manzano Peak Ave?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '3693 Manzano Peak Ave is priced at $485,000. This 4-bedroom, 3-bathroom home offers 2,450 square feet of living space with modern amenities and a private backyard.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What are the key features of 3693 Manzano Peak Ave?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'This home features an open floor plan, updated kitchen with granite countertops, master suite with walk-in closet, private backyard, two-car garage, energy-efficient windows, hardwood floors, and central air conditioning.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What schools are near 3693 Manzano Peak Ave?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The home is served by Manzano Peak Elementary School (0.3 miles, 9/10 rating), Southeast Career Technical Academy (1.2 miles, 8/10 rating), and Green Valley High School (2.1 miles, 8/10 rating).',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the lot size of 3693 Manzano Peak Ave?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '3693 Manzano Peak Ave sits on a 0.25-acre lot, providing ample outdoor space for a private backyard, landscaping, and outdoor activities.',
+      },
+    },
+  ],
+};
 </script>
 
 <SEO
@@ -150,78 +190,11 @@ const _marketData = {
 />
 
 <!-- FAQ Schema for SEO -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the price of 3693 Manzano Peak Ave?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "3693 Manzano Peak Ave is priced at $485,000. This 4-bedroom, 3-bathroom home offers 2,450 square feet of living space with modern amenities and a private backyard."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What are the key features of 3693 Manzano Peak Ave?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "This home features an open floor plan, updated kitchen with granite countertops, master suite with walk-in closet, private backyard, two-car garage, energy-efficient windows, hardwood floors, and central air conditioning."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "When was 3693 Manzano Peak Ave built?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "3693 Manzano Peak Ave was built in 2018, making it a relatively new home with modern construction standards and energy-efficient features."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What schools are near 3693 Manzano Peak Ave?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Manzano Peak Elementary School is 0.3 miles away with a 9/10 rating. Southeast Career Technical Academy (8/10 rating) is 1.2 miles away, and Green Valley High School (8/10 rating) is 2.1 miles away."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long has 3693 Manzano Peak Ave been on the market?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "3693 Manzano Peak Ave has been on the market for 12 days, indicating strong interest in this well-priced property in the desirable Manzano neighborhood."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What shopping is near 3693 Manzano Peak Ave?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Nearby shopping includes Vons grocery store (0.8 miles), Target (1.5 miles), Smith's Food and Drug (1.2 miles), and The District at Green Valley Ranch shopping center (3.5 miles)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I schedule a showing for 3693 Manzano Peak Ave?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You can schedule a showing by calling (702) 500-1942, texting the same number, or filling out the contact form on this page. We offer flexible scheduling including evenings and weekends."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the lot size of 3693 Manzano Peak Ave?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "3693 Manzano Peak Ave sits on a 0.25-acre lot, providing ample outdoor space for a private backyard, landscaping, and outdoor activities."
-      }
-    }
-  ]
-}
-</script>
+<svelte:head>
+  <script type="application/ld+json">
+    {JSON.stringify(faqSchema)}
+  </script>
+</svelte:head>
 
 <main class="min-h-screen bg-gray-50" id="main-content">
   <!-- Hero Section -->
