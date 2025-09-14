@@ -8,6 +8,10 @@ const config = {
     adapter: adapter({
       // Use Node.js runtime for better compatibility
       runtime: 'nodejs20.x',
+      // Fix Windows symlink issues
+      split: false,
+      // Use edge runtime for better performance
+      regions: ['iad1'],
     }),
     // Enable service worker for PWA features
     serviceWorker: {

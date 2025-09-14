@@ -1,8 +1,9 @@
 <script>
+import { onMount } from 'svelte';
 import SEO from '$lib/components/SEO.svelte';
 
 // Neighborhood data
-const _neighborhoodData = {
+const neighborhoodData = {
   name: 'Manzano Peak Neighborhood',
   location: 'Southeast Las Vegas, NV 89121',
   description:
@@ -18,7 +19,7 @@ const _neighborhoodData = {
 };
 
 // Key features
-const _keyFeatures = [
+const keyFeatures = [
   {
     title: 'Prime Location',
     description:
@@ -55,7 +56,7 @@ const _keyFeatures = [
 ];
 
 // Schools data
-const _schools = [
+const schools = [
   {
     name: 'Manzano Elementary School',
     type: 'Elementary',
@@ -89,7 +90,7 @@ const _schools = [
 ];
 
 // Shopping & Dining
-const _shopping = [
+const shopping = [
   {
     name: 'Green Valley Ranch Resort & Casino',
     type: 'Entertainment & Shopping',
@@ -117,7 +118,7 @@ const _shopping = [
 ];
 
 // Parks & Recreation
-const _parks = [
+const parks = [
   {
     name: 'Manzano Park',
     type: 'Neighborhood Park',
@@ -164,7 +165,7 @@ const _parks = [
 ];
 
 // Market statistics
-const _marketStats = {
+const marketStats = {
   averagePrice: '$485,000',
   medianPrice: '$475,000',
   pricePerSqFt: '$185',
@@ -319,76 +320,80 @@ const faqSchema = {
           "item": "https://www.manzanohomes.com/manzano-peak-neighborhood"
         }
       ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What makes Manzano Peak neighborhood special?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Manzano Peak is a premier family community in Southeast Las Vegas featuring modern homes, excellent schools (8.5/10 rating), convenient location near major highways, and a welcoming neighborhood atmosphere with parks and community events."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the median home price in Manzano Peak?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The median home price in Manzano Peak is $475,000, with homes ranging from $350,000 to $750,000. This includes both new construction and resale properties with modern amenities."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What schools serve the Manzano Peak neighborhood?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Manzano Peak Elementary School (9/10 rating, 0.3 miles), Southeast Career Technical Academy (8/10 rating, 1.2 miles), Green Valley High School (8/10 rating, 2.1 miles), and Coronado High School (7/10 rating, 2.8 miles) serve the neighborhood."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What amenities are available in Manzano Peak?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Manzano Peak offers Manzano Park (0.1 miles), Sunset Park (2.8 miles), Coronado Park (1.5 miles), and Pecos Legacy Park (3.1 miles). Shopping includes Vons (0.8 miles), Target (1.5 miles), and Green Valley Ranch Resort (3.2 miles)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How far is Manzano Peak from the Las Vegas Strip?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Manzano Peak is 12 miles from the Las Vegas Strip, approximately a 15-minute drive via I-515 and I-215. This provides easy access to entertainment while maintaining a quiet residential atmosphere."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the walk score of Manzano Peak?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Manzano Peak has a walk score of 72, indicating it's somewhat walkable. Residents can walk to nearby parks, schools, and some shopping, though a car is recommended for most errands."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Manzano Peak a safe neighborhood?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Manzano Peak has a safety score of 8.5/10 with crime rates below the national average. The neighborhood features well-lit streets, active community involvement, and regular police patrols."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What types of homes are available in Manzano Peak?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Manzano Peak offers single-family homes, townhomes, and new construction properties ranging from 1,500 to 3,500 square feet. Homes feature contemporary architecture, modern amenities, and energy-efficient designs."
+          }
+        }
+      ]
     }
-	]}
+  ]}
 />
 
-    {
-      "@type": "Question",
-      "name": "What makes Manzano Peak neighborhood special?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Manzano Peak is a premier family community in Southeast Las Vegas featuring modern homes, excellent schools (8.5/10 rating), convenient location near major highways, and a welcoming neighborhood atmosphere with parks and community events."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the median home price in Manzano Peak?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The median home price in Manzano Peak is $475,000, with homes ranging from $350,000 to $750,000. This includes both new construction and resale properties with modern amenities."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What schools serve the Manzano Peak neighborhood?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Manzano Peak Elementary School (9/10 rating, 0.3 miles), Southeast Career Technical Academy (8/10 rating, 1.2 miles), Green Valley High School (8/10 rating, 2.1 miles), and Coronado High School (7/10 rating, 2.8 miles) serve the neighborhood."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What amenities are available in Manzano Peak?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Manzano Peak offers Manzano Park (0.1 miles), Sunset Park (2.8 miles), Coronado Park (1.5 miles), and Pecos Legacy Park (3.1 miles). Shopping includes Vons (0.8 miles), Target (1.5 miles), and Green Valley Ranch Resort (3.2 miles)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How far is Manzano Peak from the Las Vegas Strip?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Manzano Peak is 12 miles from the Las Vegas Strip, approximately a 15-minute drive via I-515 and I-215. This provides easy access to entertainment while maintaining a quiet residential atmosphere."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the walk score of Manzano Peak?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Manzano Peak has a walk score of 72, indicating it's somewhat walkable. Residents can walk to nearby parks, schools, and some shopping, though a car is recommended for most errands."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Manzano Peak a safe neighborhood?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, Manzano Peak has a safety score of 8.5/10 with crime rates below the national average. The neighborhood features well-lit streets, active community involvement, and regular police patrols."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What types of homes are available in Manzano Peak?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Manzano Peak offers single-family homes, townhomes, and new construction properties ranging from 1,500 to 3,500 square feet. Homes feature contemporary architecture, modern amenities, and energy-efficient designs."
-      }
-    }
-  ]
-}
 
 <main class="min-h-screen" id="main-content">
   <!-- Hero Section -->

@@ -2,7 +2,7 @@
 import SEO from '$lib/components/SEO.svelte';
 
 // Comprehensive Manzano data
-const _manzanoData = {
+const manzanoData = {
   overview: {
     established: '2015',
     totalHomes: '150+',
@@ -181,7 +181,7 @@ const faqSchema = {
         "name": "Manzano Peak Community"
       }
     }
-	]}
+  ]}
 />
 
 

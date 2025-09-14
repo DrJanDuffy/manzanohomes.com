@@ -1,8 +1,9 @@
 <script>
+import { onMount } from 'svelte';
 import SEO from '$lib/components/SEO.svelte';
 
 // Zip code data
-const _zipData = {
+const zipData = {
   zip: '89138',
   city: 'Las Vegas',
   state: 'NV',
@@ -156,7 +157,7 @@ const _parks = [
 ];
 
 // Market statistics
-const _marketStats = {
+const marketStats = {
   averagePrice: '$465,000',
   medianPrice: '$455,000',
   pricePerSqFt: '$190',
@@ -300,7 +301,7 @@ const faqSchema = {
         }
       ]
     }
-	]}
+  ]}
 />
 
 <main class="min-h-screen" id="main-content">

@@ -1,7 +1,6 @@
 <script>
 import { browser } from '$app/environment';
 import GuideCard from '$lib/components/GuideCard.svelte';
-import ResponsiveImage from '$lib/components/ResponsiveImage.svelte';
 import SEO from '$lib/components/SEO.svelte';
 import { getGuidesForPage } from '$lib/data/guides.js';
 import { initAccessibility } from '$lib/utils/accessibility.js';
@@ -196,15 +195,14 @@ const faqSchema = {
 	
 	<!-- Background Image -->
 	<div class="absolute inset-0">
-		<ResponsiveImage
+		<enhanced:img
 			src="/hero-manzano.jpg"
 			alt="Beautiful Manzano Peak neighborhood homes in Las Vegas with modern architecture and green landscaping"
 			width="1920"
 			height="1080"
 			loading="eager"
 			fetchpriority="high"
-			formats={['avif', 'webp', 'jpeg']}
-			class="w-full h-full"
+			class="w-full h-full object-cover"
 		/>
 	</div>
 	

@@ -1,4 +1,5 @@
 <script>
+import { onMount } from 'svelte';
 import { page } from '$app/stores';
 import SEO from '$lib/components/SEO.svelte';
 
@@ -121,7 +122,7 @@ const _nearbyAmenities = [
 ];
 
 // Market data
-const _marketData = {
+const marketData = {
   medianPrice: '$485,000',
   pricePerSqFt: '$185',
   daysOnMarket: '28',
@@ -266,7 +267,7 @@ const faqSchema = {
         }
       ]
     }
-	]}
+  ]}
 />
 
 <main class="min-h-screen bg-gray-50" id="main-content">
