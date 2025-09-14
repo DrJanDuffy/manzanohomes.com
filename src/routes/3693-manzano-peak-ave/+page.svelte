@@ -1,5 +1,4 @@
 <script>
-import ResponsiveImage from '$lib/components/ResponsiveImage.svelte';
 import SEO from '$lib/components/SEO.svelte';
 
 // Property-specific data
@@ -228,14 +227,13 @@ const faqSchema = {
         <!-- Property Image -->
         <div class="space-y-6">
           <div class="bg-gray-200 rounded-lg h-96 flex items-center justify-center">
-            <ResponsiveImage
+            <enhanced:img
               src="/property-placeholder.jpg"
               alt="Beautiful 4 bedroom 3 bathroom home at {propertyData.address} with modern kitchen and private backyard"
               width="800"
               height="600"
               loading="lazy"
-              formats={['avif', 'webp', 'jpeg']}
-              class="w-full h-full rounded-lg"
+              class="w-full h-full rounded-lg object-cover"
             />
           </div>
           

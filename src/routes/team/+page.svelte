@@ -114,7 +114,7 @@ const faqSchema = {
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {#each teamMembers as member}
           <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" itemscope itemtype="https://schema.org/Person">
-            <img src={member.image} alt={member.name} class="w-full h-64 object-cover" itemprop="image">
+            <enhanced:img src={member.image} alt={member.name} width="300" height="300" class="w-full h-64 object-cover" itemprop="image" />
             <div class="p-6">
               <h3 class="text-2xl font-bold text-gray-900 mb-1" itemprop="name">{member.name}</h3>
               <p class="text-primary-600 font-semibold mb-3" itemprop="jobTitle">{member.role}</p>

@@ -123,9 +123,7 @@ const faqSchema = {
   
   <script type="application/ld+json">
     {JSON.stringify(faqSchema)}
-  <script type="application/ld+json">
-    {JSON.stringify(blogSchema)}
-</script>
+  </script>
 </svelte:head>
 
 <div id="main-content" class="min-h-screen bg-gray-50">
@@ -173,9 +171,11 @@ const faqSchema = {
         {#each blogPosts as post}
           <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <div class="aspect-w-16 aspect-h-9">
-              <img 
+              <enhanced:img 
                 src={post.image} 
                 alt={post.title}
+                width="400"
+                height="240"
                 class="w-full h-48 object-cover"
                 loading="lazy"
               />
